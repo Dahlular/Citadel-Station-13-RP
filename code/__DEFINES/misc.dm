@@ -302,7 +302,6 @@ var/list/economy_station_departments = list(
 /// Because everyone misspells it
 #define TSC_HEPH	"Hephaestus"
 #define TSC_MORPH	"Morpheus"
-#define TSC_NT		"NanoTrasen"
 #define TSC_VM		"Vey Med"
 #define TSC_WT		"Ward-Takahashi"
 /// Not really needed but consistancy I guess.
