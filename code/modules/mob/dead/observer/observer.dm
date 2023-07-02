@@ -550,9 +550,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return 0 //something is terribly wrong
 
 	var/ghosts_can_write
-	if(SSticker.mode.name == "cult")
-		if(cult.current_antagonists.len > config_legacy.cult_ghostwriter_req_cultists)
-			ghosts_can_write = 1
 
 	if(!ghosts_can_write && !check_rights(R_ADMIN, 0)) //Let's allow for admins to write in blood for events and the such.
 		to_chat(src, "<font color='red'>The veil is not thin enough for you to do that.</font>")

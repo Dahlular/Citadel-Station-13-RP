@@ -94,8 +94,6 @@
 	if(!isnull(mind))
 		if(mind.current == src)
 			// mind is ours, let it disassociate
-			// todo: legacy spell
-			spellremove(src)
 			mind?.disassociate()
 		else
 			// mind is not ours, null it out

@@ -736,9 +736,6 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			var/spell/S = new spell_to_add(H)
 			H.add_spell(S)
 
-/datum/species/proc/remove_inherent_spells(var/mob/living/carbon/human/H)
-	H.spellremove()
-
 /**
  * called after a mob is **fully** spawned
  */

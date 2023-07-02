@@ -127,62 +127,6 @@
 	origin_tech = list(TECH_COMBAT = 5, TECH_PHORON = 4)
 	projectile_type = /obj/projectile/energy/phoron
 
-/* Staves */
-
-/obj/item/gun/energy/staff
-	name = "staff of change"
-	desc = "An artifact that spits bolts of coruscating energy which cause the target's very form to reshape itself."
-	icon = 'icons/obj/wizard.dmi'
-	item_icons = null
-	icon_state = "staff"
-	slot_flags = SLOT_BACK
-	w_class = ITEMSIZE_LARGE
-	charge_cost = 480
-	projectile_type = /obj/projectile/change
-	origin_tech = null
-	cell_type = /obj/item/cell/device/weapon/recharge
-	battery_lock = 1
-	charge_meter = 0
-
-/obj/item/gun/energy/staff/special_check(var/mob/user)
-	if((user.mind && !wizards.is_antagonist(user.mind)))
-		to_chat(usr, "<span class='warning'>You focus your mind on \the [src], but nothing happens!</span>")
-		return 0
-
-	return ..()
-
-/obj/item/gun/energy/staff/handle_click_empty(mob/user = null)
-	if (user)
-		user.visible_message("*fizzle*", "<span class='danger'>*fizzle*</span>")
-	else
-		src.visible_message("*fizzle*")
-	playsound(src.loc, 'sound/effects/sparks1.ogg', 100, 1)
-/*
-/obj/item/gun/energy/staff/animate
-	name = "staff of animation"
-	desc = "An artifact that spits bolts of life force, which causes objects which are hit by it to animate and come to life! This magic doesn't affect machines."
-	projectile_type = /obj/projectile/animate
-	charge_cost = 240
-*/
-/obj/item/gun/energy/staff/focus
-	name = "mental focus"
-	desc = "An artifact that channels the will of the user into destructive bolts of force. If you aren't careful with it, you might poke someone's brain out."
-	icon = 'icons/obj/wizard.dmi'
-	icon_state = "focus"
-	slot_flags = SLOT_BACK
-	projectile_type = /obj/projectile/forcebolt
-	/*
-	attack_self(mob/living/user as mob)
-		if(projectile_type == "/obj/projectile/forcebolt")
-			charge_cost = 400
-			to_chat(user, "<span class='warning'>The [src.name] will now strike a small area.</span>")
-			projectile_type = "/obj/projectile/forcebolt/strong"
-		else
-			charge_cost = 200
-			to_chat(user, "<span class='warning'>The [src.name] will now strike only a single person.</span>")
-			projectile_type = "/obj/projectile/forcebolt"
-	*/
-
 /obj/item/gun/energy/dakkalaser
 	name = "suppression gun"
 	desc = "Coined 'Sparkers' by Tyrmalin dissidents on Larona upon it's inception, the HI-LLG is an energy-based suppression system, used to overwhelm the opposition in a hail of laser blasts."

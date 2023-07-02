@@ -92,12 +92,6 @@
 		"<span class='danger'>No more blood... Please.</span>"
 		)
 
-/datum/modifier/trait/phobia/haemophobia/check_if_valid()
-	if(iscultist(holder)) // Nar-nar can't be having cultists afraid of blood.
-		expire()
-	else
-		..()
-
 /datum/modifier/trait/phobia/haemophobia/should_fear()
 	if(holder.blinded)
 		return 0 // Can't fear what cannot be seen.

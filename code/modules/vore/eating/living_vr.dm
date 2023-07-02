@@ -626,10 +626,6 @@
 		return
 
 	if(is_type_in_list(I,edible_trash) || adminbus_trash)
-		if(I.hidden_uplink)
-			to_chat(src, "<span class='warning'>You really should not be eating this.</span>")
-			message_admins("[key_name(src)] has attempted to ingest an uplink item. ([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")
-			return
 		if(istype(I,/obj/item/pda))
 			var/obj/item/pda/P = I
 			if(P.owner)
