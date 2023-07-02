@@ -234,38 +234,6 @@
 
 	..()
 
-/mob/living/silicon/robot/drone/emag_act(var/remaining_charges, var/mob/user)
-	if(!client || stat == 2)
-		to_chat(user, "<span class='danger'>There's not much point subverting this heap of junk.</span>")
-		return
-
-	if(emagged)
-		to_chat(src, "<span class='danger'>\The [user] attempts to load subversive software into you, but your hacked subroutines ignore the attempt.</span>")
-		to_chat(user, "<span class='danger'>You attempt to subvert [src], but the sequencer has no effect.</span>")
-		return
-
-	to_chat(user, "<span class='danger'>You swipe the sequencer across [src]'s interface and watch its eyes flicker.</span>")
-
-	to_chat(src, "<span class='danger'>You feel a sudden burst of malware loaded into your execute-as-root buffer. Your tiny brain methodically parses, loads and executes the script.</span>")
-
-	log_game("[key_name(user)] emagged drone [key_name(src)]. Laws overridden.")
-	var/time = time2text(world.realtime,"hh:mm:ss")
-	lawchanges.Add("[time] <B>:</B> [user.name]([user.key]) emagged [name]([key])")
-
-	emagged = 1
-	lawupdate = 0
-	connected_ai = null
-	clear_supplied_laws()
-	clear_inherent_laws()
-	laws = new /datum/ai_laws/syndicate_override
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	set_zeroth_law("Only [user.real_name] and people [TU.he] designate[TU.s] as being such are operatives.")
-
-	to_chat(src, "<b>Obey these laws:</b>")
-	laws.show_laws(src)
-	to_chat(src, "<span class='danger'>ALERT: [user.real_name] is your new master. Obey your new laws and \his commands.</span>")
-	return 1
-
 //DRONE LIFE/DEATH
 
 //For some goddamn reason robots have this hardcoded. Redefining it for our fragile friends here.

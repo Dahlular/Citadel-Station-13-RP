@@ -236,7 +236,7 @@
 
 /mob/living/silicon/robot/proc/init()
 	aiCamera = new/obj/item/camera/siliconcam/robot_camera(src)
-	laws = new /datum/ai_laws/nanotrasen()
+	laws = new /datum/ai_laws/asimov()
 	additional_law_channels["Binary"] = "#b"
 	var/new_ai = select_active_ai_with_fewest_borgs()
 	if(new_ai)
@@ -1317,82 +1317,6 @@
 		connected_ai.connected_robots |= src
 		notify_ai(ROBOT_NOTIFICATION_NEW_UNIT)
 		sync()
-
-/mob/living/silicon/robot/emag_act(var/remaining_charges, var/mob/user)
-	if(!opened)//Cover is closed
-		if(locked)
-			if(prob(90))
-				to_chat(user, "You emag the cover lock.")
-				locked = 0
-			else
-				to_chat(user, "You fail to emag the cover lock.")
-				to_chat(src, "Hack attempt detected.")
-
-			if(shell) // A warning to Traitors who may not know that emagging AI shells does not slave them.
-				to_chat(user, SPAN_WARNING( "[src] seems to be controlled remotely! Emagging the interface may not work as expected."))
-			return 1
-		else
-			to_chat(user, "The cover is already unlocked.")
-		return
-
-	if(opened)//Cover is open
-		if(emagged)	return//Prevents the X has hit Y with Z message also you cant emag them twice
-		if(wiresexposed)
-			to_chat(user, "You must close the panel first")
-			return
-
-
-		// The block of code below is from TG. Feel free to replace with a better result if desired.
-		if(shell) // AI shells cannot be emagged, so we try to make it look like a standard reset. Smart players may see through this, however.
-			to_chat(user, SPAN_DANGER("[src] is remotely controlled! Your emag attempt has triggered a system reset instead!"))
-			log_game("[key_name(user)] attempted to emag an AI shell belonging to [key_name(src) ? key_name(src) : connected_ai]. The shell has been reset as a result.")
-			module_reset()
-			return
-
-		sleep(6)
-		if(prob(50))
-			emagged = 1
-			lawupdate = 0
-			disconnect_from_ai()
-			to_chat(user, "You emag [src]'s interface.")
-			message_admins("[key_name_admin(user)] emagged cyborg [key_name_admin(src)].  Laws overridden.")
-			log_game("[key_name(user)] emagged cyborg [key_name(src)].  Laws overridden.")
-			clear_supplied_laws()
-			clear_inherent_laws()
-			laws = new /datum/ai_laws/syndicate_override
-			var/time = time2text(world.realtime,"hh:mm:ss")
-			lawchanges.Add("[time] <B>:</B> [user.name]([user.key]) emagged [name]([key])")
-			var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-			set_zeroth_law("Only [user.real_name] and people [TU.he] designate[TU.s] as being such are operatives.")
-			. = 1
-			spawn()
-				to_chat(src, "<span class='danger'>ALERT: Foreign software detected.</span>")
-				sleep(5)
-				to_chat(src, "<span class='danger'>Initiating diagnostics...</span>")
-				sleep(20)
-				to_chat(src, "<span class='danger'>SynBorg v1.7.1 loaded.</span>")
-				sleep(5)
-				if(bolt)
-					if(!bolt.malfunction)
-						bolt.malfunction = MALFUNCTION_PERMANENT
-						to_chat(src, SPAN_DANGER("RESTRAINING BOLT DISABLED"))
-				sleep(5)
-				to_chat(src, "<span class='danger'>LAW SYNCHRONISATION ERROR</span>")
-				sleep(5)
-				to_chat(src, "<span class='danger'>Would you like to send a report to NanoTraSoft? Y/N</span>")
-				sleep(10)
-				to_chat(src, "<span class='danger'>> N</span>")
-				sleep(20)
-				to_chat(src, "<span class='danger'>ERRORERRORERROR</span>")
-				to_chat(src, "<b>Obey these laws:</b>")
-				laws.show_laws(src)
-				to_chat(src, "<span class='danger'>ALERT: [user.real_name] is your new master. Obey your new laws and [TU.his] commands.</span>")
-				updateicon()
-		else
-			to_chat(user, "You fail to hack [src]'s interface.")
-			to_chat(src, "Hack attempt detected.")
-		return 1
-	return
 
 /mob/living/silicon/robot/is_sentient()
 	return braintype != BORG_BRAINTYPE_DRONE
