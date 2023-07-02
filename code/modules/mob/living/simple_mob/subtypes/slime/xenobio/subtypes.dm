@@ -122,7 +122,7 @@
 	melee_damage_upper = 5
 	shock_resist = 1
 
-	projectiletype = /obj/projectile/beam/lightning/slime
+	//projectiletype = /obj/projectile/beam/lightning/slime  MISSING!!!
 	projectilesound = 'sound/effects/lightningbolt.ogg'
 	glow_toggle = TRUE
 

@@ -104,15 +104,6 @@
 	difficulty = EVENT_LEVEL_MODERATE
 	weaknesses = OVERMAP_WEAKNESS_EMP
 
-/obj/effect/overmap/event/cult
-	name = "eerie signals"
-	events = list(/datum/event/cult/overmap)
-	opacity = 0
-	event_icon_states = list("cultist","cultist2")
-	color = "#DD4444"
-	difficulty = EVENT_LEVEL_MAJOR
-	weaknesses = OVERMAP_WEAKNESS_FIRE
-
 /obj/effect/overmap/event/pirate
 	name = "unflagged cruiser"
 	events = list(/datum/event/pirate/overmap)

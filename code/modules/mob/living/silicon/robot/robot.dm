@@ -17,9 +17,6 @@
 	value = CATALOGUER_REWARD_HARD
 	unlocked_by_all = list(
 		/datum/category_item/catalogue/fauna/silicon/robot/cyborg,
-		/datum/category_item/catalogue/fauna/silicon/robot/lost,
-		/datum/category_item/catalogue/fauna/silicon/robot/gravekeeper,
-		/datum/category_item/catalogue/fauna/silicon/robot/syndicate
 		)
 
 /datum/category_item/catalogue/fauna/silicon/robot/cyborg

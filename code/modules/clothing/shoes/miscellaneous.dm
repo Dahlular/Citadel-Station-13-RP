@@ -80,24 +80,6 @@
 	else
 		playsound(src, "clownstep", 20, 1)
 
-/obj/item/clothing/shoes/cult
-	name = "boots"
-	desc = "A pair of boots worn by the followers of Nar-Sie."
-	icon_state = "cult"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "cult", SLOT_ID_LEFT_HAND = "cult")
-	damage_force = 2
-	siemens_coefficient = 0.7
-	origin_tech = list(TECH_ARCANE = 2)
-
-	cold_protection = FEET
-	min_cold_protection_temperature = SHOE_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = FEET
-	max_heat_protection_temperature = SHOE_MAX_HEAT_PROTECTION_TEMPERATURE
-	species_restricted = null
-
-/obj/item/clothing/shoes/cult/cultify()
-	return
-
 /obj/item/clothing/shoes/cyborg
 	name = "cyborg boots"
 	desc = "Shoes for a cyborg costume"

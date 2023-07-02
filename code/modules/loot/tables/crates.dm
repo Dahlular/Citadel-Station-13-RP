@@ -12,7 +12,6 @@
 		/datum/prototype/struct/loot_pack/chemistry/advanced = 2,
 		/datum/prototype/struct/loot_pack/science/stock_parts/chaotic = 2,
 		/datum/prototype/struct/loot_pack/weapons/melee1 = 2,
-		/datum/prototype/struct/loot_pack/clothing/chaotic = 2,
 		/datum/prototype/struct/loot_pack/misc/wrestlemania = 1,
 		/datum/prototype/struct/loot_pack/misc/clown = 1,
 		/datum/prototype/struct/loot_pack/misc/mime = 1,

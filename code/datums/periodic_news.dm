@@ -19,8 +19,6 @@
 
 // This is now a blank slate for periodic news Tag - ADDFLAVOR
 
-var/global/list/newscaster_standard_feeds = list(/datum/news_announcement/bluespace_research, /datum/news_announcement/lotus_tree, /datum/news_announcement/random_junk,  /datum/news_announcement/food_riots)
-
 /proc/process_newscaster()
 	check_for_newscaster_updates(SSticker.mode.newscaster_announcements)
 

@@ -400,17 +400,6 @@
 	light_overlay = "helmet_light_dual" //explorer_light
 	flash_protection = FLASH_PROTECTION_MAJOR
 
-
-/obj/item/clothing/suit/space/void/para
-	name = "PARA void suit"
-	desc = "A spaceproof suit covered in foreign spells and magical protection, meant to defend a trained wearer in more than one way."
-	icon_state = "para_ert_void"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_voidsuit", SLOT_ID_LEFT_HAND = "sec_voidsuit")
-	armor_type = /datum/armor/centcom/ert/paracausal
-	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton,/obj/item/ammo_magazine,/obj/item/nullrod)
-	siemens_coefficient = 0.7
-	var/anti_magic = TRUE
-
 //Gimmick and "Costume" Tier Voidsuits
 
 /obj/item/clothing/head/helmet/space/void/para/soror

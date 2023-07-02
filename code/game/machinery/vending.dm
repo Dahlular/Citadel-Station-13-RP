@@ -1210,23 +1210,6 @@
 
 			product_records.Add(product)
 
-/obj/machinery/vending/magivend
-	name = "MagiVend"
-	desc = "A magic vending machine."
-	icon_state = "MagiVend"
-	product_slogans = "Sling spells the proper way with MagiVend!;Be your own Houdini! Use MagiVend!"
-	vend_delay = 15
-	vend_reply = "Have an enchanted evening!"
-	product_ads = "FJKLFJSD;AJKFLBJAKL;1234 LOONIES LOL!;>MFW;Kill them fuckers!;GET DAT FUKKEN DISK;HONK!;EI NATH;Destroy the station!;Admin conspiracies since forever!;Space-time bending hardware!"
-	products = list(
-		/obj/item/clothing/head/wizard = 1,
-		/obj/item/clothing/suit/wizrobe = 1,
-		/obj/item/clothing/head/wizard/red = 1,
-		/obj/item/clothing/suit/wizrobe/red = 1,
-		/obj/item/clothing/shoes/sandal = 1,
-		/obj/item/staff = 2,
-	)
-
 /obj/machinery/vending/dinnerware
 	name = "Dinnerware"
 	desc = "A kitchen and restaurant equipment vendor."
@@ -2336,11 +2319,8 @@
 		/obj/item/clothing/suit/imperium_monk = 1,
 		/obj/item/clothing/suit/holidaypriest = 3,
 		/obj/item/clothing/head/witchwig = 3,
-		/obj/item/clothing/head/wizard/marisa/fake = 3,
 		/obj/item/clothing/under/sundress = 3,
 		/obj/item/staff/broom = 3,
-		/obj/item/clothing/suit/wizrobe/fake = 3,
-		/obj/item/clothing/head/wizard/fake = 3,
 		/obj/item/staff = 3,
 		/obj/item/clothing/mask/gas/clown_hat = 3,
 		/obj/item/clothing/under/rank/clown = 3,

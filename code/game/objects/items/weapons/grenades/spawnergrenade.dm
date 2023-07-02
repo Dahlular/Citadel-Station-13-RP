@@ -29,30 +29,6 @@
 	qdel(src)
 	return
 
-/obj/item/grenade/spawnergrenade/manhacks
-	name = "manhack delivery grenade"
-	spawner_type = /mob/living/simple_mob/mechanical/viscerator
-	deliveryamt = 5
-	origin_tech = list(TECH_MATERIAL = 3, TECH_MAGNET = 4, TECH_ILLEGAL = 4)
-
-/obj/item/grenade/spawnergrenade/manhacks/mercenary
-	spawner_type = /mob/living/simple_mob/mechanical/viscerator/mercenary
-
-/obj/item/grenade/spawnergrenade/manhacks/raider
-	spawner_type = /mob/living/simple_mob/mechanical/viscerator/raider
-
-/obj/item/grenade/spawnergrenade/manhacks/station
-	desc = "It is set to detonate in 5 seconds. It will deploy three weaponized survey drones."
-	deliveryamt = 3
-	spawner_type = /mob/living/simple_mob/mechanical/viscerator/station
-	origin_tech = list(TECH_MATERIAL = 3, TECH_MAGNET = 3, TECH_ILLEGAL = 1)
-
-/obj/item/grenade/spawnergrenade/manhacks/apidean
-	name = "\improper Apidean drone grenade"
-	desc = "Contains hibernating eggs of fast growing, organic kill-drones, used by Apidaen Enforcers to sweep ships and tunnels of deviants and intruders."
-	icon_state = "beenade"
-	spawner_type = /mob/living/simple_mob/mechanical/viscerator/apidean
-
 /obj/item/grenade/spawnergrenade/ward
 	name = "sentry delivery grenade"
 	desc = "It is set to detonate in 5 seconds. It will deploy a single thermal-optic sentry drone."

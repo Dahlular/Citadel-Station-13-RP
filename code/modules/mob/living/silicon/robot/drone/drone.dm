@@ -32,7 +32,7 @@
 	//Used for self-mailing.
 	var/mail_destination = ""
 	var/obj/machinery/drone_fabricator/master_fabricator
-	var/law_type = /datum/ai_laws/drone
+	var/law_type = /datum/ai_laws/asimov
 	var/module_type = /obj/item/robot_module/drone
 	var/obj/item/hat
 	var/hat_x_offset = 0
@@ -65,7 +65,7 @@
 /mob/living/silicon/robot/drone/construction
 	name = "construction drone"
 	icon_state = "constructiondrone"
-	law_type = /datum/ai_laws/construction_drone
+	law_type = /datum/ai_laws/asimov
 	module_type = /obj/item/robot_module/drone/construction
 	hat_x_offset = 1
 	hat_y_offset = -12
@@ -74,7 +74,7 @@
 /mob/living/silicon/robot/drone/construction/matriarch
 	name = "matriarch drone"
 	module_type = /obj/item/robot_module/drone/construction/matriarch
-	law_type = /datum/ai_laws/matriarch_drone
+	law_type = /datum/ai_laws/asimov
 	maxHealth = 50
 	health = 50
 	integrated_light_power = 4
@@ -83,7 +83,7 @@
 /mob/living/silicon/robot/drone/mining
 	icon_state = "miningdrone"
 	item_state = "constructiondrone"
-	law_type = /datum/ai_laws/mining_drone
+	law_type = /datum/ai_laws/asimov
 	module_type = /obj/item/robot_module/drone/mining
 	hat_x_offset = 1
 	hat_y_offset = -12

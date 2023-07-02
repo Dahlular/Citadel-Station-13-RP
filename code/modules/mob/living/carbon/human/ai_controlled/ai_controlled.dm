@@ -127,7 +127,6 @@
 	to_wear_uniform = /obj/item/clothing/under/color/grey
 	to_wear_suit = /obj/item/clothing/suit/armor/vest
 	to_wear_gloves = null
-	to_wear_shoes = /obj/item/clothing/shoes/boots/combat/changeling
 	to_wear_belt = /obj/item/storage/belt/utility/full
 	to_wear_l_pocket = /obj/item/grenade/explosive/mini
 	to_wear_r_pocket = /obj/item/grenade/explosive/mini

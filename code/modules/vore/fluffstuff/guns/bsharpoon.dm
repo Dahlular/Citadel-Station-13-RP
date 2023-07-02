@@ -40,7 +40,6 @@
 		last_fire = current_fire
 		playsound(user, 'sound/weapons/wave.ogg', 60, 1)
 		return
-	var/turf/T = get_turf(A)
 	if(get_area(A).area_flags & AREA_FLAG_BLUE_SHIELDED)
 		to_chat(user, "<span class='warning'>The target area protected by bluespace shielding!</span>")
 		return

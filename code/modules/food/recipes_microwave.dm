@@ -343,15 +343,6 @@ I said no!
 	items = list(/obj/item/reagent_containers/food/snacks/meat)
 	result = /obj/item/reagent_containers/food/snacks/coldchili
 
-
-
-/datum/recipe/spellburger
-	items = list(
-		/obj/item/reagent_containers/food/snacks/monkeyburger,
-		/obj/item/clothing/head/wizard
-	)
-	result = /obj/item/reagent_containers/food/snacks/spellburger
-
 /datum/recipe/bigbiteburger
 	items = list(
 		/obj/item/reagent_containers/food/snacks/monkeyburger,

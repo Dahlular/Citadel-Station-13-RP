@@ -10,18 +10,6 @@
 /datum/supply_pack/randomised/costumes
 	group = "Costumes"
 
-/datum/supply_pack/costumes/wizard
-	name = "Wizard costume"
-	contains = list(
-			/obj/item/staff,
-			/obj/item/clothing/suit/wizrobe/fake,
-			/obj/item/clothing/shoes/sandal,
-			/obj/item/clothing/head/wizard/fake
-			)
-	cost = 20
-	container_type = /obj/structure/closet/crate/nanothreads
-	container_name = "Wizard costume crate"
-
 /datum/supply_pack/costumes/techpriest
 	name = "Tech Priest robes"
 	contains = list(
@@ -117,18 +105,6 @@
 	cost = 30
 	container_type = /obj/structure/closet/crate/nanothreads
 	container_name = "Formalwear for the best occasions."
-
-/datum/supply_pack/costumes/witch
-	name = "Witch costume"
-	container_name = "Witch costume"
-	container_type = /obj/structure/closet/crate/nanothreads
-	cost = 20
-	contains = list(
-		/obj/item/clothing/head/wizard/marisa/fake,
-		/obj/item/clothing/shoes/sandal,
-		/obj/item/clothing/suit/wizrobe/marisa/fake,
-		/obj/item/staff/broom,
-	)
 
 /datum/supply_pack/randomised/costumes/costume_hats
 	name = "Costume hats"

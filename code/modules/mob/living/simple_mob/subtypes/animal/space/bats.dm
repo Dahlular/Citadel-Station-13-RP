@@ -55,14 +55,6 @@
 			L.afflict_stun(20 * 1)
 			L.visible_message("<span class='danger'>\the [src] scares \the [L]!</span>")
 
-// Spookiest of bats
-/mob/living/simple_mob/animal/space/bats/cult
-	faction = "cult"
-	supernatural = TRUE
-
-/mob/living/simple_mob/animal/space/bats/cult/cultify()
-	return
-
 //Lavaland Bats
 /mob/living/simple_mob/animal/space/bats/surt
 	name = "volcanic bat swarm"

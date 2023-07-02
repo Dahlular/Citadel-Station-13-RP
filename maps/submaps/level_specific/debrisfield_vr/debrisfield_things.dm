@@ -32,13 +32,6 @@
 		/mob/living/simple_mob/mechanical/corrupt_maint_drone = 4
 	)
 
-/obj/tether_away_spawner/debrisfield/derelict/mech_wizard
-	name = "debris field derelict wizard lol"
-	faction = "derelict"
-	mobs_to_pick_from = list(
-		/mob/living/simple_mob/mechanical/technomancer_golem = 2
-	)
-
 //Sciship
 /mob/living/simple_mob/tomato/space
 	min_oxy = 0

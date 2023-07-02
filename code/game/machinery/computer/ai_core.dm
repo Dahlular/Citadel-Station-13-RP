@@ -5,7 +5,7 @@
 	icon = 'icons/mob/AI.dmi'
 	icon_state = "0"
 	var/state = 0
-	var/datum/ai_laws/laws = new /datum/ai_laws/nanotrasen
+	var/datum/ai_laws/laws = new /datum/ai_laws/asimov
 	var/obj/item/circuitboard/circuit = null
 	var/obj/item/mmi/brain = null
 

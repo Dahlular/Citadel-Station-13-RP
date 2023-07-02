@@ -170,10 +170,6 @@ var/list/floor_light_cache = list()
 		on = FALSE
 	. = ..()
 
-/obj/machinery/floor_light/cultify()
-	default_light_colour = "#FF0000"
-	update_brightness()
-
 /obj/machinery/floor_light/changing
 	name = "changing floor light"
 
