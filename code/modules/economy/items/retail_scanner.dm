@@ -169,10 +169,6 @@
 		scan_wallet(E)
 	else if (istype(O, /obj/item/spacecash))
 		to_chat(usr, "<span class='warning'>This device does not accept cash.</span>")
-
-	else if(istype(O, /obj/item/card/emag))
-		return ..()
-	// Not paying: Look up price and add it to transaction_amount
 	else
 		scan_item_price(O)
 

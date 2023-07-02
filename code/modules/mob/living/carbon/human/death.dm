@@ -74,30 +74,8 @@
 	animate_tail_stop()
 	stop_flying()
 
-	//Handle snowflake ling stuff.
-	if(mind && mind.changeling)
-		// If the ling is capable of revival, don't allow them to see deadchat.
-		if(mind.changeling.chem_charges >= CHANGELING_STASIS_COST)
-			if(mind.changeling.max_geneticpoints >= 0) // Absorbed lings don't count, as they can't revive.
-				forbid_seeing_deadchat = TRUE
-
 	//Handle brain slugs.
 	var/obj/item/organ/external/Hd = get_organ(BP_HEAD)
-	var/mob/living/simple_mob/animal/borer/B
-
-	if(Hd)
-		for(var/I in Hd.implants)
-			if(istype(I,/mob/living/simple_mob/animal/borer))
-				B = I
-	if(B)
-		if(!B.ckey && ckey && B.controlling)
-			B.ckey = ckey
-			B.controlling = 0
-		if(B.host_brain.ckey)
-			ckey = B.host_brain.ckey
-			B.host_brain.ckey = null
-			B.host_brain.name = "host brain"
-			B.host_brain.real_name = "host brain"
 
 		remove_verb(src, /mob/living/carbon/proc/release_control)
 

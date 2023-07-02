@@ -331,7 +331,6 @@ proc/check_panel(mob/M)
 GLOBAL_LIST_INIT(non_fakeattack_weapons, list(/obj/item/gun/ballistic, /obj/item/ammo_magazine/s357,\
 	/obj/item/gun/energy/crossbow, /obj/item/melee/energy/sword,\
 	/obj/item/clothing/mask/gas/voice, /obj/item/clothing/glasses/thermal,\
-	/obj/item/chameleon, /obj/item/card/emag,\
 	/obj/item/storage/toolbox/syndicate, /obj/item/aiModule,\
 	/obj/item/radio/headset/syndicate,	/obj/item/plastique,\
 	/obj/item/toy/syndicateballoon, /obj/item/gun/energy/captain,\

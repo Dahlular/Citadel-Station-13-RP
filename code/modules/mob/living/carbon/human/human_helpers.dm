@@ -51,31 +51,6 @@
 			coverage += list(organs_by_name[BP_L_HAND], organs_by_name[BP_R_HAND])
 	return coverage
 
-
-/// This is called when we want different types of 'cloaks' to stop working, e.g. when attacking.
-/mob/living/carbon/human/break_cloak()
-	// Changeling visible camo.
-	if(mind && mind.changeling)
-		mind.changeling.cloaked = 0
-	// Ninja cloak.
-	if(istype(back, /obj/item/hardsuit))
-		var/obj/item/hardsuit/suit = back
-		for(var/obj/item/hardsuit_module/stealth_field/cloaker in suit.installed_modules)
-			if(cloaker.active)
-				cloaker.deactivate()
-
-/mob/living/carbon/human/is_cloaked()
-	// Changeling visible camo.
-	if(mind && mind.changeling && mind.changeling.cloaked)
-		return TRUE
-	// Ninja cloak.
-	else if(istype(back, /obj/item/hardsuit))
-		var/obj/item/hardsuit/suit = back
-		for(var/obj/item/hardsuit_module/stealth_field/cloaker in suit.installed_modules)
-			if(cloaker.active)
-				return TRUE
-	return ..()
-
 /mob/living/carbon/human/get_ear_protection()
 	var/sum = 0
 	if(istype(l_ear, /obj/item/clothing/ears))

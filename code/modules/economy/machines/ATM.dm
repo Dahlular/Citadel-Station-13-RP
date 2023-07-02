@@ -85,14 +85,6 @@ log transactions
 	if(computer_deconstruction_screwdriver(user, I))
 		return
 	if(istype(I, /obj/item/card))
-		if(emagged > 0)
-			//prevent inserting id into an emagged ATM
-			to_chat(user, SPAN_CAUTION("[icon2html(thing = src, target = user)] CARD READER ERROR. This system has been compromised!"))
-			return
-		else if(istype(I,/obj/item/card/emag))
-			I.resolve_attackby(src, user)
-			return
-
 		var/obj/item/card/id/idcard = I
 		if(!held_card)
 			if(!user.attempt_insert_item_for_installation(idcard, src))

@@ -107,8 +107,6 @@
 		/obj/item/toy/syndicateballoon,
 		/obj/item/aiModule/syndicate,
 		/obj/item/book/manual/engineering_hacking,
-		/obj/item/card/emag,
-		/obj/item/card/emag_broken,
 		/obj/item/card/id/syndicate,
 		/obj/item/contraband/poster,
 		/obj/item/grenade/flashbang/clusterbang,

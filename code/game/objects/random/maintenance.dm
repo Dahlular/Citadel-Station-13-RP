@@ -103,7 +103,6 @@ something, make sure it's not in one of the other lists.*/
 				prob(3);/obj/item/camera_assembly,
 				prob(4);/obj/item/caution,
 				prob(3);/obj/item/clothing/head/cone,
-				prob(1);/obj/item/card/emag_broken,
 				prob(2);/obj/item/camera,
 				prob(3);/obj/item/pda,
 				prob(3);/obj/item/radio/headset,
