@@ -156,11 +156,6 @@ SUBSYSTEM_DEF(vote)
 			if(VOTE_CREW_TRANSFER)
 				if(. == "Initiate Crew Transfer")
 					init_shift_change(null, 1)
-			if(VOTE_ADD_ANTAGONIST)
-				if(isnull(.) || . == "None")
-					antag_add_failed = 1
-				else
-					additional_antag_types |= GLOB.antag_names_to_ids[.]
 
 	if(restart)
 		to_chat(world, "World restarting due to vote...")
@@ -216,14 +211,6 @@ SUBSYSTEM_DEF(vote)
 						return 0
 				question = "Your PDA beeps with a message from Central. Would you like an additional hour to finish ongoing projects?"
 				choices.Add("Initiate Crew Transfer", "Extend the Shift")
-			if(VOTE_ADD_ANTAGONIST)
-				if(!config_legacy.allow_extra_antags || SSticker.current_state >= GAME_STATE_SETTING_UP)
-					return 0
-				for(var/antag_type in GLOB.all_antag_types)
-					var/datum/antagonist/antag = GLOB.all_antag_types[antag_type]
-					if(!(antag.id in additional_antag_types) && antag.is_votable())
-						choices.Add(antag.role_text)
-				choices.Add("None")
 			if(VOTE_CUSTOM)
 				question = sanitizeSafe(input(usr, "What is the vote for?") as text|null)
 				if(!question)

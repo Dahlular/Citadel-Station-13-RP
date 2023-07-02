@@ -73,7 +73,6 @@ var/global/const/base_law_type = /datum/ai_laws/asimov
 
 /datum/ai_laws/proc/sync(var/mob/living/silicon/S, var/full_sync = 1)
 	// Add directly to laws to avoid log-spam
-	S.sync_zeroth(zeroth_law, zeroth_law_borg)
 
 	if(full_sync || ion_laws.len)
 		S.laws.clear_ion_laws()

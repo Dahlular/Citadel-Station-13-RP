@@ -131,8 +131,8 @@ SUBSYSTEM_DEF(emergencyshuttle)
 		priority_announcement.Announce(GLOB.using_map.shuttle_recall_message)
 
 /datum/controller/subsystem/emergencyshuttle/proc/can_call()
-	if (!universe.OnShuttleCall(null))
-		return 0
+	//if (!universe.OnShuttleCall(null)) MISSING!!!
+	//	return 0
 	if (deny_shuttle)
 		return 0
 	if (shuttle.moving_status != SHUTTLE_IDLE || !shuttle.location)	//must be idle at centcom

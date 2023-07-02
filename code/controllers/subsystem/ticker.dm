@@ -249,7 +249,6 @@ SUBSYSTEM_DEF(ticker)
 		return 0
 
 	SSjob.reset_occupations()
-	src.mode.create_antagonists()
 	src.mode.pre_setup()
 	SSjob.DivideOccupations() // Apparently important for new antagonist system to register specific job antags properly.
 
@@ -484,9 +483,6 @@ SUBSYSTEM_DEF(ticker)
 		if(player && player.mind && player.mind.assigned_role)
 			if(player.mind.assigned_role == "Facility Director")
 				captainless=0
-			if(!player_is_antag(player.mind, only_offstation_roles = 1))
-				SSjob.EquipRank(player, player.mind.assigned_role, 0)
-				UpdateFactionList(player)
 	if(captainless)
 		for(var/mob/M in GLOB.player_list)
 			if(!istype(M,/mob/new_player))
@@ -506,7 +502,7 @@ SUBSYSTEM_DEF(ticker)
 		game_finished = (SSemergencyshuttle.returned() || mode.station_was_nuked)
 		mode_finished = (!post_game && mode.check_finished())
 	else
-		game_finished = (mode.check_finished() || (SSemergencyshuttle.returned() && SSemergencyshuttle.evac == 1)) || universe_has_ended
+		game_finished = (mode.check_finished() || (SSemergencyshuttle.returned() && SSemergencyshuttle.evac == 1))
 		mode_finished = game_finished
 
 	if (mode_finished)
@@ -580,7 +576,7 @@ SUBSYSTEM_DEF(ticker)
 
 	for (var/mob/living/silicon/robot/robo in GLOB.mob_list)
 
-		if(istype(robo,/mob/living/silicon/robot/drone) && !istype(robo,/mob/living/silicon/robot/drone/swarm))
+		if(istype(robo,/mob/living/silicon/robot/drone))
 			dronecount++
 			continue
 

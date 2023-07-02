@@ -124,8 +124,6 @@
 			return "Superdense phoron clump - appears to have been shaped or hewn, structure is composed of matter aproximately 20 times denser than ordinary refined phoron."
 		if(/obj/machinery/giga_drill)
 			return "Automated mining drill - structure composed of titanium-carbide alloy, with tip and drill lines edged in an alloy of diamond and phoron."
-		if(/obj/structure/cult/pylon)
-			return "Tribal pylon - subject resembles statues/emblems built by cargo cult civilisations to honour energy systems from post-warp civilisations."
 		if(/obj/machinery/replicator)
 			return "Automated construction unit - subject appears to be able to synthesize various objects given a material, some with simple internal circuitry. Method unknown."
 		if(/obj/structure/crystal)

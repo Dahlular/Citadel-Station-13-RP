@@ -235,7 +235,6 @@
 					prob(2);/obj/item/storage/pill_bottle/antitox,
 					prob(2);/obj/item/storage/pill_bottle/kelotane,
 					prob(2);/obj/item/handcuffs/fuzzy,
-					prob(2);/obj/item/storage/box/syndie_kit/spy,
 					prob(2);/obj/item/grenade/anti_photon,
 					prob(1);/obj/item/nif/bad,
 					prob(1);/obj/item/clothing/suit/storage/vest/heavy/merc,

@@ -183,7 +183,7 @@
 
 /mob/living/proc/handle_light()
 
-	else if(on_fire)
+	if(on_fire)
 		set_light(min(round(fire_stacks), 3), round(fire_stacks), l_color = "#FF9933")
 		return TRUE
 

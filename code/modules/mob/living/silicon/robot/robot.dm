@@ -1087,7 +1087,7 @@
 					var/turf/simulated/S = tile
 					S.dirt = 0
 				for(var/A in tile)
-					else if(istype(A, /obj/item))
+					if(istype(A, /obj/item))
 						var/obj/item/cleaned_item = A
 						cleaned_item.clean_blood()
 					else if(istype(A, /mob/living/carbon/human))

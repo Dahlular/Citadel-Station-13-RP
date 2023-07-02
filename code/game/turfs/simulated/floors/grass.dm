@@ -49,10 +49,10 @@
 		icon_state = "[initial(icon_state)]2"
 		//edge_blending_priority++
 
-	if(grass_chance && prob(grass_chance) && !check_density())
-		var/grass_type = pickweight(grass_types)
-		new grass_type(src)
-	. = ..()
+//	if(grass_chance && prob(grass_chance) && !check_density()) MISSING!!!
+//		var/grass_type = pickweight(grass_types)
+//		new grass_type(src)
+//	. = ..()
 
 /turf/simulated/floor/outdoors/grass/forest
 	name = "thick grass"

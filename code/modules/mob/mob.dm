@@ -86,8 +86,6 @@
 	for(var/alert in alerts)
 		clear_alert(alert)
 	if(client)
-		for(var/atom/movable/screen/movable/spell_master/spell_master in spell_masters)
-			qdel(spell_master)
 		remove_screen_obj_references()
 		client.screen = list()
 	// mind
@@ -161,7 +159,6 @@
 	item_use_icon = null
 	gun_move_icon = null
 	gun_setting_icon = null
-	spell_masters = null
 	zone_sel = null
 
 /mob/statpanel_data(client/C)
