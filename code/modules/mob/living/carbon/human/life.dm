@@ -82,8 +82,6 @@
 	if(getStasis() > 2)
 		afflict_sleeping(20 * 20)
 
-	handle_changeling()
-
 	if(!stasis)
 		handle_organs(seconds)
 

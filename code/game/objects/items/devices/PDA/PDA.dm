@@ -14,6 +14,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	rad_flags = RAD_BLOCK_CONTENTS
 	item_flags = ITEM_NOBLUDGEON
 
+
 	//Main variables
 	var/pdachoice = 1
 	var/owner = null

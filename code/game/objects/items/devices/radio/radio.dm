@@ -29,6 +29,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	icon_state = "walkietalkie"
 	item_state = "radio"
 
+
 	///FALSE for off
 	var/on = TRUE
 	var/last_transmission

@@ -74,11 +74,6 @@
 	animate_tail_stop()
 	stop_flying()
 
-	//Handle brain slugs.
-	var/obj/item/organ/external/Hd = get_organ(BP_HEAD)
-
-		remove_verb(src, /mob/living/carbon/proc/release_control)
-
 	callHook("death", list(src, gibbed))
 
 	if(!gibbed && species.death_sound)
