@@ -78,21 +78,3 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 /obj/item/radio/beacon/bacon/proc/digest_delay()
 	spawn(600)
 		qdel(src)
-
-
-/// SINGULO BEACON SPAWNER
-/obj/item/radio/beacon/syndicate
-	name = "suspicious beacon"
-	desc = "A label on it reads: <i>Activate to have a singularity beacon teleported to your location</i>."
-	origin_tech = list(TECH_BLUESPACE = 1, TECH_ILLEGAL = 7)
-
-/obj/item/radio/beacon/syndicate/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
-	if(user)
-		to_chat(user, SPAN_NOTICE("Locked In"))
-		new /obj/machinery/power/singularity_beacon/syndicate(user.loc)
-		playsound(src, 'sound/effects/pop.ogg', 100, 1, 1)
-		qdel(src)
-	return

@@ -738,10 +738,6 @@
 	result_amount = 1
 	required = /obj/item/slime_extract/bluespace
 
-/datum/chemical_reaction/slime/bluespace_greater/on_reaction(var/datum/reagents/holder)
-	new /obj/item/disposable_teleporter/slime(get_turf(holder.my_atom))
-	..()
-
 /datum/chemical_reaction/slime/bloodcrystal
 	name = "Soild Bluespace"
 	id = "bloodcrystal"

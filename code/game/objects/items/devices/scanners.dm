@@ -213,8 +213,6 @@ HALOGEN COUNTER	- Radcount on mobs
 		dat += SPAN_WARNING("\nSubject appears to have been imperfectly cloned.")
 //	if (M.reagents && M.reagents.get_reagent_amount("inaprovaline"))
 //		user.show_message("<span class='notice'>Bloodstream Analysis located [M.reagents:get_reagent_amount("inaprovaline")] units of rejuvenation chemicals.</span>")
-	if (M.has_brain_worms())
-		dat += SPAN_WARNING("\nSubject suffering from aberrant brain activity.  Recommend further scanning.")
 	else if (M.getBrainLoss() >= 60 || !M.has_brain())
 		dat += SPAN_WARNING("\nSubject is brain dead.")
 	else if (M.getBrainLoss() >= 25)

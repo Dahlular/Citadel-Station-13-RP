@@ -11,11 +11,6 @@
 		to_chat(src, "You can't commit suicide before the game starts!")
 		return
 
-	if(!player_is_antag(mind))
-		message_admins("[ckey] has tried to suicide, but they were not permitted due to not being antagonist as human.", 1)
-		to_chat(src, "No. Adminhelp if there is a legitimate reason.")
-		return
-
 	if (suiciding)
 		to_chat(src, "You're already committing suicide! Be patient!")
 		return

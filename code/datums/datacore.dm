@@ -328,7 +328,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 		foundrecord.fields["real_rank"] = real_title
 
 /datum/datacore/proc/manifest_inject(var/mob/living/carbon/human/H)
-	if(H.mind && !player_is_antag(H.mind, only_offstation_roles = 1))
+	if(H.mind)
 		var/assignment = GetAssignment(H)
 		var/hidden
 		var/datum/role/job/J = SSjob.get_job(H.mind.assigned_role)

@@ -216,11 +216,6 @@
 			apply_material_decorations = 0
 			if(prob(10))
 				apply_image_decorations = 1
-			if(prob(25))
-				new_item = new /obj/item/soulstone(src.loc)
-				new_item.icon = 'icons/obj/xenoarchaeology.dmi'
-				new_item.icon_state = icon_state
-				LAZYSET(new_item.origin_tech, TECH_ARCANE, 2)
 		if(17)
 			//cultblade
 			apply_prefix = 0
@@ -242,24 +237,6 @@
 				new_item.icon = 'icons/obj/xenoarchaeology.dmi'
 				new_item.icon_state = "blade1"
 		if(20)
-			//arcane clothing
-			apply_prefix = 0
-			var/list/possible_spawns = list(/obj/item/clothing/head/culthood,
-			/obj/item/clothing/head/culthood/magus,
-			/obj/item/clothing/head/culthood/alt,
-			/obj/item/clothing/head/helmet/space/cult)
-
-			var/new_type = pick(possible_spawns)
-			new_item = new new_type(src.loc)
-			LAZYSET(new_item.origin_tech, TECH_ARCANE, 1)
-		if(21)
-			//soulstone
-			apply_prefix = 0
-			new_item = new /obj/item/soulstone(src.loc)
-			item_type = new_item.name
-			apply_material_decorations = 0
-			LAZYSET(new_item.origin_tech, TECH_ARCANE, 2)
-		if(22)
 			if(prob(50))
 				new_item = new /obj/item/material/shard(src.loc)
 			else
@@ -267,12 +244,12 @@
 			apply_prefix = 0
 			apply_image_decorations = 0
 			apply_material_decorations = 0
-		if(23)
+		if(21)
 			apply_prefix = 0
 			new_item = new /obj/item/stack/rods(src.loc)
 			apply_image_decorations = 0
 			apply_material_decorations = 0
-		if(24)
+		if(22)
 			var/list/possible_spawns = typesof(/obj/item/stock_parts)
 			possible_spawns -= /obj/item/stock_parts
 			possible_spawns -= /obj/item/stock_parts/subspace
@@ -281,12 +258,12 @@
 			new_item = new new_type(src.loc)
 			item_type = new_item.name
 			apply_material_decorations = 0
-		if(25)
+		if(23)
 			apply_prefix = 0
 			new_item = new /obj/item/material/sword/katana(src.loc)
 			new_item.damage_force = 10
 			item_type = new_item.name
-		if(26)
+		if(24)
 			//energy gun
 			var/spawn_type = pick(\
 			/obj/item/gun/energy/laser/practice/xenoarch,\
@@ -314,7 +291,7 @@
 					new_gun.power_supply.charge = 0
 
 			item_type = "gun"
-		if(27)
+		if(25)
 			//revolver
 			var/obj/item/gun/ballistic/new_gun = new /obj/item/gun/ballistic/revolver(src.loc)
 			new_item = new_gun
@@ -349,11 +326,11 @@
 						I.loc = null
 
 			item_type = "gun"
-		if(28)
+		if(26)
 			//completely unknown alien device
 			if(prob(50))
 				apply_image_decorations = 0
-		if(29)
+		if(27)
 			//fossil bone/skull
 			//new_item = new /obj/item/fossil/base(src.loc)
 
@@ -367,7 +344,7 @@
 			additional_desc = "A fossilised part of an alien, long dead."
 			apply_image_decorations = 0
 			apply_material_decorations = 0
-		if(30)
+		if(28)
 			//fossil shell
 			new_item = new /obj/item/fossil/shell(src.loc)
 			apply_prefix = 0
@@ -376,7 +353,7 @@
 			apply_material_decorations = 0
 			if(prob(10))
 				apply_image_decorations = 1
-		if(31)
+		if(29)
 			//fossil plant
 			new_item = new /obj/item/fossil/plant(src.loc)
 			item_type = new_item.name
@@ -384,7 +361,7 @@
 			apply_image_decorations = 0
 			apply_material_decorations = 0
 			apply_prefix = 0
-		if(32)
+		if(30)
 			//humanoid remains
 			apply_prefix = 0
 			item_type = "humanoid [pick("remains","skeleton")]"
@@ -399,7 +376,7 @@
 			"The mouth is wide open in a death rictus, the victim would appear to have died screaming.")
 			apply_image_decorations = 0
 			apply_material_decorations = 0
-		if(33)
+		if(31)
 			//robot remains
 			apply_prefix = 0
 			item_type = "[pick("mechanical","robotic","cyborg")] [pick("remains","chassis","debris")]"
@@ -414,7 +391,7 @@
 			"A pile of wires and crap metal that looks vaguely robotic.")
 			apply_image_decorations = 0
 			apply_material_decorations = 0
-		if(34)
+		if(32)
 			//xenos remains
 			apply_prefix = 0
 			item_type = "alien [pick("remains","skeleton")]"
@@ -430,7 +407,7 @@
 			"It doesn't look human.")
 			apply_image_decorations = 0
 			apply_material_decorations = 0
-		if(35)
+		if(33)
 			//gas mask
 			if(prob(25))
 				new_item = new /obj/item/clothing/mask/gas/poltergeist(src.loc)
@@ -439,7 +416,7 @@
 				new_item = new /obj/item/clothing/mask/gas(src.loc)
 			if(prob(40))
 				new_item.color = rgb(rand(0,255),rand(0,255),rand(0,255))
-		if(36)
+		if(34)
 			// Alien stuff.
 			apply_prefix = FALSE
 			apply_material_decorations = FALSE
@@ -472,7 +449,7 @@
 			LAZYSET(new_item.origin_tech, TECH_PRECURSOR, 1)
 			item_type = new_item.name
 
-		if(37)
+		if(35)
 			// Alien boats.
 			apply_prefix = FALSE
 			var/new_boat_mat = pickweight(list(
@@ -503,7 +480,7 @@
 			new_item = new new_type(src.loc, new_boat_mat)
 			item_type = new_item.name
 
-		if(38)
+		if(36)
 			// Imperion circuit.
 			apply_prefix = FALSE
 			apply_image_decorations = FALSE
@@ -514,7 +491,7 @@
 			desc = new_item.desc
 			item_type = new_item.name
 
-		if(39)
+		if(37)
 			// Telecube.
 			if(prob(25))
 				apply_prefix = FALSE

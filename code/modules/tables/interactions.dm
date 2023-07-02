@@ -105,11 +105,6 @@
 		break_to_parts()
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 
-	if(istype(W, /obj/item/melee/changeling/arm_blade))
-		user.visible_message("<span class='danger'>\The [src] was sliced apart by [user]!</span>")
-		break_to_parts()
-		return CLICKCHAIN_DO_NOT_PROPAGATE
-
 	if(can_plate && !material)
 		to_chat(user, "<span class='warning'>There's nothing to put \the [W] on! Try adding plating to \the [src] first.</span>")
 		return CLICKCHAIN_DO_NOT_PROPAGATE

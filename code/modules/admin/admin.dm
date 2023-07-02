@@ -1008,10 +1008,6 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 		M = character
 
 	if(M)
-		if(SSticker.mode.antag_templates && SSticker.mode.antag_templates.len)
-			for(var/datum/antagonist/antag in SSticker.mode.antag_templates)
-				if(antag.is_antagonist(M))
-					return 2
 		if(M.special_role)
 			return 1
 
@@ -1187,32 +1183,6 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 
 	out += "<hr>"
 
-	if(SSticker.mode.antag_tags && SSticker.mode.antag_tags.len)
-		out += "<b>Core antag templates:</b></br>"
-		for(var/antag_tag in SSticker.mode.antag_tags)
-			out += "<a href='?src=\ref[SSticker.mode];debug_antag=[antag_tag]'>[antag_tag]</a>.</br>"
-
-	if(SSticker.mode.round_autoantag)
-		out += "<b>Autotraitor <a href='?src=\ref[SSticker.mode];toggle=autotraitor'>enabled</a></b>."
-		if(SSticker.mode.antag_scaling_coeff > 0)
-			out += " (scaling with <a href='?src=\ref[SSticker.mode];set=antag_scaling'>[SSticker.mode.antag_scaling_coeff]</a>)"
-		else
-			out += " (not currently scaling, <a href='?src=\ref[SSticker.mode];set=antag_scaling'>set a coefficient</a>)"
-		out += "<br/>"
-	else
-		out += "<b>Autotraitor <a href='?src=\ref[SSticker.mode];toggle=autotraitor'>disabled</a></b>.<br/>"
-
-	out += "<b>All antag ids:</b>"
-	if(SSticker.mode.antag_templates && SSticker.mode.antag_templates.len)
-		for(var/datum/antagonist/antag in SSticker.mode.antag_templates)
-			antag.update_current_antag_max()
-			out += " <a href='?src=\ref[SSticker.mode];debug_antag=[antag.id]'>[antag.id]</a>"
-			out += " ([antag.get_antag_count()]/[antag.cur_max]) "
-			out += " <a href='?src=\ref[SSticker.mode];remove_antag_type=[antag.id]'>\[-\]</a><br/>"
-	else
-		out += " None."
-	out += " <a href='?src=\ref[SSticker.mode];add_antag_type=1'>\[+\]</a><br/>"
-
 	usr << browse(out, "window=edit_mode[src]")
 	feedback_add_details("admin_verb","SGM")
 
@@ -1375,30 +1345,6 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	tomob.ckey = frommob.ckey
 	qdel(frommob)
 	return 1
-
-/datum/admins/proc/force_antag_latespawn()
-	set category = "Admin"
-	set name = "Force Template Spawn"
-	set desc = "Force an antagonist template to spawn."
-
-	if (!istype(src,/datum/admins))
-		src = usr.client.holder
-	if (!istype(src,/datum/admins))
-		to_chat(usr, "Error: you are not an admin!")
-		return
-
-	if(!SSticker || !SSticker.mode)
-		to_chat(usr, "Mode has not started.")
-		return
-
-	var/antag_type = input("Choose a template.","Force Latespawn") as null|anything in GLOB.all_antag_types
-	if(!antag_type || !GLOB.all_antag_types[antag_type])
-		to_chat(usr, "Aborting.")
-		return
-
-	var/datum/antagonist/antag = GLOB.all_antag_types[antag_type]
-	message_admins("[key_name(usr)] attempting to force latespawn with template [antag.id].")
-	antag.attempt_late_spawn()
 
 /datum/admins/proc/force_mode_latespawn()
 	set category = "Admin"

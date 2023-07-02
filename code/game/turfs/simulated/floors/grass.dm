@@ -39,10 +39,10 @@
 	catalogue_data = list(/datum/category_item/catalogue/flora/sif_grass)
 	catalogue_delay = 2 SECONDS
 
-/turf/simulated/floor/outdoors/grass/sif/Initialize(mapload)
-	if(tree_chance && prob(tree_chance) && !check_density())
-		new /obj/structure/flora/tree/sif(src)
-	. = ..()
+///turf/simulated/floor/outdoors/grass/sif/Initialize(mapload)
+//	if(tree_chance && prob(tree_chance) && !check_density()) MISSING!!!
+//		new /obj/structure/flora/tree/sif(src)
+//	. = ..()
 
 /turf/simulated/floor/outdoors/grass/Initialize(mapload)
 	if(prob(50))

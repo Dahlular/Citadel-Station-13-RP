@@ -94,10 +94,6 @@
 	desc = "A case containing a loyalty implant."
 	icon_state = "implantcase-r"
 
-/obj/item/implantcase/loyalty/Initialize(mapload)
-	imp = new /obj/item/implant/loyalty( src )
-	return ..()
-
 /obj/item/implantcase/death_alarm
 	name = "glass case - 'death alarm'"
 	desc = "A case containing a death alarm implant."

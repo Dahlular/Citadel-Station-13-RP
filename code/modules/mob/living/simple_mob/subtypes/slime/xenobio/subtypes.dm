@@ -153,11 +153,6 @@
 			power_charge = between(0, power_charge + 1, 10)
 	..()
 
-/obj/projectile/beam/lightning/slime
-	power = 10
-	fire_sound = 'sound/effects/lightningbolt.ogg'
-
-
 /mob/living/simple_mob/slime/xenobio/dark_purple
 	desc = "This slime produces ever-coveted phoron.  Risky to handle but very much worth it."
 	color = "#660088"
@@ -715,7 +710,6 @@
 	for(var/mob/living/L in view(src, 2))
 		if(L.stat == DEAD || !IIsAlly(L))
 			continue
-		L.add_modifier(/datum/modifier/technomancer/haste, 5 SECONDS, src)
 
 
 /mob/living/simple_mob/slime/xenobio/light_pink

@@ -232,12 +232,3 @@
 /obj/structure/simple_door/resin/Initialize(mapload, material_name)
 	return ..(mapload, "resin")
 
-/obj/structure/simple_door/cult/Initialize(mapload, material_name)
-	return ..(mapload, "cult")
-
-/obj/structure/simple_door/cult/TryToSwitchState(atom/user)
-	if(isliving(user))
-		var/mob/living/L = user
-		if(!iscultist(L) && !istype(L, /mob/living/simple_mob/construct))
-			return
-	..()

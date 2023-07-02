@@ -75,8 +75,8 @@
 			break
 
 		T = get_step(T, get_dir(T, destination))
-		if(T.check_density(ignore_mobs = TRUE))
-			return FALSE
+		//if(T.check_density(ignore_mobs = TRUE)) check_density MISSING!!!
+		//	return FALSE
 	return T == destination
 
 
@@ -155,12 +155,12 @@
 
 		// Update T.
 		T = get_step(src, get_dir(src, destination))
-		if(T.check_density(ignore_mobs = TRUE))
-			to_chat(src, SPAN_CRITICAL("You hit something really solid!"))
-			playsound(src, "punch", 75, 1)
-			afflict_paralyze(20 * 5)
-			add_modifier(/datum/modifier/tunneler_vulnerable, 10 SECONDS)
-			return FALSE // Hit a wall.
+		//if(T.check_density(ignore_mobs = TRUE)) check_density MISSING!!!
+		//	to_chat(src, SPAN_CRITICAL("You hit something really solid!"))
+		//	playsound(src, "punch", 75, 1)
+		//	afflict_paralyze(20 * 5)
+		//	add_modifier(/datum/modifier/tunneler_vulnerable, 10 SECONDS)
+		//	return FALSE // Hit a wall.
 
 		// Stun anyone in our way.
 		for(var/mob/living/L in T)

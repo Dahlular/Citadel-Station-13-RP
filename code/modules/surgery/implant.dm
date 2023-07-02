@@ -212,24 +212,16 @@
 
 			target.update_hud_sec_implants()
 
-			//Handle possessive brain borers.
-			if(istype(obj,/mob/living/simple_mob/animal/borer))
-				var/mob/living/simple_mob/animal/borer/worm = obj
-				if(worm.controlling)
-					target.release_control()
-				worm.detatch()
-				worm.leave_host()
-			else
-				obj.loc = get_turf(target)
-				obj.add_blood(target)
-				obj.update_icon()
-				if(istype(obj,/obj/item/implant))
-					var/obj/item/implant/imp = obj
-					imp.imp_in = null
-					imp.implanted = 0
-					if(istype(obj, /obj/item/implant/mirror))
-						target.mirror = null
-				else if(istype(tool,/obj/item/nif)){var/obj/item/nif/N = tool;N.unimplant(target)}
+			obj.loc = get_turf(target)
+			obj.add_blood(target)
+			obj.update_icon()
+			if(istype(obj,/obj/item/implant))
+				var/obj/item/implant/imp = obj
+				imp.imp_in = null
+				imp.implanted = 0
+				if(istype(obj, /obj/item/implant/mirror))
+					target.mirror = null
+			else if(istype(tool,/obj/item/nif)){var/obj/item/nif/N = tool;N.unimplant(target)}
 		else
 			user.visible_message("<font color=#4F49AF>[user] removes \the [tool] from [target]'s [affected.name].</font>", \
 			"<font color=#4F49AF>There's something inside [target]'s [affected.name], but you just missed it this time.</font>" )

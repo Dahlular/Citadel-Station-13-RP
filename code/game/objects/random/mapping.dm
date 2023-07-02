@@ -390,13 +390,6 @@
 				/obj/structure/closet/crate
 			),
 			prob(1);list(
-				/obj/item/melee/cultblade,
-				/obj/item/clothing/suit/cultrobes,
-				/obj/item/clothing/head/culthood,
-				/obj/item/soulstone,
-				/obj/structure/closet/crate
-			),
-			prob(1);list(
 				/obj/item/vampiric,
 				/obj/item/vampiric,
 				/obj/structure/closet/crate/science

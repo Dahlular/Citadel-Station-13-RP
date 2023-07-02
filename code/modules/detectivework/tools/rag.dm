@@ -110,7 +110,7 @@
 		if(do_after(user,30))
 			user.visible_message("\The [user] finishes wiping off the [A]!")
 			A.clean_blood()
-			if(istype(A, /turf) || istype(A, /obj/effect/debris/cleanable) || istype(A, /obj/effect/overlay) || istype(A, /obj/effect/rune)) //Allows rags to clean dirt from turfs
+			if(istype(A, /turf) || istype(A, /obj/effect/debris/cleanable) || istype(A, /obj/effect/overlay)) //Allows rags to clean dirt from turfs
 				var/turf/T = get_turf(A)
 				if(T)
 					T.clean(src, user)

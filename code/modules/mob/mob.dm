@@ -893,15 +893,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 			anchored = 0
 	return 1
 
-/// Check for brain worms in head.
-/mob/proc/has_brain_worms()
-
-	for(var/I in contents)
-		if(istype(I,/mob/living/simple_mob/animal/borer))
-			return I
-
-	return 0
-
 /mob/proc/updateicon()
 	return
 

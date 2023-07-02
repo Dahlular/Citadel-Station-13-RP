@@ -405,9 +405,6 @@
 
 		dat += "<a href='?src=\ref[src];delay_round_end=1'>[SSticker.delay_end ? "End Round Normally" : "Delay Round End"]</a><br>"
 		dat += "<hr>"
-		for(var/antag_type in GLOB.all_antag_types)
-			var/datum/antagonist/A = GLOB.all_antag_types[antag_type]
-			dat += A.get_check_antag_output(src)
 		dat += "</body></html>"
 		usr << browse(dat, "window=roundstatus;size=400x500")
 	else

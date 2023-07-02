@@ -98,34 +98,6 @@ var/global/list/additional_antag_types = list()
 				event_delay_mod_major = choice
 				refresh_event_modifiers()
 		message_admins("Admin [key_name_admin(usr)] set game mode option '[href_list["set"]]' to [choice].")
-	else if(href_list["debug_antag"])
-		if(href_list["debug_antag"] == "self")
-			usr.client.debug_variables(src)
-			return
-		var/datum/antagonist/antag = GLOB.all_antag_types[href_list["debug_antag"]]
-		if(antag)
-			usr.client.debug_variables(antag)
-			message_admins("Admin [key_name_admin(usr)] is debugging the [antag.role_text] template.")
-	else if(href_list["remove_antag_type"])
-		if(antag_tags && (href_list["remove_antag_type"] in antag_tags))
-			to_chat(usr, "Cannot remove core mode antag type.")
-			return
-		var/datum/antagonist/antag = GLOB.all_antag_types[href_list["remove_antag_type"]]
-		if(antag_templates && antag_templates.len && antag && (antag in antag_templates) && (antag.id in additional_antag_types))
-			antag_templates -= antag
-			additional_antag_types -= antag.id
-			message_admins("Admin [key_name_admin(usr)] removed [antag.role_text] template from game mode.")
-	else if(href_list["add_antag_type"])
-		var/choice = input("Which type do you wish to add?") as null|anything in GLOB.all_antag_types
-		if(!choice)
-			return
-		var/datum/antagonist/antag = GLOB.all_antag_types[choice]
-		if(antag)
-			if(!islist(SSticker.mode.antag_templates))
-				SSticker.mode.antag_templates = list()
-			SSticker.mode.antag_templates |= antag
-			message_admins("Admin [key_name_admin(usr)] added [antag.role_text] template to game mode.")
-
 	// I am very sure there's a better way to do this, but I'm not sure what it might be. ~Z
 	spawn(1)
 		for(var/datum/admins/admin in world)
@@ -137,24 +109,6 @@ var/global/list/additional_antag_types = list()
 	to_chat(world, "<B>The current game mode is [capitalize(name)]!</B>")
 	to_chat(world, "<B>The current engine is [GLOB.used_engine]!</B>")//Actually, why not expand this....
 	if(round_description) to_chat(world, "[round_description]")
-	if(round_autoantag) to_chat(world, "Antagonists will be added to the round automagically as needed.")
-	if(antag_templates && antag_templates.len)
-		var/antag_summary = "<b>Possible antagonist types:</b> "
-		var/i = 1
-		for(var/datum/antagonist/antag in antag_templates)
-			if(i > 1)
-				if(i == antag_templates.len)
-					antag_summary += " and "
-				else
-					antag_summary += ", "
-			antag_summary += "[antag.role_text_plural]"
-			i++
-		antag_summary += "."
-		if(antag_templates.len > 1 && master_mode != "secret")
-			to_chat(world, "[antag_summary]")
-		else
-			message_admins("[antag_summary]")
-
 ///can_start()
 ///Checks to see if the game can be setup and ran with the current number of players or whatnot.
 /datum/game_mode/proc/can_start(var/do_not_spawn)
@@ -169,27 +123,6 @@ var/global/list/additional_antag_types = list()
 	else
 		if(playerC < config_legacy.player_requirements[config_tag])
 			return 0
-
-	if(!(antag_templates && antag_templates.len))
-		return 1
-
-	var/enemy_count = 0
-	if(antag_tags && antag_tags.len)
-		for(var/antag_tag in antag_tags)
-			var/datum/antagonist/antag = GLOB.all_antag_types[antag_tag]
-			if(!antag)
-				continue
-			var/list/potential = list()
-			if(antag.flags & ANTAG_OVERRIDE_JOB)
-				potential = antag.pending_antagonists
-			else
-				potential = antag.candidates
-			if(islist(potential))
-				if(require_all_templates && potential.len < antag.initial_spawn_req)
-					return 0
-				enemy_count += potential.len
-				if(enemy_count >= required_enemies)
-					return 1
 	return 0
 
 /datum/game_mode/proc/refresh_event_modifiers()
@@ -203,12 +136,6 @@ var/global/list/additional_antag_types = list()
 			EMajor.delay_modifier = event_delay_mod_major
 
 /datum/game_mode/proc/pre_setup()
-	for(var/datum/antagonist/antag in antag_templates)
-		antag.build_candidate_list() //compile a list of all eligible candidates
-
-		//antag roles that replace jobs need to be assigned before the job controller hands out jobs.
-		if(antag.flags & ANTAG_OVERRIDE_JOB)
-			antag.attempt_spawn() //select antags to be spawned
 
 ///post_setup()
 /datum/game_mode/proc/post_setup()
@@ -222,14 +149,6 @@ var/global/list/additional_antag_types = list()
 		spawn(rand(100,150))
 			announce_ert_disabled()
 
-	//Assign all antag types for this game mode. Any players spawned as antags earlier should have been removed from the pending list, so no need to worry about those.
-	for(var/datum/antagonist/antag in antag_templates)
-		if(!(antag.flags & ANTAG_OVERRIDE_JOB))
-			antag.attempt_spawn() //select antags to be spawned
-		antag.finalize_spawn() //actually spawn antags
-		if(antag.is_latejoin_template())
-			latejoin_templates |= antag
-
 	if(SSemergencyshuttle && auto_recall_shuttle)
 		SSemergencyshuttle.auto_recall = 1
 
@@ -240,8 +159,6 @@ var/global/list/additional_antag_types = list()
 	return 1
 
 /datum/game_mode/proc/fail_setup()
-	for(var/datum/antagonist/antag in antag_templates)
-		antag.reset()
 
 /datum/game_mode/proc/announce_ert_disabled()
 	if(!ert_disabled)
@@ -290,9 +207,6 @@ var/global/list/additional_antag_types = list()
 		return TRUE
 
 	if(end_on_antag_death && antag_templates && antag_templates.len)
-		for(var/datum/antagonist/antag in antag_templates)
-			if(!antag.antags_are_dead())
-				return FALSE
 		if(config_legacy.continous_rounds)
 			SSemergencyshuttle.auto_recall = FALSE
 			return FALSE
@@ -305,17 +219,6 @@ var/global/list/additional_antag_types = list()
 	return
 
 /datum/game_mode/proc/declare_completion()
-
-	var/is_antag_mode = (antag_templates && antag_templates.len)
-	check_victory()
-	if(is_antag_mode)
-		CHECK_TICK
-		for(var/datum/antagonist/antag in antag_templates)
-			CHECK_TICK
-			antag.check_victory()
-			antag.print_player_summary()
-		CHECK_TICK
-		print_ownerless_uplinks()
 
 	var/clients = 0
 	var/surviving_humans = 0
@@ -383,10 +286,6 @@ var/global/list/additional_antag_types = list()
 	var/list/players = list()
 	var/list/candidates = list()
 
-	var/datum/antagonist/antag_template = GLOB.all_antag_types[antag_id]
-	if(!antag_template)
-		return candidates
-
 	// If this is being called post-roundstart then it doesn't care about ready status.
 	if(SSticker && SSticker.current_state == GAME_STATE_PLAYING)
 		for(var/mob/player in GLOB.player_list)
@@ -434,30 +333,6 @@ var/global/list/additional_antag_types = list()
 		if(P.client && P.ready)
 			. ++
 
-/datum/game_mode/proc/check_antagonists_topic(href, href_list[])
-	return 0
-
-/datum/game_mode/proc/create_antagonists()
-
-	if(!config_legacy.traitor_scaling)
-		antag_scaling_coeff = 0
-
-	if(antag_tags && antag_tags.len)
-		antag_templates = list()
-		for(var/antag_tag in antag_tags)
-			var/datum/antagonist/antag = GLOB.all_antag_types[antag_tag]
-			if(antag)
-				antag_templates |= antag
-
-	if(additional_antag_types && additional_antag_types.len)
-		if(!antag_templates)
-			antag_templates = list()
-		for(var/antag_type in additional_antag_types)
-			var/datum/antagonist/antag = GLOB.all_antag_types[antag_type]
-			if(antag)
-				antag_templates |= antag
-
-	newscaster_announcements = pick(newscaster_standard_feeds)
 
 /datum/game_mode/proc/check_victory()
 	return

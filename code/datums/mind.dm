@@ -125,10 +125,6 @@
 /datum/mind/proc/disassociate()
 	ASSERT(!isnull(current))
 
-	// LEGACY: remove changeling
-	if(changeling)
-		current.remove_changeling_powers()
-		remove_verb(current, /datum/changeling/proc/EvolutionMenu)
 	// remove characteristics
 	characteristics?.disassociate_from_mob(current)
 	// remove abilities
@@ -154,9 +150,6 @@
 	// add abilities
 	for(var/datum/ability/ability as anything in abilities)
 		ability.associate(new_character)
-	// LEGACY: add changeling
-	if(changeling)
-		new_character.make_changeling()
 
 	//* transfer player if necessary
 	if(active)
@@ -209,9 +202,6 @@
 	out += "Assigned role: [assigned_role]. <a href='?src=\ref[src];role_edit=1'>Edit</a><br>"
 	out += "<hr>"
 	out += "Factions and special roles:<br><table>"
-	for(var/antag_type in GLOB.all_antag_types)
-		var/datum/antagonist/antag = GLOB.all_antag_types[antag_type]
-		out += "[antag.get_panel_entry(src)]"
 	out += "</table><hr>"
 	out += "<b>Objectives</b></br>"
 
@@ -236,30 +226,6 @@
 
 /datum/mind/Topic(href, href_list)
 	if(!check_rights(R_ADMIN))	return
-
-	if(href_list["add_antagonist"])
-		var/datum/antagonist/antag = GLOB.all_antag_types[href_list["add_antagonist"]]
-		if(antag)
-			if(antag.add_antagonist(src, 1, 1, 0, 1, 1)) // Ignore equipment and role type for this.
-				log_admin("[key_name_admin(usr)] made [key_name(src)] into a [antag.role_text].")
-			else
-				to_chat(usr, "<span class='warning'>[src] could not be made into a [antag.role_text]!</span>")
-
-	else if(href_list["remove_antagonist"])
-		var/datum/antagonist/antag = GLOB.all_antag_types[href_list["remove_antagonist"]]
-		if(antag) antag.remove_antagonist(src)
-
-	else if(href_list["equip_antagonist"])
-		var/datum/antagonist/antag = GLOB.all_antag_types[href_list["equip_antagonist"]]
-		if(antag) antag.equip(src.current)
-
-	else if(href_list["unequip_antagonist"])
-		var/datum/antagonist/antag = GLOB.all_antag_types[href_list["unequip_antagonist"]]
-		if(antag) antag.unequip(src.current)
-
-	else if(href_list["move_antag_to_spawn"])
-		var/datum/antagonist/antag = GLOB.all_antag_types[href_list["move_antag_to_spawn"]]
-		if(antag) antag.place_mob(src.current)
 
 	else if (href_list["role_edit"])
 		var/new_role = input("Select new role", "Assigned role", assigned_role) as null|anything in SSjob.all_job_titles()
@@ -305,89 +271,9 @@
 		var/datum/objective/new_objective = null
 
 		switch (new_obj_type)
-			if ("assassinate","protect","debrain", "harm", "brig")
-				//To determine what to name the objective in explanation text.
-				var/objective_type_capital = uppertext(copytext(new_obj_type, 1,2))//Capitalize first letter.
-				var/objective_type_text = copytext(new_obj_type, 2)//Leave the rest of the text.
-				var/objective_type = "[objective_type_capital][objective_type_text]"//Add them together into a text string.
-
-				var/list/possible_targets = list("Free objective")
-				for(var/datum/mind/possible_target in SSticker.minds)
-					if ((possible_target != src) && istype(possible_target.current, /mob/living/carbon/human))
-						possible_targets += possible_target.current
-
-				var/mob/def_target = null
-				var/objective_list[] = list(/datum/objective/assassinate, /datum/objective/protect, /datum/objective/debrain)
-				if (objective&&(objective.type in objective_list) && objective:target)
-					def_target = objective.target.current
-
-				var/new_target = input("Select target:", "Objective target", def_target) as null|anything in possible_targets
-				if (!new_target) return
-
-				var/objective_path = text2path("/datum/objective/[new_obj_type]")
-				var/mob/living/M = new_target
-				if (!istype(M) || !M.mind || new_target == "Free objective")
-					new_objective = new objective_path
-					new_objective.owner = src
-					new_objective:target = null
-					new_objective.explanation_text = "Free objective"
-				else
-					new_objective = new objective_path
-					new_objective.owner = src
-					new_objective:target = M.mind
-					new_objective.explanation_text = "[objective_type] [M.real_name], the [M.mind.special_role ? M.mind:special_role : M.mind:assigned_role]."
-
-			if ("prevent")
-				new_objective = new /datum/objective/block
-				new_objective.owner = src
-
-			if ("hijack")
-				new_objective = new /datum/objective/hijack
-				new_objective.owner = src
-
-			if ("escape")
-				new_objective = new /datum/objective/escape
-				new_objective.owner = src
-
 			if ("survive")
 				new_objective = new /datum/objective/survive
 				new_objective.owner = src
-
-			if ("mercenary")
-				new_objective = new /datum/objective/nuclear
-				new_objective.owner = src
-
-			if ("steal")
-				if (!istype(objective, /datum/objective/steal))
-					new_objective = new /datum/objective/steal
-					new_objective.owner = src
-				else
-					new_objective = objective
-				var/datum/objective/steal/steal = new_objective
-				if (!steal.select_target())
-					return
-
-			if("download","capture","absorb")
-				var/def_num
-				if(objective&&objective.type==text2path("/datum/objective/[new_obj_type]"))
-					def_num = objective.target_amount
-
-				var/target_number = input("Input target number:", "Objective", def_num) as num|null
-				if (isnull(target_number))//Ordinarily, you wouldn't need isnull. In this case, the value may already exist.
-					return
-
-				switch(new_obj_type)
-					if("download")
-						new_objective = new /datum/objective/download
-						new_objective.explanation_text = "Download [target_number] research levels."
-					if("capture")
-						new_objective = new /datum/objective/capture
-						new_objective.explanation_text = "Accumulate [target_number] capture points."
-					if("absorb")
-						new_objective = new /datum/objective/absorb
-						new_objective.explanation_text = "Absorb [target_number] compatible genomes."
-				new_objective.owner = src
-				new_objective.target_amount = target_number
 
 			if ("custom")
 				var/expl = sanitize(input("Custom objective:", "Objective", objective ? objective.explanation_text : "") as text|null)
@@ -414,23 +300,6 @@
 		if(!istype(objective))	return
 		objective.completed = !objective.completed
 
-	else if(href_list["implant"])
-		var/mob/living/carbon/human/H = current
-
-		switch(href_list["implant"])
-			if("remove")
-				for(var/obj/item/implant/loyalty/I in H.contents)
-					for(var/obj/item/organ/external/organs in H.organs)
-						if(I in organs.implants)
-							qdel(I)
-							break
-				to_chat(H, "<span class='notice'><font size =3><B>Your loyalty implant has been deactivated.</B></font></span>")
-				log_admin("[key_name_admin(usr)] has de-loyalty implanted [current].")
-			if("add")
-				to_chat(H, "<span class='danger'><font size =3>You somehow have become the recepient of a loyalty transplant, and it just activated!</font></span>")
-				H.implant_loyalty(override = TRUE)
-				log_admin("[key_name_admin(usr)] has loyalty implanted [current].")
-		H.update_hud_sec_implants()
 	else if (href_list["silicon"])
 		current.update_hud_antag()
 		switch(href_list["silicon"])
@@ -471,22 +340,6 @@
 								R.contents -= R.module.emag
 					log_admin("[key_name_admin(usr)] has unemag'ed [ai]'s Cyborgs.")
 
-	else if (href_list["common"])
-		switch(href_list["common"])
-			if("undress")
-				current.drop_inventory(TRUE, TRUE)
-			if("takeuplink")
-				take_uplink()
-				memory = null//Remove any memory they may have had.
-			if("crystals")
-				if (usr.client.holder.rights & R_FUN)
-				//	var/obj/item/uplink/hidden/suplink = find_syndicate_uplink() No longer needed, uses stored in mind
-					var/crystals
-					crystals = tcrystals
-					crystals = input("Amount of telecrystals for [ckey]", crystals) as null|num
-					if (!isnull(crystals))
-						tcrystals = crystals
-
 	else if (href_list["obj_announce"])
 		var/obj_count = 1
 		to_chat(current, "<font color=#4F49AF>Your current objectives:</font>")
@@ -494,19 +347,6 @@
 			to_chat(current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
 			obj_count++
 	edit_memory()
-
-/datum/mind/proc/find_syndicate_uplink()
-	var/list/L = current.get_contents()
-	for (var/obj/item/I in L)
-		if (I.hidden_uplink)
-			return I.hidden_uplink
-	return null
-
-/datum/mind/proc/take_uplink()
-	var/obj/item/uplink/hidden/H = find_syndicate_uplink()
-	if(H)
-		qdel(H)
-
 
 // check whether this mind's mob has been brigged for the given duration
 // have to call this periodically for the duration to work properly
@@ -541,7 +381,6 @@
 	role_alt_title =  null
 	assigned_job =    null
 	//faction =       null //Uncommenting this causes a compile error due to 'undefined type', fucked if I know.
-	changeling =      null
 	initial_account = null
 	objectives =      list()
 	special_verbs =   list()
@@ -573,8 +412,6 @@
 	if(!mind.name)
 		mind.name = real_name
 	mind.current = src
-	if(player_is_antag(mind))
-		add_verb(client, /client/proc/aooc)
 
 //HUMAN
 /mob/living/carbon/human/mind_initialize()

@@ -681,9 +681,6 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 	user.set_machine(src)
 
-	if(active_uplink_check(user))
-		return
-
 	nano_ui_interact(user) //NanoUI requires this proc
 	return
 
@@ -832,11 +829,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		if("Ringtone")
 			var/t = input(U, "Please enter a new ringtone.", name, ringtone) as text
 			if (in_range(src, U) && loc == U && t)
-				if(src.hidden_uplink && hidden_uplink.check_trigger(U, lowertext(t), lowertext(lock_code)))
-					to_chat(U, "The PDA softly beeps.")
-					ui.close()
-				else
-					ringtone = sanitize(t, 20)
+				ringtone = sanitize(t, 20)
 			else
 				ui.close()
 				return 0
@@ -932,8 +925,6 @@ GLOBAL_LIST_EMPTY(PDAs)
 							difficulty += P.cartridge.access_engine
 							difficulty += P.cartridge.access_clown
 							difficulty += P.cartridge.access_janitor
-							if(P.hidden_uplink)
-								difficulty += 3
 
 						if(prob(difficulty))
 							U.show_message("<span class='warning'>An error flashes on your [src].</span>", 1)

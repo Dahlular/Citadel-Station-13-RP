@@ -83,47 +83,6 @@
 	origin_tech = list(TECH_MAGNET = 6, TECH_BLUESPACE = 3)
 	damage_force = 1 //Needs a token damage_force to ensure you can attack because for some reason you can't attack with 0 damage_force things
 
-/obj/item/slime_crystal/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	. = ..()
-	var/mob/living/L = target
-	if(!istype(L))
-		return
-	L.visible_message("<span class='warning'>\The [L] has been teleported with \the [src] by \the [user]!</span>")
-	safe_blink(L, 14)
-	qdel(src)
-	return . | CLICKCHAIN_DO_NOT_PROPAGATE
-
-/obj/item/slime_crystal/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
-	user.visible_message("<span class='warning'>\The [user] teleports themselves with \the [src]!</span>")
-	safe_blink(user, 14)
-	qdel(src)
-
-/obj/item/slime_crystal/throw_impact(atom/movable/AM)
-	if(!istype(AM))
-		return
-
-	if(AM.anchored)
-		return
-
-	AM.visible_message("<span class='warning'>\The [AM] has been teleported with \the [src]!</span>")
-	safe_blink(AM, 14)
-	qdel(src)
-
-/obj/item/disposable_teleporter/slime
-	name = "greater slime crystal"
-	desc = "A larger, gooier crystal."
-	description_info = "This will teleport you to a specific area once, when used in-hand."
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "slime_crystal_large"
-	uses = 1
-	w_class = ITEMSIZE_SMALL
-	origin_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 4)
-
-
-
 // Very filling food.
 /obj/item/reagent_containers/food/snacks/slime
 	name = "slimy clump"

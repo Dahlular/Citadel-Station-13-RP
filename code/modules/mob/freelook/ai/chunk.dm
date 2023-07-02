@@ -45,4 +45,4 @@
 /mob/living/silicon/robot/provides_camera_vision()
 	return src.camera && src.camera.network.len && (z in GLOB.using_map.contact_levels)
 /mob/living/silicon/ai/proc/seen_camera_turfs()
-	return seen_turfs_in_range(src, world.view)
+	//return seen_turfs_in_range(src, world.view) MISSING!!!

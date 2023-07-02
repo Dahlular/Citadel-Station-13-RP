@@ -47,7 +47,6 @@ var/global/list/exclude_jobs = list(/datum/role/job/station/ai,/datum/role/job/s
 //* Visual nets
 GLOBAL_LIST_EMPTY(visual_nets)
 GLOBAL_DATUM_INIT(cameranet, /datum/visualnet/camera, new)
-GLOBAL_DATUM_INIT(cultnet, /datum/visualnet/cult, new)
 
 //* Runes
 var/global/list/rune_list = new()

@@ -62,9 +62,6 @@
 		holder.icon_state = "dead"
 	else if(foundVirus)
 		holder.icon_state = "ill1"
-	else if(has_brain_worms())
-		var/mob/living/simple_mob/animal/borer/B = has_brain_worms()
-		holder.icon_state = B.controlling? "brainworm" : "healthy"
 	else
 		holder.icon_state = "healthy"
 
@@ -86,8 +83,6 @@
 			continue
 		if(istype(I, /obj/item/implant/tracking))
 			Itrack?.icon_state = "tracking"
-		if(istype(I, /obj/item/implant/loyalty))
-			Iloyal?.icon_state = "loyal"
 		if(istype(I, /obj/item/implant/chem))
 			Ichem?.icon_state = "chem"
 

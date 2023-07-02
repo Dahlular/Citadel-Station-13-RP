@@ -1089,17 +1089,6 @@ var/list/admin_verbs_event_manager = list(
 	log_admin("[key_name(usr)] told everyone to man up and deal with it.")
 	message_admins("<font color=#4F49AF>[key_name_admin(usr)] told everyone to man up and deal with it.</font>", 1)
 
-/client/proc/give_spell(mob/T as mob in GLOB.mob_list) // -- Urist
-	set category = "Fun"
-	set name = "Give Spell"
-	set desc = "Gives a spell to a mob."
-	var/spell/S = input("Choose the spell to give to that guy", "ABRAKADABRA") as null|anything in spells
-	if(!S) return
-	T.spell_list += new S
-	feedback_add_details("admin_verb","GS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	log_admin("[key_name(usr)] gave [key_name(T)] the spell [S].")
-	message_admins("<font color=#4F49AF>[key_name_admin(usr)] gave [key_name(T)] the spell [S].</font>", 1)
-
 /client/proc/toggle_AI_interact()
 	set name = "Toggle Admin AI Interact"
 	set category = "Admin"

@@ -502,12 +502,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		new_character.sync_organ_dna()
 	if(inhabit)
 		new_character.key = player_key
-		//Were they any particular special role? If so, copy.
-		if(new_character.mind)
-			var/datum/antagonist/antag_data = get_antag_data(new_character.mind.special_role)
-			if(antag_data)
-				antag_data.add_antagonist(new_character.mind)
-				antag_data.place_mob(new_character)
+
 
 	// Required for persistence
 	if(new_character.mind)
