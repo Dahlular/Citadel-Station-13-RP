@@ -2,7 +2,6 @@
 
 #$include dbconfig.txt
 #$include comms.txt
-#$include antag_rep.txt
 $include resources.txt
 $include logging.txt
 $include entries/dbconfig.txt

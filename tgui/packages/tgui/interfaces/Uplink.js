@@ -132,9 +132,6 @@ const ExploitableInformation = (props, context) => {
             <LabeledList.Item label="Fingerprint">
               {exploit.fingerprint}
             </LabeledList.Item>
-            <LabeledList.Item label="Other Affiliations">
-              {exploit.antagfaction}
-            </LabeledList.Item>
             <LabeledList.Divider />
             <LabeledList.Item>Acquired Information</LabeledList.Item>
             <LabeledList.Item label="Notes">

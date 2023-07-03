@@ -31,13 +31,6 @@ export const deadmin_always: FeatureToggle = {
   component: CheckboxInput,
 };
 
-export const deadmin_antagonist: FeatureToggle = {
-  name: "Auto deadmin - Antagonist",
-  category: "ADMIN",
-  description: "When enabled, you will automatically deadmin as an antagonist.",
-  component: CheckboxInput,
-};
-
 export const deadmin_position_head: FeatureToggle = {
   name: "Auto deadmin - Head of Staff",
   category: "ADMIN",

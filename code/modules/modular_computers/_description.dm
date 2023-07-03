@@ -113,9 +113,4 @@ They will have office in research, which will probably replace (and contain) the
 They will have access to DOWNLOAD (not run) all programs that exist on NTNet. They'll have fairly good amount of available programs, most of them being
 administrative consoles and other very useful things. They'll also be able to monitor NTNet. There will probably be one or two job slots.
 
-8. IDS
-With addition of various antag programs, IDS(Intrusion Detection System) will be added to NTNet. This system can be turned on/off via administration console.
-If enabled, this system automatically detects any abnormality and triggers a warning that's visible on the NTNet status screen, as well as generating a security log.
-IDS can be disabled by simple on/off switch in the configuration.
-
 */

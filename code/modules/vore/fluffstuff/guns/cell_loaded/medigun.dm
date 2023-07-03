@@ -7,7 +7,6 @@
 	icon_state = "ml3m"
 	description_info = "This is a ranged healing device that uses interchangable nanite discharge cells in a magazine. Each cell is a different healing beam type, and up to three can be loaded in the magazine. Each battery usually provides four discharges of that beam type, and multiple from the same type may be loaded to increase the number of shots for that type."
 	description_fluff = "The Vey-Med AML 'Medigun' allows one to customize their loadout in the field, or before deploying, to allow emergency response personnel to deliver a variety of ranged healing options."
-	description_antag = ""
 	origin_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 2, TECH_BIO = 5)
 	allowed_magazines = list(/obj/item/ammo_magazine/cell_mag/medical)
 	no_pin_required = 1

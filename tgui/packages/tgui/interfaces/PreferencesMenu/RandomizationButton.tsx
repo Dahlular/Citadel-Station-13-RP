@@ -16,9 +16,6 @@ export const RandomizationButton = (props: {
   let color;
 
   switch (value) {
-    case RandomSetting.AntagOnly:
-      color = "orange";
-      break;
     case RandomSetting.Disabled:
       color = "red";
       break;
@@ -51,10 +48,6 @@ export const RandomizationButton = (props: {
           value: RandomSetting.Enabled,
         },
 
-        {
-          displayText: "Randomize when antagonist",
-          value: RandomSetting.AntagOnly,
-        },
       ]}
       nochevron
       onSelected={setValue}

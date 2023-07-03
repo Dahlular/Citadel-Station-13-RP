@@ -7,7 +7,6 @@
 
 	description_info = "This gun punts people away and has a chance of knocking them down briefly. It may also throw them over railings in the process!"
 	description_fluff = ""
-	description_antag = ""
 
 	icon = 'icons/vore/custom_guns_vr.dmi'
 	icon_state = "pum"
