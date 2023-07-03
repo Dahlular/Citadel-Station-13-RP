@@ -56,7 +56,6 @@ var/list/ai_verbs_default = list(
 	icon_state = "ai"
 	anchored = TRUE
 	density = TRUE
-	can_be_antagged = TRUE
 	status_flags = STATUS_CAN_STUN|STATUS_CAN_PARALYZE|STATUS_CAN_PUSH
 	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/ai)
 	translation_context_type = /datum/translation_context/variable/learning/silicons	// ai gets the gamer context by default

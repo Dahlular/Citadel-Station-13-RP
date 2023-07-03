@@ -55,8 +55,6 @@
 	light_offset_x = 1
 	light_offset_y = 1
 
-	can_be_antagged = TRUE
-
 	/// Is our integrated light on?
 	var/lights_on = 0
 	var/used_power_this_tick = 0

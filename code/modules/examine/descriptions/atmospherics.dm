@@ -141,8 +141,6 @@
 	can be filled by the canister, by using the tank on the canister, increasing the release pressure, then opening the valve until it is full, and then close it.  \
 	*DO NOT* remove the tank until the valve is closed.  A gas analyzer can be used to check the contents of the canister."
 
-	description_antag = "Canisters can be damaged, spilling their contents into the air, or you can just leave the release valve open."
-
 //Portable pumps
 /obj/machinery/portable_atmospherics/powered/pump
 	description_info = "Invaluable for filling air in a room rapidly after a breach repair.  The internal gas container can be filled by \

@@ -10,7 +10,6 @@
 	var/true_desc = null				// Ditto, for desc.
 	var/true_description_info = null	// Ditto, for helpful examine panel entries.
 	var/true_description_fluff = null	// Ditto, for lore.
-	var/true_description_antag = null	// Ditto, for antag info (this probably won't get used).
 	var/identified = IDENTITY_UNKNOWN	// Can be IDENTITY_UNKNOWN, IDENTITY_PROPERTIES, IDENTITY_QUALITY, or IDENTITY_FULL.
 
 	// Holds what is displayed when not identified sufficently.
@@ -40,7 +39,6 @@
 	true_desc = holder.desc
 	true_description_info = holder.description_info
 	true_description_fluff = holder.description_fluff
-	true_description_antag = holder.description_antag
 
 // Formally identifies the holder.
 /datum/identification/proc/identify(new_identity = IDENTITY_FULL, mob/user)
@@ -79,7 +77,6 @@
 		holder.desc = true_desc
 		holder.description_info = true_description_info
 		holder.description_fluff = true_description_fluff
-		holder.description_antag = true_description_antag
 		return
 
 	if(!unidentified_name)
@@ -89,7 +86,6 @@
 	holder.desc = unidentified_desc
 	holder.description_info = unidentified_description_info
 	holder.description_fluff = null
-	holder.description_antag = null
 
 // Makes a name for an object that is not identified. It picks one string out of each list inside naming_list.
 /datum/identification/proc/generate_unidentified_name()

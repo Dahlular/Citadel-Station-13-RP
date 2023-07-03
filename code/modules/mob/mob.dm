@@ -533,12 +533,6 @@
 
 	GLOB.respawn_timers[keytouse] = world.time + time
 
-/mob/observer/dead/set_respawn_timer()
-	if(config_legacy.antag_hud_restricted && has_enabled_antagHUD)
-		..(-1)
-	else
-		return 	// Don't set it, no need
-
 /**
  * Allows you to respawn, abandoning your current mob
  *

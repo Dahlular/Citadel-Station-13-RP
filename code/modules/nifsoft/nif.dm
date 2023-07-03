@@ -154,7 +154,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 	return FALSE
 
-//For debug or antag purposes
+//For debug purposes
 /obj/item/nif/proc/quick_implant(var/mob/living/carbon/human/H)
 	if(istype(H))
 		var/obj/item/organ/external/parent
@@ -641,7 +641,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	durability = 50
 	bioadap = TRUE
 	id = NIF_ID_BIOADAPTIVE
-	
+
 /obj/item/nif/authenticbioadap
 	name = "\improper Vey-Med bioadaptive NIF"
 	desc = "A genuine Vey-Med nanotechnology fabricator, designed for strange body types. \

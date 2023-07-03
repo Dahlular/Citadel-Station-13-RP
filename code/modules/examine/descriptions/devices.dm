@@ -18,9 +18,6 @@
 	It is also built to cope with the reality that the numerous nodes in a system will likely have frequent outages.  The protocol allows for \
 	up to 18,446,744,073,709,551,616 unique addresses, one of which is assigned to this device."
 
-	description_antag = "Electromagnetic pulses will cause the device to disconnect all linked communicators.  Turning off the Exonet node at the Telecomms \
-	satellite will also accomplish this, but for all communicators on and near the station.  This may be needed to allow for a quiet kill or capture."
-
 /obj/item/electronic_assembly/device
 	description_info = "This is the guts of a 'device' type electronic assembly, and can either be used in this form or can be used inside of the assembly to \
 	allow it to interact with other assembly type devices (igniter, signaler, proximity sensor, etc). This device has unique inputs that allow it to either send \

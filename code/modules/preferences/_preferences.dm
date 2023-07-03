@@ -140,10 +140,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/synth_markings = 1
 
 //! ## Background Preferences
-	///Antag associated faction.
-	var/antag_faction = "None"
-	///How visible antag association is to others.
-	var/antag_vis = "Hidden"
 
 	var/med_record = ""
 	var/sec_record = ""

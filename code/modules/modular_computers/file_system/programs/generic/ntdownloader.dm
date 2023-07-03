@@ -43,9 +43,6 @@
 	if(PRG in ntnet_global.available_station_software)
 		generate_network_log("Began downloading file [PRG.filename].[PRG.filetype] from NTNet Software Repository.")
 		hacked_download = 0
-	else if(PRG in ntnet_global.available_antag_software)
-		generate_network_log("Began downloading file **ENCRYPTED**.[PRG.filetype] from unspecified server.")
-		hacked_download = 1
 	else
 		generate_network_log("Began downloading file [PRG.filename].[PRG.filetype] from unspecified server.")
 		hacked_download = 0
@@ -57,10 +54,6 @@
 	var/datum/computer_file/program/PRG = ntnet_global.find_ntnet_file_by_name(filename)
 
 	if(!PRG || !istype(PRG))
-		return 0
-
-	// Attempting to download antag only program, but without having emagged computer. No.
-	if(PRG.available_on_syndinet && !computer_emagged)
 		return 0
 
 	if(!computer || !computer.hard_drive || !computer.hard_drive.try_store_file(PRG))
@@ -173,18 +166,6 @@
 		"icon" = P.program_menu_icon
 		)))
 	data["hackedavailable"] = 0
-	if(prog.computer_emagged) // If we are running on emagged computer we have access to some "bonus" software
-		var/list/hacked_programs[0]
-		for(var/datum/computer_file/program/P in ntnet_global.available_antag_software)
-			data["hackedavailable"] = 1
-			hacked_programs.Add(list(list(
-			"filename" = P.filename,
-			"filedesc" = P.filedesc,
-			"fileinfo" = P.extended_desc,
-			"size" = P.size,
-			"icon" = P.program_menu_icon
-			)))
-		data["hacked_programs"] = hacked_programs
 
 	data["downloadable_programs"] = all_entries
 

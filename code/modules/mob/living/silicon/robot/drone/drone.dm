@@ -47,8 +47,6 @@
 
 	holder_type = /obj/item/holder/drone
 
-	can_be_antagged = FALSE
-
 /mob/living/silicon/robot/drone/Destroy()
 	if(hat)
 		hat.loc = get_turf(src)

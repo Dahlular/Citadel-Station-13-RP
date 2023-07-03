@@ -134,8 +134,6 @@
 
 /obj/item/pen/blade
 	desc = "It's a normal black ink pen."
-	description_antag = "This pen can be transformed into a dangerous melee and thrown assassination weapon with an Alt-Click.\
-	When active, it cannot be caught safely."
 	name = "pen"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "pen"
