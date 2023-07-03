@@ -1,4 +1,4 @@
-# Citadel Station 13 RP
+# MS13 - Hyperstation 2 Staging
 
 [![Build Status](https://github.com/Citadel-Station-13/Citadel-Station-13-RP/workflows/CI%20Suite/badge.svg)](https://github.com/Citadel-Station-13/Citadel-Station-13-RP/actions?query=workflow%3A%22CI+Suite%22)
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/Citadel-Station-13/Citadel-Station-13-RP.svg)](https://isitmaintained.com/project/Citadel-Station-13/Citadel-Station-13-RP "Percentage of issues still open")
@@ -6,22 +6,24 @@
 
 [![forthebadge](http://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/compatibility-club-penguin.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/no-ragrets.svg)](http://forthebadge.com) [![forinfinityandbyond](https://user-images.githubusercontent.com/5211576/29499758-4efff304-85e6-11e7-8267-62919c3688a9.gif)](https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a)
 
-* **Website:** <http://citadel-station.net>
-* **Code:** <https://github.com/Citadel-Station-13/Citadel-Station-13-RP>
-* **Wiki:** <https://citadel-station.net/wiki/index.php?title=Main_Page>
-* **Forums:** <http://citadel-station.net/forum>
-* **Ban Appeals:** <http://citadel-station.net/forum/forumdisplay.php?fid=8>
-* **Discord:**  <https://discord.gg/citadelstation>
+* **Website:** ---
+* **Code:** <https://github.com/Dahlular/MS13>
+* **Wiki:** ---
+* **Forums:** ---
+* **Ban Appeals:** ---
+* **Discord:**  ---
 
-This is the codebase for the CitadelRP flavoured fork of SpaceStation 13.
+This is the codebase for the MS13 flavoured fork of SpaceStation 13.
 
-Citadel Station 13 RP, also known as CitadelRP was originally a fork of VOREStation, which separated on 01/25/2019.
+MS13, also known as MacroStation 13 was originally a fork of Citadel Station 13 RP, which separated on 07/02/2023.
+
+This codebase is primarily for staging updates towards Hyperstation13's Rebase.
 
 ## DOWNLOADING
 
 [Downloading](.github/guides/DOWNLOADING.md)
 
-## :exclamation: How to compile :exclamation
+## :exclamation: How to compile :exclamation:
 
 On **May 9, 2022** we have changed the way to compile the codebase.
 
@@ -29,7 +31,7 @@ On **May 9, 2022** we have changed the way to compile the codebase.
 
 **The long way**. Find `bin/build.cmd` in this folder, and double click it to initiate the build. It consists of multiple steps and might take around 1-5 minutes to compile. If it closes, it means it has finished its job. You can then [setup the server](.github/RUNNING_A_SERVER.md) normally by opening `citadel.dmb` in DreamDaemon.
 
-**Building CitadelRP in DreamMaker directly is now deprecated and might produce errors**, such as `'tgui.bundle.js': cannot find file`.
+**Building MS13 in DreamMaker directly is now deprecated and might produce errors**, such as `'tgui.bundle.js': cannot find file`.
 
 **[How to compile in VSCode and other build options](tools/build/README.md).**
 
@@ -37,7 +39,7 @@ On **May 9, 2022** we have changed the way to compile the codebase.
 
 [Guides for Contributors](.github/CONTRIBUTING.md)
 
-[CitadelRP HACKMD account](https://hackmd.io/@CitadelStation13RP)
+[Hyperstation HACKMD account](https://hackmd.io/@HyperStation13)
 
 ## SQL Setup
 
