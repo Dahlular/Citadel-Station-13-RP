@@ -89,7 +89,6 @@
 		// Not bad (dorms are shielded) but inconvenient
 		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Radiation Storm",			/datum/event/radiation_storm, 			50,		list(ASSIGNMENT_MEDICAL = 50), 1),
 		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Spider Infestation",		/datum/event/spider_infestation, 		30,		list(ASSIGNMENT_SECURITY = 30), 1),
-		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Random Antagonist",		/datum/event/random_antag,		 		2.5,	list(ASSIGNMENT_SECURITY = 1), 1, 0, 5),
 		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Supply Demand",			/datum/event/supply_demand,				0,		list(ASSIGNMENT_ANY = 5, ASSIGNMENT_SCIENCE = 15, ASSIGNMENT_GARDENER = 10, ASSIGNMENT_ENGINEER = 10, ASSIGNMENT_MEDICAL = 15), 1),
 	))
 
@@ -107,10 +106,6 @@
 	add_disabled_events(list(
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Blob",				/datum/event/blob, 				10,		list(ASSIGNMENT_ENGINEER = 60), 1),
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Supply Demand",		/datum/event/supply_demand,		0,		list(ASSIGNMENT_ANY = 5, ASSIGNMENT_SCIENCE = 15, ASSIGNMENT_GARDENER = 10, ASSIGNMENT_ENGINEER = 10, ASSIGNMENT_MEDICAL = 15), 1),
-		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Xenomorph Infestation", /datum/event/xeno_infestation, 0, 	list(ASSIGNMENT_SECURITY = 2), 1),
-		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Xenomorph Infestation (Extreme)", /datum/event/xeno_infestation/extreme, 0, 	list(ASSIGNMENT_SECURITY = 2), 1),
-		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Cultist Invasion",	/datum/event/cult,				0		,list(ASSIGNMENT_SECURITY = 15),	1),
-		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Pirate Boarders",		/datum/event/pirate, 			0,		list(ASSIGNMENT_SECURITY = 5), 1),
 	))
 
 #undef ASSIGNMENT_ANY

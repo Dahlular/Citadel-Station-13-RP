@@ -156,7 +156,6 @@
 		/obj/item/healthanalyzer, //to build medibots,
 		/obj/item/slime_cube,
 		/obj/item/slime_crystal,
-		/obj/item/disposable_teleporter/slime,
 		/obj/item/slimepotion,
 		/obj/item/slime_extract,
 		/obj/item/reagent_containers/food/snacks/monkeycube,

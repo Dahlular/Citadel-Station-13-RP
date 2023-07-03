@@ -31,7 +31,6 @@
 	//rarity_value         = 6
 	min_age              = 10000
 	max_age              = 12000
-	// antaghud_offset_y    = 14
 	mob_size             = MOB_LARGE
 	// strength             = STR_HIGH
 	has_glowing_eyes     = TRUE

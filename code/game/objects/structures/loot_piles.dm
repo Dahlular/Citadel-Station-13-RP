@@ -200,7 +200,6 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/camera_assembly,
 		/obj/item/caution,
 		/obj/item/clothing/head/cone,
-		/obj/item/card/emag_broken,
 		/obj/item/camera,
 		/obj/item/pda,
 		/obj/item/radio/headset,
@@ -452,7 +451,6 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/aiModule/asimov,
 		/obj/item/aiModule/paladin,
 		/obj/item/aiModule/safeguard,
-		/obj/item/disposable_teleporter,
 		/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay
 	)
 

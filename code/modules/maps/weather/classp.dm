@@ -211,8 +211,8 @@
 	initial_gas_mix = ATMOSPHERE_ID_FROZEN
 
 /turf/simulated/floor/outdoors/snow/classp/Initialize(mapload)
-	if(tree_chance && prob(tree_chance) && !check_density())
-		new /obj/structure/flora/tree/pine(src)
-	if(deadtree_chance && prob(deadtree_chance) && !check_density())
-		new /obj/structure/flora/tree/dead(src)
+	//if(tree_chance && prob(tree_chance) && !check_density()) MISSING!!!
+	//	new /obj/structure/flora/tree/pine(src)
+	//if(deadtree_chance && prob(deadtree_chance) && !check_density()) MISSING!!!
+	//	new /obj/structure/flora/tree/dead(src)
 	. = ..()

@@ -182,8 +182,6 @@
 			qdel(SC)
 		else
 			scan_cash(SC)
-	else if(istype(O, /obj/item/card/emag))
-		return ..()
 	else if(O.is_wrench())
 		var/obj/item/tool/wrench/W = O
 		toggle_anchors(W, user)

@@ -75,17 +75,6 @@
 /// keisani
 #define LANGUAGE_ID_KEISANI "keisani"
 
-//? Antagonist
-#define LANGUAGE_ID_CHANGELING "changeling"
-#define LANGUAGE_ID_BORER "borer"
-#define LANGUAGE_ID_CULT "cult"
-#define LANGUAGE_ID_CULT_COMMUNE "cult_global"
-// #define LANGUAGE_ID_CLOCKCULT "clockcult"
-// #define LANGUAGE_ID_CLOCKCULT_COMMUNE "clockcult_global"
-#define LANGUAGE_ID_SWARMBOT "swarmbot"
-#define LANGUAGE_ID_XENOMORPH "xenomorph"
-#define LANGUAGE_ID_XENOMORPH_HIVEMIND "xenomorph_global"
-
 //? Monkey
 /// human monkey
 #define LANGUAGE_ID_CHIMPANZEE "monkey"

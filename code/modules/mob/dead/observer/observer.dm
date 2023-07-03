@@ -30,9 +30,7 @@
 	var/started_as_observer //This variable is set to 1 when you enter the game as an observer.
 							//If you died in the game and are a ghsot - this will remain as null.
 							//Note that this is not a reliable way to determine if admins started as observers, since they change mobs a lot.
-	var/has_enabled_antagHUD = FALSE
 	var/medHUD = FALSE
-	var/antagHUD = FALSE
 	universal_speak = TRUE
 	var/admin_ghosted = FALSE
 	/// Is the ghost able to see things humans can't?
@@ -169,11 +167,6 @@
 			return
 		src.examinate(I)
 
-/mob/observer/dead/attackby(obj/item/W, mob/user)
-	if(istype(W,/obj/item/book/tome))
-		var/mob/observer/dead/M = src
-		M.manifest(user)
-
 /mob/observer/dead/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	return TRUE
@@ -213,8 +206,6 @@
 			B.update()
 		if(ghost.client)
 			ghost.client.time_died_as_mouse = ghost.timeofdeath
-		if(ghost.client && !ghost.client.holder && !config_legacy.antag_hud_allowed)		// For new ghosts we remove the verb from even showing up if it's not allowed.
-			remove_verb(ghost, /mob/observer/dead/verb/toggle_antagHUD)	// Poor guys, don't know what they are missing!
 		ghost.client?.holder?.update_stealth_ghost()
 		return ghost
 
@@ -273,15 +264,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(prevent_respawns.Find(mind.name))
 		to_chat(usr,"<span class='warning'>You already quit this round as this character, sorry!</span>")
 		return
-	if(mind.current.ajourn && mind.current.stat != DEAD) //check if the corpse is astral-journeying (it's client ghosted using a cultist rune).
-		var/found_rune
-		for(var/obj/effect/rune/R in mind.current.loc)   //whilst corpse is alive, we can only reenter the body if it's on the rune
-			if(R && R.word1 == cultwords["hell"] && R.word2 == cultwords["travel"] && R.word3 == cultwords["self"]) // Found an astral journey rune.
-				found_rune = 1
-				break
-		if(!found_rune)
-			to_chat(usr, "<span class='warning'>The astral cord that ties your body and your spirit has been severed. You are likely to wander the realm beyond until your body is finally dead and thus reunited with you.</span>")
-			return
 	mind.current.ajourn=0
 	mind.current.key = key
 	mind.current.teleop = null
@@ -306,33 +288,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	else
 		get_atom_hud(DATA_HUD_MEDICAL).remove_hud_from(src)
 	to_chat(src,"<font color=#4F49AF><B>Medical HUD [medHUD ? "Enabled" : "Disabled"]</B></font>")
-
-/mob/observer/dead/verb/toggle_antagHUD()
-	set category = "Ghost"
-	set name = "Toggle AntagHUD"
-	set desc = "Toggles AntagHUD allowing you to see who is the antagonist"
-
-	if(!config_legacy.antag_hud_allowed && !client.holder)
-		to_chat(src, "<font color='red'>Admins have disabled this for this round.</font>")
-		return
-	if(jobban_isbanned(src, "AntagHUD"))
-		to_chat(src, "<font color='red'><B>You have been banned from using this feature</B></font>")
-		return
-	if(config_legacy.antag_hud_restricted && !has_enabled_antagHUD && !client.holder)
-		var/response = alert(src, "If you turn this on, you will not be able to take any part in the round.","Are you sure you want to turn this feature on?","Yes","No")
-		if(response == "No") return
-		can_reenter_corpse = FALSE
-		set_respawn_timer(-1)	// Foreeeever
-	if(!has_enabled_antagHUD && !client.holder)
-		has_enabled_antagHUD = TRUE
-
-	antagHUD = !antagHUD
-	var/datum/atom_hud/H = GLOB.huds[ANTAG_HUD]
-	if(antagHUD)
-		H.add_hud_to(src)
-	else
-		H.remove_hud_from(src)
-	to_chat(src,"<font color=#4F49AF><B>AntagHUD [antagHUD ? "Enabled" : "Disabled"]</B></font>")
 
 /mob/observer/dead/proc/dead_tele(var/area/A in GLOB.sortedAreas)
 	set category = "Ghost"
@@ -550,9 +505,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return 0 //something is terribly wrong
 
 	var/ghosts_can_write
-	if(SSticker.mode.name == "cult")
-		if(cult.current_antagonists.len > config_legacy.cult_ghostwriter_req_cultists)
-			ghosts_can_write = 1
 
 	if(!ghosts_can_write && !check_rights(R_ADMIN, 0)) //Let's allow for admins to write in blood for events and the such.
 		to_chat(src, "<font color='red'>The veil is not thin enough for you to do that.</font>")
@@ -711,10 +663,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(mind && mind.current && mind.current.stat != DEAD && can_reenter_corpse)
 		if(feedback)
 			to_chat(src, "<span class='warning'>Your non-dead body prevent you from respawning.</span>")
-		return 0
-	if(config_legacy.antag_hud_restricted && has_enabled_antagHUD == 1)
-		if(feedback)
-			to_chat(src, "<span class='warning'>antagHUD restrictions prevent you from respawning.</span>")
 		return 0
 	return 1
 

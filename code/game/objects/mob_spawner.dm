@@ -378,13 +378,6 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 		/mob/living/simple_mob/mechanical/corrupt_maint_drone = 4
 	)
 
-/obj/mob_spawner/derelict/mech_wizard
-	name = "Derelict wizard"
-	faction = "derelict"
-	mobs_to_pick_from = list(
-		/mob/living/simple_mob/mechanical/technomancer_golem = 2
-	)
-
 /obj/mob_spawner/hound_spawner
 	name = "Corrupt Hound Spawner"
 	prob_fall = 50

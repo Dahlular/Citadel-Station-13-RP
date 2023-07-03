@@ -75,9 +75,6 @@ SUBSYSTEM_DEF(mapping)
 	initialize_reserved_level(transit.z_value)
 	// initialize_reserved_level(transit.z_value)
 
-	// Set up antagonists.
-	populate_antag_type_list()
-
 	//Set up spawn points.
 	populate_spawn_points()
 

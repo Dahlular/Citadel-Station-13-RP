@@ -155,7 +155,7 @@ GLOBAL_LIST_BOILERPLATE(papers_dockingcode, /obj/item/paper/dockingcodes)
 
 /obj/item/paper/dockingcodes
 	name = "Docking Codes"
-	var/codes_from_z = null	// So you can put codes from the station other places to give to antags or whatever
+	var/codes_from_z = null
 
 /obj/item/paper/dockingcodes/proc/populate_info()
 	var/dockingcodes = null

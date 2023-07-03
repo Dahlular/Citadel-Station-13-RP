@@ -293,8 +293,6 @@
 				client.prefs.real_name = random_name(client.prefs.identifying_gender)
 			observer.real_name = client.prefs.real_name
 			observer.name = observer.real_name
-			if(!client.holder && !config_legacy.antag_hud_allowed)			// For new ghosts we remove the verb from even showing up if it's not allowed.
-				remove_verb(observer, /mob/observer/dead/verb/toggle_antagHUD)	// Poor guys, don't know what they are missing!
 			observer.key = key
 			observer.client?.holder?.update_stealth_ghost()
 			observer.set_respawn_timer(time_till_respawn())	// Will keep their existing time if any, or return 0 and pass 0 into set_respawn_timer which will use the defaults

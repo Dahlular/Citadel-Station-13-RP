@@ -46,7 +46,6 @@
 	var/feature_object_spell_system = 0 //spawns a spellbook which gives object-type spells instead of verb-type spells for the wizard
 	var/traitor_scaling = 0 			//if amount of traitors scales based on amount of players
 	var/objectives_disabled = 0 			//if objectives are disabled or not
-	var/protect_roles_from_antagonist = 0// If security and such can be traitor/cult/other
 	var/continous_rounds = 0			// Gamemodes which end instantly will instead keep on going until the round ends by escape shuttle or nuke.
 	var/popup_admin_pm = 0				//adminPMs to non-admins show in a pop-up 'reply' window when set to 1.
 	var/fps = 20
@@ -54,8 +53,6 @@
 	var/Tickcomp = 0
 	var/socket_talk	= 0					// use socket_talk to communicate with other processes
 	var/list/resource_urls = null
-	var/antag_hud_allowed = 0			// Ghosts can turn on Antagovision to see a HUD of who is the bad guys this round.
-	var/antag_hud_restricted = 0                    // Ghosts that turn on Antagovision cannot rejoin the round.
 	var/list/mode_names = list()
 	var/list/modes = list()				// allowed modes
 	var/list/votable_modes = list()		// votable modes
@@ -105,7 +102,6 @@
 	var/usealienwhitelist = 0
 	var/limitalienplayers = 0
 	var/alien_to_human_ratio = 0.5
-	var/allow_extra_antags = 0
 	var/guests_allowed = 1
 	var/debugparanoid = 0
 	var/panic_bunker = 0
@@ -177,7 +173,6 @@
 	var/admin_legacy_system = 0	//Defines whether the server uses the legacy admin system with admins.txt or the SQL system. Config option in
 	var/ban_legacy_system = 0	//Defines whether the server uses the legacy banning system with the files in /data or the SQL system. Config option in config_legacy.txt
 	var/use_age_restriction_for_jobs = 0 //Do jobs use account age restrictions? --requires database
-	var/use_age_restriction_for_antags = 0 //Do antags use account age restrictions? --requires database
 
 	var/simultaneous_pm_warning_timeout = 100
 
@@ -314,9 +309,6 @@
 
 				if ("use_age_restriction_for_jobs")
 					config_legacy.use_age_restriction_for_jobs = 1
-
-				if ("use_age_restriction_for_antags")
-					config_legacy.use_age_restriction_for_antags = 1
 
 				if ("jobs_have_minimal_access")
 					config_legacy.jobs_have_minimal_access = 1
@@ -527,9 +519,6 @@
 				if ("objectives_disabled")
 					config_legacy.objectives_disabled = 1
 
-				if("protect_roles_from_antagonist")
-					config_legacy.protect_roles_from_antagonist = 1
-
 				if ("probability")
 					var/prob_pos = findtext(value, " ")
 					var/prob_name = null
@@ -625,11 +614,6 @@
 
 				if("tick_limit_mc_init")
 					tick_limit_mc_init = text2num(value)
-
-				if("allow_antag_hud")
-					config_legacy.antag_hud_allowed = 1
-				if("antag_hud_restricted")
-					config_legacy.antag_hud_restricted = 1
 
 				if("socket_talk")
 					socket_talk = text2num(value)
@@ -728,9 +712,6 @@
 
 				if("disable_welder_vision")
 					config_legacy.welder_vision = 0
-
-				if("allow_extra_antags")
-					config_legacy.allow_extra_antags = 1
 
 				if("event_custom_start_mundane")
 					var/values = text2numlist(value, ";")

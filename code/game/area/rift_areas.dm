@@ -972,53 +972,6 @@
 /area/rift/station/public_garden/gantry
 	name = "\improper Public Garden Gantry"
 
-
-//////////////////////////////////
-
-/*
-/area/antag/antag_base
-	name = "\improper Syndicate Outpost"
-	requires_power = 0
-	dynamic_lighting = 0
-
-/area/shuttle/antag_space/base
-	name = "\improper Syndicate PS - Base"
-	icon_state = "shuttle2"
-/area/shuttle/antag_space/transit
-	name = "\improper Syndicate PS - Transit"
-	icon_state = "shuttle2"
-/area/shuttle/antag_space/north
-	name = "\improper Syndicate PS - Nearby"
-	icon_state = "shuttle2"
-/area/shuttle/antag_space/docks
-	name = "\improper Syndicate PS - Docks"
-	icon_state = "shuttle2"
-
-/area/shuttle/antag_ground/base
-	name = "\improper Syndicate LC - Base"
-	icon_state = "shuttle2"
-/area/shuttle/antag_ground/transit
-	name = "\improper Syndicate LC - Transit"
-	icon_state = "shuttle2"
-/area/shuttle/antag_ground/solars
-	name = "\improper Syndicate LC - Solars"
-	icon_state = "shuttle2"
-/area/shuttle/antag_ground/mining
-	name = "\improper Syndicate LC - Mining"
-	icon_state = "shuttle2"
-
-
-// Exclude some more areas from the atmos leak event so people don't get trapped when spawning.
-/datum/event/atmos_leak/setup()
-	excluded |= /area/rift/surfacebase/pad
-	excluded |= /area/tether/surfacebase/atrium_one
-	excluded |= /area/tether/surfacebase/atrium_two
-	excluded |= /area/tether/surfacebase/atrium_three
-	excluded |= /area/teleporter/departing
-	excluded |= /area/hallway/station/upper
-	..()
-Do this eventually. */
-
 /area/rift/surfacebase/outside/west
 	name = "Western Plains Surface"
 	icon_state = "green"

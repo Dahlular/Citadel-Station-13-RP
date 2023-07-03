@@ -125,7 +125,6 @@
 
 	// -- Mode/mind specific stuff goes here
 	callHook("clone", list(H))
-	update_antag_icons(H.mind)
 	// -- End mode specific stuff
 
 	if(!R.dna)

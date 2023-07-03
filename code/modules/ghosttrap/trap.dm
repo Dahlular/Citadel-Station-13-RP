@@ -25,9 +25,6 @@ var/list/ghost_traps
 /datum/ghosttrap/proc/assess_candidate(var/mob/observer/dead/candidate)
 	if(!istype(candidate) || !candidate.client || !candidate.ckey)
 		return 0
-	if(!candidate.MayRespawn())
-		to_chat(candidate, "You have made use of the AntagHUD and hence cannot enter play as \a [object].")
-		return 0
 	if(islist(ban_checks))
 		for(var/bantype in ban_checks)
 			if(jobban_isbanned(candidate, "[bantype]"))

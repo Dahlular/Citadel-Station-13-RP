@@ -7,7 +7,6 @@
 
 	description_info = "This gun causes nausea in targets, stunning them briefly and causing vomiting. It will also cause them to vomit up prey, sometimes. Repeated shots may help in that case."
 	description_fluff = ""
-	description_antag = ""
 
 	icon = 'icons/vore/custom_guns_vr.dmi'
 	icon_state = "sickshot"

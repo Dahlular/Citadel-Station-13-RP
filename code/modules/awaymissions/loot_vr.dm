@@ -82,8 +82,6 @@
 				new /obj/item/clothing/shoes/rainbow(C)
 				new /obj/item/clothing/head/soft/rainbow(C)
 				new /obj/item/clothing/gloves/rainbow(C)
-			else if(prob(5))
-				new /obj/item/storage/box/syndie_kit/chameleon(C)
 			else
 				new /obj/item/clothing/under/syndicate/combat(C)
 				new /obj/item/clothing/shoes/boots/swat(C)

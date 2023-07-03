@@ -271,9 +271,6 @@
 
 	///Used for checking whether hostile simple animals will attack you, possibly more stuff later.
 	var/faction = "neutral"
-	/// To prevent pAIs/mice/etc from getting antag in autotraitor and future auto- modes. Uses inheritance instead of a bunch of typechecks.
-	// todo: what the fuck
-	var/can_be_antagged = FALSE
 
 	/// The last mob/living/carbon to push/drag/grab this mob (mostly used by slimes friend recognition)
 	var/mob/living/carbon/LAssailant = null

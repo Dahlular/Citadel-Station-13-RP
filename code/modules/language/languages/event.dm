@@ -11,19 +11,3 @@
 	key = "]"
 	language_flags = LANGUAGE_RESTRICTED
 	syllables = list("chan","ange","thi","se")
-
-//for your antag purposes.
-/datum/language/minbus
-	id = LANGUAGE_ID_EVENT_2
-	name = LANGUAGE_MINBUS
-	desc = "The Powers That Be have seen it fit to grace you with a special language that sounds like Russian for some reason."
-	speech_verb = "says"
-	ask_verb = "asks"
-	exclaim_verb = "shouts"
-	colour = "deadsay"
-	language_flags = LANGUAGE_RESTRICTED
-	key = "\["
-	syllables = list("rus","zem","ave","groz","ski","ska","ven","konst","pol","lin","svy",
-	"danya","da","mied","zan","das","krem","myka","cyka","blyat","to","st","no","na","ni",
-	"ko","ne","en","po","ra","li","on","byl","cto","eni","ost","ol","ego","ver","stv","pro")
-

@@ -69,10 +69,10 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	baseturfs = /turf/simulated/floor/outdoors/safeice/lythios43c
 	var/object_spawn_chance = 3
 
-/turf/simulated/floor/outdoors/snow/lythios43c/Initialize(mapload)		/// Handles spawning random objs and such in the snow
-	if(object_spawn_chance && prob(object_spawn_chance) && !check_density())
-		new /obj/random/snow_debris(src)	///mapping.dm is where this obj's at
-	. = ..()
+///turf/simulated/floor/outdoors/snow/lythios43c/Initialize(mapload)		/// Handles spawning random objs and such in the snow
+//	if(object_spawn_chance && prob(object_spawn_chance) && !check_density()) MISSING!!!
+//		new /obj/random/snow_debris(src)	///mapping.dm is where this obj's at
+//	. = ..()
 
 /// Indoor Variants (Cause we need em). It bugs me that outdoor varients are the default but what can you do -Bloop
 /turf/simulated/floor/outdoors/safeice/indoors

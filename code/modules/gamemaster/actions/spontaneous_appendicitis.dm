@@ -6,7 +6,7 @@
 /datum/gm_action/spontaneous_appendicitis/start()
 	..()
 	for(var/mob/living/carbon/human/H in shuffle(living_mob_list))
-		if(H.client && !player_is_antag(H.mind) && H.appendicitis())
+		if(H.client && H.appendicitis())
 			break
 
 /datum/gm_action/spontaneous_appendicitis/get_weight()

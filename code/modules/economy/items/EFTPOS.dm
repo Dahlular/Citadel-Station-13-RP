@@ -226,9 +226,6 @@
 					if((ACCESS_CENTCOM_ADMIRAL in C.access) || (ACCESS_COMMAND_HOP in C.access) || (ACCESS_COMMAND_CAPTAIN in C.access))
 						access_code = 0
 						to_chat(usr, "[icon2html(thing = src, target = usr)]<span class='info'>Access code reset to 0.</span>")
-				else if (istype(I, /obj/item/card/emag))
-					access_code = 0
-					to_chat(usr, "[icon2html(thing = src, target = usr)]<span class='info'>Access code reset to 0.</span>")
 
 	src.attack_self(usr)
 
@@ -290,14 +287,3 @@
 					to_chat(usr, "[icon2html(thing = src, target = usr)]<span class='warning'>Connected account has been suspended.</span>")
 			else
 				to_chat(usr, "[icon2html(thing = src, target = usr)]<span class='warning'>EFTPOS is not connected to an account.</span>")
-	else if (istype(I, /obj/item/card/emag))
-		if(transaction_locked)
-			if(transaction_paid)
-				to_chat(usr, "[icon2html(thing = src, target = usr)]<span class='info'>You stealthily swipe \the [I] through \the [src].</span>")
-				transaction_locked = 0
-				transaction_paid = 0
-			else
-				usr.visible_message("<span class='info'>\The [usr] swipes a card through \the [src].</span>")
-				playsound(src, 'sound/machines/chime.ogg', 50, 1)
-				src.visible_message("[icon2html(thing = src, target = world)] \The [src] chimes.")
-				transaction_paid = 1

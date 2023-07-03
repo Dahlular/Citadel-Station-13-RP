@@ -243,18 +243,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define CAT_COIN	4
 
 
-// Antag Faction Visbility
-#define ANTAG_HIDDEN	"Hidden"
-#define ANTAG_SHARED	"Shared"
-#define ANTAG_KNOWN		"Known"
-
-// Take a guess what the V stands for
-#define VANTAG_NONE		"hudblank"
-#define VANTAG_VORE		"vantag_vore"
-#define VANTAG_KIDNAP	"vantag_kidnap"
-#define VANTAG_KILL		"vantag_kill"
-
-
 // Job groups
 #define DEPARTMENT_CARGO			"cargo"
 #define DEPARTMENT_CIVILIAN			"civilian"
@@ -302,7 +290,6 @@ var/list/economy_station_departments = list(
 /// Because everyone misspells it
 #define TSC_HEPH	"Hephaestus"
 #define TSC_MORPH	"Morpheus"
-#define TSC_NT		"NanoTrasen"
 #define TSC_VM		"Vey Med"
 #define TSC_WT		"Ward-Takahashi"
 /// Not really needed but consistancy I guess.

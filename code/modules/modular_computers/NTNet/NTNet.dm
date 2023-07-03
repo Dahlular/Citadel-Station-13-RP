@@ -6,7 +6,6 @@ var/global/datum/ntnet/ntnet_global = new()
 	var/list/relays = list()
 	var/list/logs = list()
 	var/list/available_station_software = list()
-	var/list/available_antag_software = list()
 	var/list/available_news = list()
 	var/list/chat_channels = list()
 	var/list/fileservers = list()
@@ -24,7 +23,6 @@ var/global/datum/ntnet/ntnet_global = new()
 	var/setting_disabled = 0					// Setting to 1 will disable all wireless, independently on relays status.
 
 	var/intrusion_detection_enabled = 1 		// Whether the IDS warning system is enabled
-	var/intrusion_detection_alarm = 0			// Set when there is an IDS warning due to malicious (antag) software.
 
 
 // If new NTNet datum is spawned, it replaces the old one.
@@ -100,17 +98,14 @@ var/global/datum/ntnet/ntnet_global = new()
 // Builds lists that contain downloadable software.
 /datum/ntnet/proc/build_software_lists()
 	available_station_software = list()
-	available_antag_software = list()
 	for(var/F in typesof(/datum/computer_file/program))
 		var/datum/computer_file/program/prog = new F
 		// Invalid type (shouldn't be possible but just in case), invalid filetype (not executable program) or invalid filename (unset program)
 		if(!prog || !istype(prog) || prog.filename == "UnknownProgram" || prog.filetype != "PRG")
 			continue
-		// Check whether the program should be available for station/antag download, if yes, add it to lists.
+		// Check whether the program should be available for station download, if yes, add it to lists.
 		if(prog.available_on_ntnet)
 			available_station_software.Add(prog)
-		if(prog.available_on_syndinet)
-			available_antag_software.Add(prog)
 
 // Builds lists that contain downloadable software.
 /datum/ntnet/proc/build_news_list()
@@ -130,13 +125,6 @@ var/global/datum/ntnet/ntnet_global = new()
 	for(var/datum/computer_file/program/P in available_station_software)
 		if(filename == P.filename)
 			return P
-	for(var/datum/computer_file/program/P in available_antag_software)
-		if(filename == P.filename)
-			return P
-
-// Resets the IDS alarm
-/datum/ntnet/proc/resetIDS()
-	intrusion_detection_alarm = 0
 
 /datum/ntnet/proc/toggleIDS()
 	resetIDS()

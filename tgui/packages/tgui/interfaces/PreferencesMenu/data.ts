@@ -88,9 +88,8 @@ export type QuirkInfo = {
 };
 
 export enum RandomSetting {
-  AntagOnly = 1,
-  Disabled = 2,
-  Enabled = 3,
+  Disabled = 1,
+  Enabled = 2,
 }
 
 export enum JoblessRole {
@@ -159,10 +158,6 @@ export type PreferencesMenuData = {
   keybindings: Record<string, string[]>;
   overflow_role: string;
   selected_quirks: string[];
-
-  antag_bans?: string[];
-  antag_days_left?: Record<string, number>;
-  selected_antags: string[];
 
   active_slot: number;
   name_to_use: string;

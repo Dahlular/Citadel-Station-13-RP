@@ -480,8 +480,6 @@
 		moblist.Add(M)
 	for(var/mob/living/bot/M in sortmob)
 		moblist.Add(M)
-	for(var/mob/living/captive_brain/M in sortmob)
-		moblist.Add(M)
 	for(var/mob/living/voice/M in sortmob)
 		moblist.Add(M)
 //	for(var/mob/living/silicon/hivebot/M in sortmob)

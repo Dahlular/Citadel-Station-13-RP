@@ -16,8 +16,6 @@
 #define IMPCHEM_HUD		"6"
 /// tracking implant
 #define IMPTRACK_HUD	"7"
-/// antag icon
-#define ANTAG_HUD		"8"
 /// animal alt appearance
 #define WORLD_BENDER_ANIMAL_HUD					"9"
 // todo: datum hud icons
@@ -30,7 +28,6 @@ GLOBAL_LIST_INIT(hud_icon_files, list(
 	IMPLOYAL_HUD = 'icons/screen/atom_hud/implant.dmi',
 	IMPCHEM_HUD = 'icons/screen/atom_hud/implant.dmi',
 	IMPTRACK_HUD = 'icons/screen/atom_hud/implant.dmi',
-	ANTAG_HUD = 'icons/screen/atom_hud/antag.dmi',
 	ID_HUD = 'icons/screen/atom_hud/job.dmi'
 ))
 
@@ -50,9 +47,8 @@ GLOBAL_LIST_INIT(hud_icon_layers, list(
 #define DATA_HUD_MEDICAL				3
 #define DATA_HUD_ID_JOB					4
 
-#define HUD_ANTAG						5
 
-#define WORLD_BENDER_HUD_ANIMALS		6
+#define WORLD_BENDER_HUD_ANIMALS		5
 
 ///cooldown for being shown the images for any particular data hud
 #define ADD_HUD_TO_COOLDOWN 20

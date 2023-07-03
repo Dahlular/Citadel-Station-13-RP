@@ -29,6 +29,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	icon_state = "walkietalkie"
 	item_state = "radio"
 
+
 	///FALSE for off
 	var/on = TRUE
 	var/last_transmission
@@ -197,9 +198,6 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 			if((new_frequency < PUBLIC_LOW_FREQ || new_frequency > PUBLIC_HIGH_FREQ))
 				new_frequency = sanitize_frequency(new_frequency)
 			set_frequency(new_frequency)
-			if(hidden_uplink)
-				if(hidden_uplink.check_trigger(usr, frequency, traitor_frequency))
-					usr << browse(null, "window=radio")
 			. = TRUE
 		if("broadcast")
 			ToggleBroadcast()
@@ -581,9 +579,6 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 	if(!(0 in level))
 		var/turf/position = get_turf(src)
 		if((!position || !(position.z in level)) && !bluespace_radio)			return -1
-	if(freq in ANTAG_FREQS)
-		if(!(src.syndie))//Checks to see if it's allowed on that frequency, based on the encryption keys
-			return -1
 	if(freq in CENT_FREQS)
 		if(!(src.centComm))//Checks to see if it's allowed on that frequency, based on the encryption keys
 			return -1

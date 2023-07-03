@@ -166,8 +166,6 @@
 
 	dna_lock = TRUE
 
-	description_antag = "This weapon starts with a DNA locking chip attached. Using an EMAG on the weapon will disarm it, and allow you to use the chip as your own."
-
 	firemodes = list(
 		list(mode_name="lethal", power_cost = 1500, projectile_type = /obj/projectile/bullet/magnetic/heated, burst=1, fire_delay=8, move_delay=null, one_handed_penalty=0),
 		list(mode_name="stun", power_cost = 1200, projectile_type = /obj/projectile/energy/electrode/stunshot, burst=1, fire_delay=5, move_delay=null, one_handed_penalty=0),

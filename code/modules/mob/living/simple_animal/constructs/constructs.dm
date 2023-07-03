@@ -59,8 +59,6 @@
 
 	var/list/construct_spells = list()
 
-	can_be_antagged = TRUE
-
 	taser_kill = 0 // no
 
 	shock_resistance = 0.9 //Electricity isn't very effective on stone, especially that from hell.

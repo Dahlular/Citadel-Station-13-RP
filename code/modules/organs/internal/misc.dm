@@ -30,18 +30,6 @@
 			goo.basecolor = "#412464"
 			goo.update_icon()
 
-/obj/item/organ/internal/borer/removed(var/mob/living/user)
-
-	..()
-
-	var/mob/living/simple_mob/animal/borer/B = owner.has_brain_worms()
-	if(B)
-		B.leave_host()
-		B.ckey = owner.ckey
-
-	spawn(0)
-		qdel(src)
-
 //VOX ORGANS.
 /obj/item/organ/internal/stack
 	name = "cortical stack"

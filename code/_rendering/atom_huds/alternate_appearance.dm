@@ -141,11 +141,6 @@ GLOBAL_LIST_EMPTY(active_alternate_appearances)
 		if(mobShouldSee(mob))
 			add_hud_to(mob)
 
-/datum/atom_hud/alternate_appearance/basic/noncult/mobShouldSee(mob/M)
-	if(!iscultist(M))
-		return TRUE
-	return FALSE
-
 /datum/atom_hud/alternate_appearance/basic/cult
 
 /datum/atom_hud/alternate_appearance/basic/cult/New()
@@ -153,11 +148,6 @@ GLOBAL_LIST_EMPTY(active_alternate_appearances)
 	for(var/mob in GLOB.player_list)
 		if(mobShouldSee(mob))
 			add_hud_to(mob)
-
-/datum/atom_hud/alternate_appearance/basic/cult/mobShouldSee(mob/M)
-	if(iscultist(M))
-		return TRUE
-	return FALSE
 
 /datum/atom_hud/alternate_appearance/basic/blessedAware
 

@@ -321,12 +321,6 @@
 	glass_name = "holy water"
 	glass_desc = "An ashen-obsidian-water mix, this solution will alter certain sections of the brain's rationality."
 
-/datum/reagent/water/holywater/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
-	if(ishuman(M)) // Any location
-		if(M.mind && cult.is_antagonist(M.mind) && prob(10))
-			cult.remove_antagonist(M.mind)
-
 /datum/reagent/water/holywater/touch_turf(turf/T)
 	if(volume >= 5)
 		T.holy = 1

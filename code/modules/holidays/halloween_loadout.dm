@@ -36,14 +36,6 @@
 	name = "Costume Head - Witch (Wig)"
 	path = /obj/item/clothing/head/witchwig
 
-/datum/gear/seasonal/halloween/costumes/head/marisa
-	name = "Costume Head - Wizard (Marisa)"
-	path = /obj/item/clothing/head/wizard/marisa/fake
-
-/datum/gear/seasonal/halloween/costumes/head/wizard
-	name = "Costume Head - Wizard"
-	path = /obj/item/clothing/head/wizard/fake
-
 /datum/gear/seasonal/halloween/costumes/head/rice
 	name = "Costume Head - Rice"
 	path = /obj/item/clothing/head/rice
@@ -217,14 +209,6 @@
 /datum/gear/seasonal/halloween/costumes/suit/holiday
 	name = "Costume Suit - Holiday Priest"
 	path = /obj/item/clothing/suit/holidaypriest
-
-/datum/gear/seasonal/halloween/costumes/suit/wizard
-	name = "Costume Suit - Wizard"
-	path = /obj/item/clothing/suit/wizrobe/fake
-
-/datum/gear/seasonal/halloween/costumes/suit/wizard/marisa
-	name = "Costume Suit - Wizard (Marisa)"
-	path = /obj/item/clothing/suit/wizrobe/marisa/fake
 
 /datum/gear/seasonal/halloween/costumes/suit/bee
 	name = "Costume Suit - Bee"

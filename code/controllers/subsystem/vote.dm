@@ -133,8 +133,6 @@ SUBSYSTEM_DEF(vote)
 
 	else
 		text += "<b>Vote Result: Inconclusive - No Votes!</b>"
-		if(mode == VOTE_ADD_ANTAGONIST)
-			antag_add_failed = 1
 	log_vote(text)
 	to_chat(world, "<font color='purple'>[text]</font>")
 
@@ -156,11 +154,6 @@ SUBSYSTEM_DEF(vote)
 			if(VOTE_CREW_TRANSFER)
 				if(. == "Initiate Crew Transfer")
 					init_shift_change(null, 1)
-			if(VOTE_ADD_ANTAGONIST)
-				if(isnull(.) || . == "None")
-					antag_add_failed = 1
-				else
-					additional_antag_types |= GLOB.antag_names_to_ids[.]
 
 	if(restart)
 		to_chat(world, "World restarting due to vote...")
@@ -216,14 +209,6 @@ SUBSYSTEM_DEF(vote)
 						return 0
 				question = "Your PDA beeps with a message from Central. Would you like an additional hour to finish ongoing projects?"
 				choices.Add("Initiate Crew Transfer", "Extend the Shift")
-			if(VOTE_ADD_ANTAGONIST)
-				if(!config_legacy.allow_extra_antags || SSticker.current_state >= GAME_STATE_SETTING_UP)
-					return 0
-				for(var/antag_type in GLOB.all_antag_types)
-					var/datum/antagonist/antag = GLOB.all_antag_types[antag_type]
-					if(!(antag.id in additional_antag_types) && antag.is_votable())
-						choices.Add(antag.role_text)
-				choices.Add("None")
 			if(VOTE_CUSTOM)
 				question = sanitizeSafe(input(usr, "What is the vote for?") as text|null)
 				if(!question)
@@ -318,12 +303,6 @@ SUBSYSTEM_DEF(vote)
 			. += "\t(<a href='?src=\ref[src];vote=toggle_gamemode'>[config_legacy.allow_vote_mode ? "Allowed" : "Disallowed"]</a>)"
 		. += "</li><li>"
 
-		if(!antag_add_failed && config_legacy.allow_extra_antags)
-			. += "<a href='?src=\ref[src];vote=add_antagonist'>Add Antagonist Type</a>"
-		else
-			. += "<font color='grey'>Add Antagonist (Disallowed)</font>"
-		. += "</li>"
-
 		if(admin)
 			. += "<li><a href='?src=\ref[src];vote=custom'>Custom</a></li>"
 		. += "</ul><hr>"
@@ -357,9 +336,6 @@ SUBSYSTEM_DEF(vote)
 		if(VOTE_CREW_TRANSFER)
 			if(config_legacy.allow_vote_restart || usr.client.holder)
 				initiate_vote(VOTE_CREW_TRANSFER, usr.key)
-		if(VOTE_ADD_ANTAGONIST)
-			if(config_legacy.allow_extra_antags || usr.client.holder)
-				initiate_vote(VOTE_ADD_ANTAGONIST, usr.key)
 		if(VOTE_CUSTOM)
 			if(usr.client.holder)
 				initiate_vote(VOTE_CUSTOM, usr.key)

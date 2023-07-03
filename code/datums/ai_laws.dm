@@ -1,4 +1,4 @@
-var/global/const/base_law_type = /datum/ai_laws/nanotrasen
+var/global/const/base_law_type = /datum/ai_laws/asimov
 
 /datum/ai_law
 	var/law = ""
@@ -73,7 +73,6 @@ var/global/const/base_law_type = /datum/ai_laws/nanotrasen
 
 /datum/ai_laws/proc/sync(var/mob/living/silicon/S, var/full_sync = 1)
 	// Add directly to laws to avoid log-spam
-	S.sync_zeroth(zeroth_law, zeroth_law_borg)
 
 	if(full_sync || ion_laws.len)
 		S.laws.clear_ion_laws()
@@ -89,14 +88,6 @@ var/global/const/base_law_type = /datum/ai_laws/nanotrasen
 	for (var/datum/ai_law/law in supplied_laws)
 		if(law)
 			S.laws.add_supplied_law(law.index, law.law)
-
-
-/mob/living/silicon/proc/sync_zeroth(var/datum/ai_law/zeroth_law, var/datum/ai_law/zeroth_law_borg)
-	if (!is_malf_or_traitor(src))
-		if(zeroth_law_borg)
-			laws.set_zeroth_law(zeroth_law_borg.law)
-		else if(zeroth_law)
-			laws.set_zeroth_law(zeroth_law.law)
 
 /mob/living/silicon/ai/sync_zeroth(var/datum/ai_law/zeroth_law, var/datum/ai_law/zeroth_law_borg)
 	if(zeroth_law)

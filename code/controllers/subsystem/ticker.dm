@@ -249,9 +249,7 @@ SUBSYSTEM_DEF(ticker)
 		return 0
 
 	SSjob.reset_occupations()
-	src.mode.create_antagonists()
 	src.mode.pre_setup()
-	SSjob.DivideOccupations() // Apparently important for new antagonist system to register specific job antags properly.
 
 	if(!src.mode.can_start())
 		to_chat(world, "<B>Unable to start [mode.name].</B> Not enough players readied, [config_legacy.player_requirements[mode.config_tag]] players needed. Reverting to pregame lobby.")
@@ -484,9 +482,6 @@ SUBSYSTEM_DEF(ticker)
 		if(player && player.mind && player.mind.assigned_role)
 			if(player.mind.assigned_role == "Facility Director")
 				captainless=0
-			if(!player_is_antag(player.mind, only_offstation_roles = 1))
-				SSjob.EquipRank(player, player.mind.assigned_role, 0)
-				UpdateFactionList(player)
 	if(captainless)
 		for(var/mob/M in GLOB.player_list)
 			if(!istype(M,/mob/new_player))
@@ -506,7 +501,7 @@ SUBSYSTEM_DEF(ticker)
 		game_finished = (SSemergencyshuttle.returned() || mode.station_was_nuked)
 		mode_finished = (!post_game && mode.check_finished())
 	else
-		game_finished = (mode.check_finished() || (SSemergencyshuttle.returned() && SSemergencyshuttle.evac == 1)) || universe_has_ended
+		game_finished = (mode.check_finished() || (SSemergencyshuttle.returned() && SSemergencyshuttle.evac == 1))
 		mode_finished = game_finished
 
 	if (mode_finished)
@@ -580,7 +575,7 @@ SUBSYSTEM_DEF(ticker)
 
 	for (var/mob/living/silicon/robot/robo in GLOB.mob_list)
 
-		if(istype(robo,/mob/living/silicon/robot/drone) && !istype(robo,/mob/living/silicon/robot/drone/swarm))
+		if(istype(robo,/mob/living/silicon/robot/drone))
 			dronecount++
 			continue
 
@@ -604,23 +599,6 @@ SUBSYSTEM_DEF(ticker)
 
 	//Ask the event manager to print round end information
 	SSevents.RoundEnd()
-
-	//Print a list of antagonists to the server log
-	var/list/total_antagonists = list()
-	//Look into all mobs in world, dead or alive
-	for(var/datum/mind/Mind in minds)
-		var/temprole = Mind.special_role
-		if(temprole)							//if they are an antagonist of some sort.
-			if(temprole in total_antagonists)	//If the role exists already, add the name to it
-				total_antagonists[temprole] += ", [Mind.name]([Mind.ckey])"
-			else
-				total_antagonists.Add(temprole) //If the role doesnt exist in the list, create it and add the mob
-				total_antagonists[temprole] += ": [Mind.name]([Mind.ckey])"
-
-	//Now print them all into the log!
-	log_game("Antagonists at round end were...")
-	for(var/i in total_antagonists)
-		log_game("[i]s[total_antagonists[i]].")
 
 	CHECK_TICK
 

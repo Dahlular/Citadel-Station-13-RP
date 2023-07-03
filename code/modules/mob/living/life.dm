@@ -21,8 +21,6 @@
 	if((. = ..()))
 		return
 
-	handle_instability()
-
 	var/datum/gas_mixture/environment = loc?.return_air()
 	//Handle temperature/pressure differences between body and environment
 	if(environment)
@@ -184,13 +182,8 @@
 	return
 
 /mob/living/proc/handle_light()
-	if(instability >= TECHNOMANCER_INSTABILITY_MIN_GLOW)
-		var/distance = round(sqrt(instability / 2))
-		if(distance)
-			set_light(distance, distance * 4, l_color = "#660066")
-			return TRUE
 
-	else if(on_fire)
+	if(on_fire)
 		set_light(min(round(fire_stacks), 3), round(fire_stacks), l_color = "#FF9933")
 		return TRUE
 

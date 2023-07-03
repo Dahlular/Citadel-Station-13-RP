@@ -82,7 +82,6 @@ var/list/event_last_fired = list()
 	if(active_with_role["Security"] > 0)
 		if(!sent_spiders_to_station)
 			possibleEvents[/datum/event/spider_infestation] = max(active_with_role["Security"], 5) + 5
-		possibleEvents[/datum/event/random_antag] = max(active_with_role["Security"], 5) + 2.5
 
 	for(var/event_type in event_last_fired) if(possibleEvents[event_type])
 		var/time_passed = world.time - event_last_fired[event_type]

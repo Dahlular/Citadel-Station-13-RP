@@ -70,13 +70,6 @@
 	else
 		to_chat(user, "<span class='warning'>You need to activate \the [src.name] first.</span>")
 
-/obj/item/implanter/loyalty
-	name = "implanter-loyalty"
-
-/obj/item/implanter/loyalty/Initialize(mapload)
-	src.imp = new /obj/item/implant/loyalty( src )
-	return ..()
-
 /obj/item/implanter/explosive
 	name = "implanter (E)"
 

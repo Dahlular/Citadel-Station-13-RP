@@ -86,16 +86,12 @@
 	for(var/alert in alerts)
 		clear_alert(alert)
 	if(client)
-		for(var/atom/movable/screen/movable/spell_master/spell_master in spell_masters)
-			qdel(spell_master)
 		remove_screen_obj_references()
 		client.screen = list()
 	// mind
 	if(!isnull(mind))
 		if(mind.current == src)
 			// mind is ours, let it disassociate
-			// todo: legacy spell
-			spellremove(src)
 			mind?.disassociate()
 		else
 			// mind is not ours, null it out
@@ -163,7 +159,6 @@
 	item_use_icon = null
 	gun_move_icon = null
 	gun_setting_icon = null
-	spell_masters = null
 	zone_sel = null
 
 /mob/statpanel_data(client/C)
@@ -538,12 +533,6 @@
 
 	GLOB.respawn_timers[keytouse] = world.time + time
 
-/mob/observer/dead/set_respawn_timer()
-	if(config_legacy.antag_hud_restricted && has_enabled_antagHUD)
-		..(-1)
-	else
-		return 	// Don't set it, no need
-
 /**
  * Allows you to respawn, abandoning your current mob
  *
@@ -894,15 +883,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		if(!pinned.len)
 			anchored = 0
 	return 1
-
-/// Check for brain worms in head.
-/mob/proc/has_brain_worms()
-
-	for(var/I in contents)
-		if(istype(I,/mob/living/simple_mob/animal/borer))
-			return I
-
-	return 0
 
 /mob/proc/updateicon()
 	return

@@ -177,9 +177,6 @@
 			for(var/mob/living/silicon/robot/R in GLOB.mob_list)
 				if(istype(R, /mob/living/silicon/robot/drone))
 					continue
-				// Ignore antagonistic cyborgs
-				if(R.scrambledcodes)
-					continue
 				to_chat(R, SPAN_DANGER("Self-destruct command received."))
 				if(R.connected_ai)
 					to_chat(R.connected_ai, SPAN_ALERT("<br><br>ALERT - Cyborg detonation detected: [R.name]<br>"))

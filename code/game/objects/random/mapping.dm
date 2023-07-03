@@ -209,7 +209,6 @@
 				/obj/structure/closet/crate/science
 			),
 			prob(5);list(
-				/obj/item/storage/secure/briefcase/money,
 				/obj/structure/closet/crate/freezer/rations
 			),
 			prob(5);list(
@@ -387,13 +386,6 @@
 				/obj/item/gun/ballistic/contender,
 				/obj/item/gun/ballistic/p92x,
 				/obj/item/gun/ballistic/derringer,
-				/obj/structure/closet/crate
-			),
-			prob(1);list(
-				/obj/item/melee/cultblade,
-				/obj/item/clothing/suit/cultrobes,
-				/obj/item/clothing/head/culthood,
-				/obj/item/soulstone,
 				/obj/structure/closet/crate
 			),
 			prob(1);list(

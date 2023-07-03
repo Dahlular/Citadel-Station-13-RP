@@ -1,6 +1,5 @@
 //
 // Holomap generation.
-// Based on /vg/station but trimmed down (without antag stuff) and massively optimized (you should have seen it before!) ~Leshana
 //
 
 // Define what criteria makes a turf a path or not

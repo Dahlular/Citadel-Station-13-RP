@@ -4,14 +4,12 @@ import { Button, Stack } from "../../components";
 import { Window } from "../../layouts";
 import { PreferencesMenuData } from "./data";
 import { PageButton } from "./PageButton";
-import { AntagsPage } from "./AntagsPage";
 import { JobsPage } from "./JobsPage";
 import { MainPage } from "./MainPage";
 import { SpeciesPage } from "./SpeciesPage";
 import { QuirksPage } from "./QuirksPage";
 
 enum Page {
-  Antags,
   Main,
   Jobs,
   Species,
@@ -49,9 +47,6 @@ export const CharacterPreferenceWindow = (props, context) => {
   let pageContents;
 
   switch (currentPage) {
-    case Page.Antags:
-      pageContents = <AntagsPage />;
-      break;
     case Page.Jobs:
       pageContents = <JobsPage />;
       break;
@@ -127,16 +122,6 @@ export const CharacterPreferenceWindow = (props, context) => {
                   */}
 
                   Occupations
-                </PageButton>
-              </Stack.Item>
-
-              <Stack.Item grow>
-                <PageButton
-                  currentPage={currentPage}
-                  page={Page.Antags}
-                  setPage={setCurrentPage}
-                >
-                  Antagonists
                 </PageButton>
               </Stack.Item>
 

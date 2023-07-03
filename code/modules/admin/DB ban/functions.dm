@@ -350,12 +350,8 @@
 		output += "<option value='[j]'>[j]</option>"
 	for(var/j in SSjob.get_job_titles_in_department(DEPARTMENT_SYNTHETIC))
 		output += "<option value='[j]'>[j]</option>"
-	var/list/bantypes = list("traitor","changeling","operative","revolutionary","cultist","wizard") //For legacy bans.
-	for(var/antag_type in GLOB.all_antag_types) // Grab other bans.
-		var/datum/antagonist/antag = GLOB.all_antag_types[antag_type]
-		bantypes |= antag.bantype
-	for(var/j in bantypes)
-		output += "<option value='[j]'>[j]</option>"
+	//for(var/j in bantypes) MISSING!!!
+	//	output += "<option value='[j]'>[j]</option>"
 	output += "</select></td></tr></table>"
 	output += "<b>Reason:<br></b><textarea name='dbbanreason' cols='50'></textarea><br>"
 	output += "<input type='submit' value='Add ban'>"

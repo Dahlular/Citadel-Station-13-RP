@@ -247,15 +247,6 @@
 /turf/simulated/floor/reinforced/n20
 	initial_gas_mix = GAS_STRING_PRIMARY_TANK_N2O
 
-/turf/simulated/floor/cult
-	name = "engraved floor"
-	icon = 'icons/turf/flooring/cult.dmi'
-	icon_state = "cult"
-	initial_flooring = /singleton/flooring/reinforced/cult
-
-/turf/simulated/floor/cult/cultify()
-	return
-
 /turf/simulated/floor/tiled/dark
 	name = "dark floor"
 	icon_state = "dark"

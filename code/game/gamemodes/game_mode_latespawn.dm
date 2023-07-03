@@ -5,16 +5,12 @@
 
 /datum/game_mode/proc/get_usable_templates(var/list/supplied_templates)
 	var/list/usable_templates = list()
-	for(var/datum/antagonist/A in supplied_templates)
-		if(A.can_late_spawn())
-			message_admins("[uppertext(name)]: [A.id] selected for spawn attempt.")
-			usable_templates |= A
 	return usable_templates
 
 ///process(delta_time)
 ///Called by the gameSSticker
 /datum/game_mode/process(delta_time)
-	// Slow this down a bit so latejoiners have a chance of being antags.
+	// Slow this down a bit
 	process_count++
 	if(process_count >= 10)
 		process_count = 0
@@ -28,7 +24,7 @@
 
 /datum/game_mode/proc/try_latespawn(var/datum/mind/player, var/latejoin_only)
 
-	if(SSemergencyshuttle.departed || !round_autoantag)
+	if(SSemergencyshuttle.departed)
 		return
 
 	if(SSemergencyshuttle.shuttle && (SSemergencyshuttle.shuttle.moving_status == SHUTTLE_WARMUP || SSemergencyshuttle.shuttle.moving_status == SHUTTLE_INTRANSIT))
@@ -49,19 +45,8 @@
 	var/list/usable_templates
 	if(latejoin_only && latejoin_templates.len)
 		usable_templates = get_usable_templates(latejoin_templates)
-	else if (antag_templates && antag_templates.len)
-		usable_templates = get_usable_templates(antag_templates)
 	else
-		message_admins("[uppertext(name)]: Failed to find configured mode spawn templates, please disable auto-antagonists until one is added.")
-		round_autoantag = 0
+		message_admins("[uppertext(name)]: Failed to find configured mode spawn templates")
 		return
-
-	while(usable_templates.len)
-		var/datum/antagonist/spawn_antag = pick(usable_templates)
-		usable_templates -= spawn_antag
-		if(spawn_antag.attempt_late_spawn(player))
-			message_admins("[uppertext(name)]: Attempting to latespawn [spawn_antag.id]. ([spawn_antag.get_antag_count()]/[spawn_antag.cur_max])")
-			next_spawn = world.time + rand(min_autotraitor_delay, max_autotraitor_delay)
-			return
 	message_admins("[uppertext(name)]: Failed to proc a viable spawn template.")
 	next_spawn = world.time + rand(min_autotraitor_delay, max_autotraitor_delay)

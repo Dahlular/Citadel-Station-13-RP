@@ -56,8 +56,6 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
 	var/assigned_role
 	/// jobban name/id, if any
 	var/jobban_role
-	/// Automatically give them an objective and custom antag datum
-	var/automatic_objective
 	/// inject params during spawning
 	var/list/inject_params
 
@@ -197,20 +195,3 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
 
 /datum/role/ghostrole/proc/GiveCustomObjective(mob/created, objective)
 	created.GhostroleGiveCustomObjective(src, objective)
-
-/mob/proc/GhostroleGiveCustomObjective(datum/role/ghostrole/R, objective)
-	if(!mind)
-		mind_initialize()
-	if(!mind)
-		CRASH("No mind.")
-
-	store_memory("OBJECTIVE: [objective]", TRUE)
-	to_chat(src, SPAN_DANGER("An objective has been added to you by your ghostrole spawner. Remember that roleplay comes first - these are often freeform. Said objective is in your MEMORIES, due to the codebase lacking datum antagonists."))
-
-	// TODO: DATUM ANTAGS
-	// var/datum/antagonist/custom/A = mind.has_antag_datum(/datum/antagonist/custom) || mind.add_antag_datum(/datum/antagonist/custom)
-	// if(!A)
-	// 	CRASH("Failed to locate/make custom antagonist datum.")
-	// var/datum/objective/O = new(objective)
-	// O.owner = mind
-	// A.objectives += O

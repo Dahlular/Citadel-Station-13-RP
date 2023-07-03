@@ -345,25 +345,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/tourbus/engines
 	name = "\improper Tour Bus Engines"
 
-// Antag
-/area/antag/antag_base
-	name = "\improper Syndicate Outpost"
-	requires_power = 0
-
-// Antag Space Shuttle.	// Also Known as "ASS"
-/area/shuttle/antag_space
-	name = "\improper Syndicate PS"
-	icon_state = "shuttle2"
-
-// Antag ground 'shuttle'
-/area/shuttle/antag_ground
-	name = "\improper Syndicate LC"
-	icon_state = "shuttle2"
-
-//Merc shuttle
-/area/shuttle/mercenary
-	name = "\improper Mercenary Shuttle"
-
 //Vox shuttle
 /area/shuttle/skipjack
 	name = "\improper Skipjack"

@@ -106,11 +106,6 @@
 				cell_status = "[suit.cell.charge]/[suit.cell.maxcharge]"
 			STATPANEL_DATA_ENTRY("Suit charge", "[cell_status]")
 
-		if(mind)
-			if(mind.changeling)
-				STATPANEL_DATA_ENTRY("Chemical Storage", mind.changeling.chem_charges)
-				STATPANEL_DATA_ENTRY("Genetic Damage Time", mind.changeling.geneticdamage)
-				STATPANEL_DATA_ENTRY("Re-Adaptations", "[mind.changeling.readapts]/[mind.changeling.max_readapts]")
 	if(C.statpanel_tab("Species", species?.species_statpanel))
 		. += species.statpanel_status(C, src, C.statpanel_tab("Species"))
 
@@ -181,21 +176,6 @@
 			else
 				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message)
 	if(update)	UpdateDamageIcon()
-
-/mob/living/carbon/human/proc/implant_loyalty(override = FALSE) // Won't override by default.
-	if(!config_legacy.use_loyalty_implants && !override) return // Nuh-uh.
-
-	var/obj/item/implant/loyalty/L = new/obj/item/implant/loyalty(src)
-	if(L.handle_implant(src, BP_HEAD))
-		L.post_implant(src)
-
-/mob/living/carbon/human/proc/is_loyalty_implanted()
-	for(var/L in src.contents)
-		if(istype(L, /obj/item/implant/loyalty))
-			for(var/obj/item/organ/external/O in src.organs)
-				if(L in O.implants)
-					return 1
-	return 0
 
 /mob/living/carbon/human/restrained()
 	if (handcuffed)

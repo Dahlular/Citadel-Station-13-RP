@@ -76,8 +76,5 @@
 /mob/living/carbon/human/dremachir
 	species = /datum/species/dremachir
 
-/mob/living/carbon/human/shadekin
-	species = /datum/species/shadekin
-
 /mob/living/carbon/human/adherent
 	species = /datum/species/adherent

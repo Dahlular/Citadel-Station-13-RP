@@ -32,5 +32,3 @@
 	<br>\
 	This node is privately owned and maintained by NanoTrasen, and allows the crew of the station to have access to the Exonet."
 
-	description_antag = "An EMP will disable this device for a short period of time.  A longer downage can be achieved by turning it off, or rigging \
-	the APC it uses to turn off remotely, such as with a signaler in the right wire."

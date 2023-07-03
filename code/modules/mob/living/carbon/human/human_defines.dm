@@ -41,7 +41,6 @@
 		IMPLOYAL_HUD,
 		IMPTRACK_HUD,
 		IMPCHEM_HUD,
-		ANTAG_HUD,
 	)
 
 	//! Buckling - For riding.dm
@@ -133,9 +132,6 @@
 	var/wagging  = 0 //UGH.
 	var/flapping = 0
 	var/spread   = 0
-	/// What's my status?
-	var/vantag_pref = VANTAG_NONE
-	// todo: REOMVE THIS FOR SPECIES VAR CHANGES
 	/// For impersonating a bodytype.
 	var/impersonate_bodytype_legacy
 	/// for impersonating a bodytype but actually.
@@ -188,8 +184,6 @@
 	var/citizenship = ""
 	var/personal_faction = ""
 	var/religion = ""
-	var/antag_faction = ""
-	var/antag_vis = ""
 
 //! ## Equipment slots
 	var/obj/item/wear_suit = null
@@ -248,8 +242,6 @@
 
 	/// Track how many footsteps have been taken to know when to play footstep sounds
 	var/step_count = 0
-
-	can_be_antagged = TRUE
 
 	/// Used by mobs in virtual reality to point back to the "real" mob the client belongs to.
 	var/mob/living/carbon/human/vr_holder = null

@@ -103,7 +103,6 @@ GLOBAL_LIST_INIT(borg_light_color_lut, list(
 		"tolietbotsecurity" = "#027EBE",
 		"tolietbotjanitor" = "#027EBE",
 		"tolietbotsurgeon" = "#CED2D9",
-		"tolietbotantag" = "#FF0000",
 		"syndie" = "#F03333",
 		"bloodhound" = "#006FBF",
 		"treadhound" = "#006FBF",

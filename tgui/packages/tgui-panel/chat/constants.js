@@ -92,12 +92,6 @@ export const MESSAGE_TYPES = [
     selector: '.filter_looc, .looc',
   },
   {
-    type: 'antagooc',
-    name: 'AOOC',
-    description: 'Antag OOC Chat.',
-    selector: '.filter_aooc, .antagooc',
-  },
-  {
     type: MESSAGE_TYPE_ADMINPM,
     name: 'Admin PMs',
     description: 'Messages to/from admins (adminhelp)',

@@ -547,8 +547,6 @@
 		H.remove_language(id)
 	if(galactic_language)
 		H.remove_language(LANGUAGE_ID_COMMON)
-
-	remove_inherent_spells(H)
 	remove_inherent_verbs(H)
 	H.holder_type = null
 
@@ -729,15 +727,6 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 
 /datum/species/proc/add_inherent_verbs(var/mob/living/carbon/human/H)
 	add_verb(H, inherent_verbs)
-
-/datum/species/proc/add_inherent_spells(var/mob/living/carbon/human/H)
-	if(inherent_spells)
-		for(var/spell_to_add in inherent_spells)
-			var/spell/S = new spell_to_add(H)
-			H.add_spell(S)
-
-/datum/species/proc/remove_inherent_spells(var/mob/living/carbon/human/H)
-	H.spellremove()
 
 /**
  * called after a mob is **fully** spawned

@@ -346,22 +346,3 @@ var/last_chew = 0
 	desc = "A strong bola, made with a long steel chain. It looks heavy, enough so that it could trip somebody."
 	icon_state = "bola_r"
 	breakouttime = 70
-
-/obj/item/handcuffs/legcuffs/bola/cult
-	name = "\improper paranatural bola"
-	desc = "A strong bola, bound with dark magic that allows it to pass harmlessly through allied cultists. Throw it to trip and slow your victim."
-	icon_state = "bola_cult"
-	breakouttime = 60
-
-/obj/item/handcuffs/legcuffs/bola/cult/pickup(mob/user, flags, atom/oldLoc)
-	. = ..()
-	if(!iscultist(user))
-		to_chat(user, "<span class='warning'>The bola seems to take on a life of its own!</span>")
-		place_legcuffs(user)
-
-/obj/item/handcuffs/legcuffs/bola/cult/throw_impact(var/atom/target, var/mob/user, mob/living/carbon/human/H)
-	if(iscultist(user))
-		return
-	if(H.mind.isholy)
-		return
-	. = ..()

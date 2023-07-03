@@ -304,11 +304,6 @@
 		mymob.hydration_icon.screen_loc = ui_nutrition_small
 		hud_elements |= mymob.hydration_icon
 
-	mymob.shadekin_display = new /atom/movable/screen/shadekin()
-	mymob.shadekin_display.screen_loc = ui_shadekin_display
-	mymob.shadekin_display.icon_state = "shadekin"
-	hud_elements |= mymob.shadekin_display
-
 	mymob.xenochimera_danger_display = new /atom/movable/screen/xenochimera/danger_level()
 	mymob.xenochimera_danger_display.screen_loc = ui_xenochimera_danger_display
 	mymob.xenochimera_danger_display.icon_state = "danger00"

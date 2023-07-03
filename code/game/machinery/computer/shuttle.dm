@@ -58,16 +58,4 @@
 				to_chat(world, "<span class='notice'><b>All authorizations to shortening time for shuttle launch have been revoked!</b></span>")
 				src.authorized.len = 0
 				src.authorized = list(  )
-
-	else if (istype(W, /obj/item/card/emag) && !emagged)
-		var/choice = alert(user, "Would you like to launch the shuttle?","Shuttle control", "Launch", "Cancel")
-
-		if(!emagged && !SSemergencyshuttle.location() && user.get_active_held_item() == W)
-			switch(choice)
-				if("Launch")
-					to_chat(world, "<span class='notice'><b>Alert: Shuttle launch time shortened to 10 seconds!</b></span>")
-					SSemergencyshuttle.set_launch_countdown(10)
-					emagged = 1
-				if("Cancel")
-					return
 	return

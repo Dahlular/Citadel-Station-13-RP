@@ -5,7 +5,7 @@
  * - supports trigger / toggle presets
  * - supports custom tgui
  *
- * used for intrinsic species / antagonist / body abiltiies
+ * used for intrinsic species / body abiltiies
  */
 /datum/ability
 	//? basics

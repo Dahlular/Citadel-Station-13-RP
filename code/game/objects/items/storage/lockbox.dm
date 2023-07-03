@@ -72,14 +72,6 @@
 		visible_message(visual_feedback, audible_feedback)
 		return 1
 
-/obj/item/storage/lockbox/loyalty
-	name = "lockbox of loyalty implants"
-	req_access = list(ACCESS_SECURITY_EQUIPMENT)
-	starts_with = list(
-		/obj/item/implantcase/loyalty = 3,
-		/obj/item/implanter/loyalty,
-	)
-
 /obj/item/storage/lockbox/clusterbang
 	name = "lockbox of clusterbangs"
 	desc = "You have a bad feeling about opening this."

@@ -158,7 +158,7 @@
 //Body Scan Console
 /obj/machinery/body_scanconsole
 	var/obj/machinery/bodyscanner/scanner
-	var/known_implants = list(/obj/item/implant/health, /obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/language, /obj/item/implant/language/eal, /obj/item/implant/backup, /obj/item/nif, /obj/item/implant/mirror)
+	var/known_implants = list(/obj/item/implant/health, /obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/tracking, /obj/item/implant/language, /obj/item/implant/language/eal, /obj/item/implant/backup, /obj/item/nif, /obj/item/implant/mirror)
 	var/delete
 	var/temphtml
 	name = "Body Scanner Console"
@@ -290,7 +290,6 @@
 			occupantData["bodyTempC"] = H.bodytemperature-T0C
 			occupantData["bodyTempF"] = (((H.bodytemperature-T0C) * 1.8) + 32)
 
-			occupantData["hasBorer"] = H.has_brain_worms()
 
 			var/bloodData[0]
 			if(H.vessel)
@@ -476,9 +475,6 @@
 			dat += "Body Temperature: [occupant.bodytemperature-T0C]&deg;C ([occupant.bodytemperature*1.8-459.67]&deg;F)<br>"
 
 			dat += "<hr>"
-
-			if(occupant.has_brain_worms())
-				dat += "Large growth detected in frontal lobe, possibly cancerous. Surgical removal is recommended.<br>"
 
 			if(occupant.vessel)
 				var/blood_volume = round(occupant.vessel.get_reagent_amount("blood"))

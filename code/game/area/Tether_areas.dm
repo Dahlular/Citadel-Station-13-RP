@@ -1446,28 +1446,6 @@
 /area/tether/midpoint
 	name = "\improper Tether Midpoint"
 
-//////////////////////////////////
-
-/area/antag/antag_base
-	name = "\improper Syndicate Outpost"
-	requires_power = 0
-	dynamic_lighting = 0
-
-//Merc shuttle
-/area/shuttle/mercenary
-	name = "\improper Mercenary Shuttle"
-	icon_state = "shuttle2"
-
-//Vox shuttle
-/area/shuttle/skipjack
-	name = "\improper Skipjack"
-	icon_state = "shuttle2"
-
-//Ninja shuttle
-/area/shuttle/ninja
-	name = "\improper Ninjacraft"
-	icon_state = "shuttle2"
-
 //TFF 28/8/19 - cleanup of areas placement
 /area/teleporter/departing
 	name = "\improper Long-Range Teleporter"

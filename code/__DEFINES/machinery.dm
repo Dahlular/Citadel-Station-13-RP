@@ -121,8 +121,6 @@ var/list/restricted_camera_networks = list(NETWORK_ERT,NETWORK_MERCENARY,"Secret
 #define DATA_INTERCOM	1
 ///Intercoms and SBRs
 #define DATA_LOCAL		2
-///Antag interception
-#define DATA_ANTAG		3
 ///Not from a real mob
 #define DATA_FAKE		4
 //singularity defines

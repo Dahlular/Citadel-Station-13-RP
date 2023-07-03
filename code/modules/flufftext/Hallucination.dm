@@ -330,14 +330,9 @@ proc/check_panel(mob/M)
 
 GLOBAL_LIST_INIT(non_fakeattack_weapons, list(/obj/item/gun/ballistic, /obj/item/ammo_magazine/s357,\
 	/obj/item/gun/energy/crossbow, /obj/item/melee/energy/sword,\
-	/obj/item/storage/box/syndicate, /obj/item/storage/box/emps,\
-	/obj/item/cartridge/syndicate, /obj/item/clothing/under/chameleon,\
-	/obj/item/clothing/shoes/syndigaloshes, /obj/item/card/id/syndicate,\
 	/obj/item/clothing/mask/gas/voice, /obj/item/clothing/glasses/thermal,\
-	/obj/item/chameleon, /obj/item/card/emag,\
 	/obj/item/storage/toolbox/syndicate, /obj/item/aiModule,\
 	/obj/item/radio/headset/syndicate,	/obj/item/plastique,\
-	/obj/item/powersink, /obj/item/storage/box/syndie_kit,\
 	/obj/item/toy/syndicateballoon, /obj/item/gun/energy/captain,\
 	/obj/item/hand_tele, /obj/item/rcd, /obj/item/tank/jetpack,\
 	/obj/item/clothing/under/rank/captain, /obj/item/aicard,\

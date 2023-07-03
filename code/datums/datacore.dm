@@ -328,7 +328,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 		foundrecord.fields["real_rank"] = real_title
 
 /datum/datacore/proc/manifest_inject(var/mob/living/carbon/human/H)
-	if(H.mind && !player_is_antag(H.mind, only_offstation_roles = 1))
+	if(H.mind)
 		var/assignment = GetAssignment(H)
 		var/hidden
 		var/datum/role/job/J = SSjob.get_job(H.mind.assigned_role)
@@ -413,8 +413,6 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 		L.fields["faction"]		= H.personal_faction
 		L.fields["religion"]	= H.religion
 		L.fields["image"]		= icon(cached_character_icon(H), dir = SOUTH)
-		L.fields["antagfac"]	= H.antag_faction
-		L.fields["antagvis"]	= H.antag_vis
 		L.fields["offmap"]      = hidden
 		if(H.exploit_record && !jobban_isbanned(H, "Records"))
 			L.fields["exploit_record"] = H.exploit_record

@@ -8,7 +8,6 @@ var/list/admin_verbs_default = list(
 	/client/proc/debug_variables,		//allows us to -see- the variables of any instance in the game. +VAREDIT needed to modify,
 	/client/proc/mark_datum_mapview,
 	/client/proc/cmd_check_new_players,	//allows us to see every new player
-//	/client/proc/check_antagonists,		//shows all antags,
 //	/client/proc/cmd_mod_say,
 //	/client/proc/deadchat				//toggles deadchat on/off,
 //	/client/proc/toggle_ahelp_sound,
@@ -24,7 +23,6 @@ var/list/admin_verbs_admin = list(
 	/datum/admins/proc/show_traitor_panel,	//interface which shows a mob's mind.,
 	/datum/admins/proc/show_game_mode,  //Configuration window for the current game mode.,
 	/datum/admins/proc/force_mode_latespawn, //Force the mode to try a latespawn proc,
-	/datum/admins/proc/force_antag_latespawn, //Force a specific template to try a latespawn proc,
 	/datum/admins/proc/toggleenter,		//toggles whether people can join the current game,
 	/datum/admins/proc/toggleguests,	//toggles whether guests can join the current game,
 	/datum/admins/proc/announce,		//priority announce something to all clients.,
@@ -57,11 +55,9 @@ var/list/admin_verbs_admin = list(
 	/client/proc/cmd_admin_local_narrate,
 	/client/proc/cmd_admin_world_narrate,	//sends text to all players with no padding,
 	/client/proc/cmd_admin_create_centcom_report,
-	/client/proc/check_words,			//displays cult-words,
 	/client/proc/check_ai_laws,			//shows AI and borg laws,
 	/client/proc/rename_silicon,		//properly renames silicons,
 	/client/proc/manage_silicon_laws,	// Allows viewing and editing silicon laws. ,
-	/client/proc/check_antagonists,
 	/client/proc/admin_memo,			//admin memo system. show/delete/write. +SERVER needed to delete admin memos of others,
 	/client/proc/dsay,					//talk in deadchat using our ckey/fakekey,
 //	/client/proc/toggle_hear_deadcast,	//toggles whether we hear deadchat,
@@ -89,8 +85,6 @@ var/list/admin_verbs_admin = list(
 	/client/proc/global_man_up,
 	/client/proc/response_team, // Response Teams admin verb
 	/client/proc/trader_ship, // Trader ship admin verb
-	/client/proc/toggle_antagHUD_use,
-	/client/proc/toggle_antagHUD_restrictions,
 	/client/proc/allow_character_respawn, // Allows a ghost to respawn ,
 	/client/proc/event_manager_panel,
 	/client/proc/empty_ai_core_toggle_latejoin,
@@ -202,7 +196,6 @@ var/list/admin_verbs_debug = list(
 	/client/proc/cmd_debug_make_powernets,
 	/client/proc/kill_airgroup,
 	/client/proc/debug_controller,
-	/client/proc/debug_antagonist_template,
 	/client/proc/cmd_debug_mob_lists,
 	/client/proc/cmd_admin_delete,
 	/client/proc/cmd_debug_del_all,
@@ -353,7 +346,6 @@ var/list/admin_verbs_mod = list(
 	/client/proc/dsay,
 //	/datum/admins/proc/show_skills,
 	/datum/admins/proc/show_player_panel,
-	/client/proc/check_antagonists,
 	/client/proc/aooc,
 	/client/proc/jobbans,
 	/client/proc/toggle_attack_logs,
@@ -378,7 +370,6 @@ var/list/admin_verbs_event_manager = list(
 	/client/proc/cmd_admin_subtle_message,
 	/client/proc/cmd_admin_icsubtle_message,
 	/client/proc/debug_variables,
-	/client/proc/check_antagonists,
 	/client/proc/aooc,
 	/client/proc/cmd_admin_clear_mobs,
 	/datum/admins/proc/paralyze_mob,
@@ -547,15 +538,6 @@ var/list/admin_verbs_event_manager = list(
 	if(holder)
 		holder.player_panel()
 	feedback_add_details("admin_verb","PPN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	return
-
-/client/proc/check_antagonists()
-	set name = "Check Antagonists"
-	set category = "Admin"
-	if(holder)
-		holder.check_antagonists()
-		log_admin("[key_name(usr)] checked antagonists.")	//for tsar~
-	feedback_add_details("admin_verb","CHA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
 /client/proc/jobbans()
@@ -1088,17 +1070,6 @@ var/list/admin_verbs_event_manager = list(
 
 	log_admin("[key_name(usr)] told everyone to man up and deal with it.")
 	message_admins("<font color=#4F49AF>[key_name_admin(usr)] told everyone to man up and deal with it.</font>", 1)
-
-/client/proc/give_spell(mob/T as mob in GLOB.mob_list) // -- Urist
-	set category = "Fun"
-	set name = "Give Spell"
-	set desc = "Gives a spell to a mob."
-	var/spell/S = input("Choose the spell to give to that guy", "ABRAKADABRA") as null|anything in spells
-	if(!S) return
-	T.spell_list += new S
-	feedback_add_details("admin_verb","GS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	log_admin("[key_name(usr)] gave [key_name(T)] the spell [S].")
-	message_admins("<font color=#4F49AF>[key_name_admin(usr)] gave [key_name(T)] the spell [S].</font>", 1)
 
 /client/proc/toggle_AI_interact()
 	set name = "Toggle Admin AI Interact"

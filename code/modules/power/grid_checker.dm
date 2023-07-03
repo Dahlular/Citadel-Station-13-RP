@@ -6,7 +6,7 @@
 	circuit = /obj/item/circuitboard/grid_checker
 	density = 1
 	anchored = 1
-	var/power_failing = FALSE // Turns to TRUE when the grid check event is fired by the Game Master, or perhaps a cheeky antag.
+	var/power_failing = FALSE // Turns to TRUE when the grid check event is fired by the Game Master.
 	// Wire stuff below.
 	var/datum/wires/grid_checker/wires
 	var/wire_locked_out = FALSE

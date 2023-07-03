@@ -122,7 +122,7 @@
 	melee_damage_upper = 5
 	shock_resist = 1
 
-	projectiletype = /obj/projectile/beam/lightning/slime
+	//projectiletype = /obj/projectile/beam/lightning/slime  MISSING!!!
 	projectilesound = 'sound/effects/lightningbolt.ogg'
 	glow_toggle = TRUE
 
@@ -152,11 +152,6 @@
 		if(prob(25))
 			power_charge = between(0, power_charge + 1, 10)
 	..()
-
-/obj/projectile/beam/lightning/slime
-	power = 10
-	fire_sound = 'sound/effects/lightningbolt.ogg'
-
 
 /mob/living/simple_mob/slime/xenobio/dark_purple
 	desc = "This slime produces ever-coveted phoron.  Risky to handle but very much worth it."
@@ -715,7 +710,6 @@
 	for(var/mob/living/L in view(src, 2))
 		if(L.stat == DEAD || !IIsAlly(L))
 			continue
-		L.add_modifier(/datum/modifier/technomancer/haste, 5 SECONDS, src)
 
 
 /mob/living/simple_mob/slime/xenobio/light_pink

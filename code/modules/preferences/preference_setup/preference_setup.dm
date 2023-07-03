@@ -7,11 +7,6 @@
 	sort_order = 1
 	category_item_type = /datum/category_item/player_setup_item/general
 
-/datum/category_group/player_setup_category/appearance_preferences
-	name = "Antagonism"
-	sort_order = 4
-	category_item_type = /datum/category_item/player_setup_item/antagonism
-
 /datum/category_group/player_setup_category/loadout_preferences
 	name = "Loadout"
 	sort_order = 5

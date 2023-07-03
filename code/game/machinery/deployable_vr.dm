@@ -131,9 +131,6 @@
 	human_name = FALSE
 	fake_name = "swarmer"
 	construct_name = "robot"
-/obj/structure/barricade/cutout/free_antag
-	icon_state = "cutout_free_antag"
-	construct_name = "hot lizard"
 /obj/structure/barricade/cutout/deathsquad
 	icon_state = "cutout_deathsquad"
 	construct_name = "unknown"
