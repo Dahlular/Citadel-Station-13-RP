@@ -126,10 +126,6 @@ var/global/datum/ntnet/ntnet_global = new()
 		if(filename == P.filename)
 			return P
 
-// Resets the IDS alarm
-/datum/ntnet/proc/resetIDS()
-	intrusion_detection_alarm = 0
-
 /datum/ntnet/proc/toggleIDS()
 	resetIDS()
 	intrusion_detection_enabled = !intrusion_detection_enabled
