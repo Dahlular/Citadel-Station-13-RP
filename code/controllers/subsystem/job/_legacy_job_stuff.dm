@@ -460,7 +460,6 @@
 
 	H.update_hud_sec_job()
 	H.update_hud_sec_implants()
-	H.update_hud_antag()
 	H.reset_perspective(no_optimizations = TRUE)
 	return H
 

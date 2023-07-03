@@ -62,7 +62,6 @@
 
 	// todo: id, not title
 	var/assigned_role
-	// todo: id, not title; also unify /datum/role/(job | antagonist | ghostrole)?
 	var/special_role
 
 	var/role_alt_title
@@ -91,12 +90,6 @@
 
 	/// Put this here for easier tracking ingame.
 	var/datum/money_account/initial_account
-
-	/// Used for antag tcrystal trading, more info in code\game\objects\items\telecrystals.dm
-	var/accept_tcrystals = 0
-
-	/// Used for optional self-objectives that antagonists can give themselves, which are displayed at the end of the round.
-	var/ambitions
 
 	/// Used to store what traits the player had picked out in their preferences before joining, in text form.
 	var/list/traits = list()
@@ -300,46 +293,6 @@
 		if(!istype(objective))	return
 		objective.completed = !objective.completed
 
-	else if (href_list["silicon"])
-		current.update_hud_antag()
-		switch(href_list["silicon"])
-
-			if("unemag")
-				var/mob/living/silicon/robot/R = current
-				if (istype(R))
-					R.emagged = 0
-					if (R.activated(R.module.emag))
-						R.module_active = null
-					if(R.module_state_1 == R.module.emag)
-						R.module_state_1 = null
-						R.contents -= R.module.emag
-					else if(R.module_state_2 == R.module.emag)
-						R.module_state_2 = null
-						R.contents -= R.module.emag
-					else if(R.module_state_3 == R.module.emag)
-						R.module_state_3 = null
-						R.contents -= R.module.emag
-					log_admin("[key_name_admin(usr)] has unemag'ed [R].")
-
-			if("unemagcyborgs")
-				if (istype(current, /mob/living/silicon/ai))
-					var/mob/living/silicon/ai/ai = current
-					for (var/mob/living/silicon/robot/R in ai.connected_robots)
-						R.emagged = 0
-						if (R.module)
-							if (R.activated(R.module.emag))
-								R.module_active = null
-							if(R.module_state_1 == R.module.emag)
-								R.module_state_1 = null
-								R.contents -= R.module.emag
-							else if(R.module_state_2 == R.module.emag)
-								R.module_state_2 = null
-								R.contents -= R.module.emag
-							else if(R.module_state_3 == R.module.emag)
-								R.module_state_3 = null
-								R.contents -= R.module.emag
-					log_admin("[key_name_admin(usr)] has unemag'ed [ai]'s Cyborgs.")
-
 	else if (href_list["obj_announce"])
 		var/obj_count = 1
 		to_chat(current, "<font color=#4F49AF>Your current objectives:</font>")
@@ -387,16 +340,6 @@
 	has_been_rev =    0
 	rev_cooldown =    0
 	brigged_since =   -1
-
-//Antagonist role check
-/mob/living/proc/check_special_role(role)
-	if(mind)
-		if(!role)
-			return mind.special_role
-		else
-			return (mind.special_role == role) ? 1 : 0
-	else
-		return 0
 
 //Initialisation procs
 /mob/proc/mind_initialize()

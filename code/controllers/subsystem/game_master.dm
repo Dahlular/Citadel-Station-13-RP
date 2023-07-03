@@ -57,7 +57,7 @@ SUBSYSTEM_DEF(gamemaster)
 		return FALSE
 	if(ignore_time_restrictions)
 		return TRUE
-	// Last minute antagging is bad for humans to do, so the GM will respect the start and end of the round.
+	// the GM will respect the start and end of the round.
 	var/mills = round_duration_in_ds
 	var/mins = round((mills % 36000) / 600)
 	var/hours = round(mills / 36000)

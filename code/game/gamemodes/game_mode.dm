@@ -1,6 +1,3 @@
-var/global/antag_add_failed // Used in antag type voting.
-var/global/list/additional_antag_types = list()
-
 /datum/game_mode
 	var/name = "invalid"
 	var/round_description = "How did you even vote this in?"
@@ -11,15 +8,7 @@ var/global/list/additional_antag_types = list()
 
 	/// Minimum players for round to start if voted in.
 	var/required_players = 0
-	/// Minimum number of players for that game mode to be chose in Secret
-	var/required_players_secret = 0
-	/// Minimum antagonists for round to start.
-	var/required_enemies = 0
 	var/newscaster_announcements = null
-	/// Round will end when all antagonists are dead.
-	var/end_on_antag_death = 0
-	/// ERT cannot be called.
-	var/ert_disabled = 0
 	/// Disable respawn during this round.
 	var/deny_respawn = 0
 
@@ -31,22 +20,6 @@ var/global/list/additional_antag_types = list()
 	/// Will the shuttle automatically be recalled?
 	var/auto_recall_shuttle = 0
 
-	/// Core antag templates to spawn.
-	var/list/antag_tags = list()
-	/// Extra antagonist types to include.
-	var/list/antag_templates
-	var/list/latejoin_templates = list()
-	/// Will this round attempt to periodically spawn more antagonists?
-	var/round_autoantag = 0
-	/// Coefficient for scaling max antagonists to player count.
-	var/antag_scaling_coeff = 5
-	/// Will only start if all templates are checked and can spawn.
-	var/require_all_templates = 0
-
-	/// See nuclearbomb.dm and malfunction.dm.
-	var/station_was_nuked = 0
-	/// Sit back and relax
-	var/explosion_in_progress = 0
 	/// Lower bound on time before intercept arrives (in tenths of seconds)
 	var/waittime_l = 600
 	/// Upper bound on time before intercept arrives (in tenths of seconds)
@@ -69,8 +42,6 @@ var/global/list/additional_antag_types = list()
 				announce_ert_disabled()
 			if("shuttle_recall")
 				auto_recall_shuttle = !auto_recall_shuttle
-			if("autotraitor")
-				round_autoantag = !round_autoantag
 		message_admins("Admin [key_name_admin(usr)] toggled game mode option '[href_list["toggle"]]'.")
 	else if(href_list["set"])
 		var/choice = ""
@@ -80,11 +51,6 @@ var/global/list/additional_antag_types = list()
 				if(!choice || choice < 1 || choice > 20)
 					return
 				shuttle_delay = choice
-			if("antag_scaling")
-				choice = input("Enter a new antagonist cap scaling coefficient.") as num
-				if(isnull(choice) || choice < 0 || choice > 100)
-					return
-				antag_scaling_coeff = choice
 			if("event_modifier_moderate")
 				choice = input("Enter a new moderate event time modifier.") as num
 				if(isnull(choice) || choice < 0 || choice > 100)
@@ -203,15 +169,6 @@ var/global/list/additional_antag_types = list()
 		return FALSE
 	if(SSemergencyshuttle.returned() || station_was_nuked)
 		return TRUE
-	if(station_was_nuked)
-		return TRUE
-
-	if(end_on_antag_death && antag_templates && antag_templates.len)
-		if(config_legacy.continous_rounds)
-			SSemergencyshuttle.auto_recall = FALSE
-			return FALSE
-		return TRUE
-
 	if(force_ending)
 		return TRUE
 
@@ -281,51 +238,6 @@ var/global/list/additional_antag_types = list()
 
 /datum/game_mode/proc/check_win() //universal trigger to be called at mob death, nuke explosion, etc. To be called from everywhere.
 	return 0
-
-/datum/game_mode/proc/get_players_for_role(var/role, var/antag_id, var/ghosts_only)
-	var/list/players = list()
-	var/list/candidates = list()
-
-	// If this is being called post-roundstart then it doesn't care about ready status.
-	if(SSticker && SSticker.current_state == GAME_STATE_PLAYING)
-		for(var/mob/player in GLOB.player_list)
-			if(!player.client)
-				continue
-			if(istype(player, /mob/new_player))
-				continue
-			if(istype(player, /mob/observer/dead) && !ghosts_only)
-				continue
-			if(!role || (player.client.prefs.be_special & role))
-				log_debug(SPAN_DEBUG("[player.key] had [antag_id] enabled, so we are drafting them."))
-				candidates |= player.mind
-	else
-		// Assemble a list of active players without jobbans.
-		for(var/mob/new_player/player in GLOB.player_list)
-			if( player.client && player.ready )
-				players += player
-
-		// Get a list of all the people who want to be the antagonist for this round
-		for(var/mob/new_player/player in players)
-			if(!role || (player.client.prefs.be_special & role))
-				log_debug(SPAN_DEBUG("[player.key] had [antag_id] enabled, so we are drafting them."))
-				candidates += player.mind
-				players -= player
-
-		// Below is commented out as an attempt to solve an issue of too little people wanting to join the round due to wanting to have cake and eat it too.
-		/*
-		// If we don't have enough antags, draft people who voted for the round.
-		if(candidates.len < required_enemies)
-			for(var/mob/new_player/player in players)
-				if(player.ckey in round_voters)
-					log_debug(SPAN_DEBUG("[player.key] voted for this round, so we are drafting them."))
-					candidates += player.mind
-					players -= player
-					break
-		*/
-
-	return candidates		// Returns: The number of people who had the antagonist role set to yes, regardless of recomended_enemies, if that number is greater than required_enemies
-							//			required_enemies if the number of people with that role set to yes is less than recomended_enemies,
-							//			Less if there are not enough valid players in the game entirely to make required_enemies.
 
 /datum/game_mode/proc/num_players()
 	. = 0

@@ -212,15 +212,6 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 			if(R.receive_range(display_freq, level) > -1)
 				radios |= R
 
-	// --- Broadcast to antag radios! ---
-
-	else if(data == DATA_ANTAG)
-		for(var/antag_freq in ANTAG_FREQS)
-			var/datum/radio_frequency/antag_connection = radio_controller.return_frequency(antag_freq)
-			for (var/obj/item/radio/R in antag_connection.devices["[RADIO_CHAT]"])
-				if(R.receive_range(antag_freq, level) > -1)
-					radios |= R
-
 	// --- Broadcast to ALL radio devices ---
 
 	else
@@ -250,10 +241,6 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 			continue
 
 		if(istype(R, /mob/new_player)) // we don't want new players to hear messages. rare but generates runtimes.
-			continue
-
-		// Ghosts hearing all radio chat don't want to hear syndicate intercepts, they're duplicates
-		if(data == DATA_ANTAG && istype(R, /mob/observer/dead) && R.is_preference_enabled(/datum/client_preference/ghost_radio))
 			continue
 
 		// --- Check for compression ---
@@ -292,8 +279,6 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		var/freq_text = get_frequency_name(display_freq)
 
 		var/part_b_extra = ""
-		if(data == DATA_ANTAG) // intercepted radio message
-			part_b_extra = " <i>(Intercepted)</i>"
 		var/part_a = "<span class='[frequency_span_class(display_freq)]'>[icon2html(radio, world)]<b>\[[freq_text]\][part_b_extra]</b> <span class='name'>" // goes in the actual output
 
 		// --- Some more pre-message formatting ---
@@ -412,18 +397,6 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 			if(position && position.z == level)
 				receive |= R.send_hear(display_freq)
 
-
-	// --- Broadcast to antag radios! ---
-
-	else if(data == DATA_ANTAG)
-		for(var/freq in ANTAG_FREQS)
-			var/datum/radio_frequency/antag_connection = radio_controller.return_frequency(freq)
-			for (var/obj/item/radio/R in antag_connection.devices["[RADIO_CHAT]"])
-				var/turf/position = get_turf(R)
-				if(position && position.z == level)
-					receive |= R.send_hear(freq)
-
-
 	// --- Broadcast to ALL radio devices ---
 
 	else
@@ -480,8 +453,6 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		// --- Some more pre-message formatting ---
 
 		var/part_b_extra = ""
-		if(data == DATA_ANTAG) // intercepted radio message
-			part_b_extra = " <i>(Intercepted)</i>"
 
 		// Create a radio headset for the sole purpose of using its icon
 		var/obj/item/radio/headset/radio = new

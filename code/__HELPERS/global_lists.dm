@@ -184,13 +184,6 @@ var/global/list/player_sizes_list = list(
 		"Small" 	= RESIZE_SMALL,
 		"Tiny" 		= RESIZE_TINY)
 
-/// Stores vantag settings indexed by name.
-var/global/list/vantag_choices_list = list(
-		VANTAG_NONE		=	"No Involvement",
-		VANTAG_VORE		=	"Be Prey",
-		VANTAG_KIDNAP	=	"Be Kidnapped",
-		VANTAG_KILL		=	"Be Killed")
-
 /// Blacklist to exclude items from object ingestion. Digestion blacklist located in digest_act_vr.dm
 GLOBAL_LIST_INIT(item_vore_blacklist, list(
 		/obj/item/hand_tele,

@@ -224,10 +224,6 @@
 	name = "Camera #[rand(1000,9999)]"
 	c_tag = name
 
-/obj/machinery/camera/bug/spy
-	// These cheap toys are accessible from the mercenary camera console as well - only the antag ones though!
-	network = list(NETWORK_MERCENARY)
-
 /obj/machinery/camera/bug/spy/Initialize(mapload)
 	. = ..()
 	name = "DV-136ZB #[rand(1000,9999)]"

@@ -222,8 +222,6 @@
 					log_admin("[key_name(usr)] sent the Emergency Shuttle back")
 					message_admins("<font color=#4F49AF>[key_name_admin(usr)] sent the Emergency Shuttle back.</font>", 1)
 
-		href_list["secretsadmin"] = "check_antagonist"
-
 	else if(href_list["edit_shuttle_time"])
 		if(!check_rights(R_SERVER))	return
 
@@ -244,15 +242,12 @@
 		else
 			alert("The shuttle is neither counting down to launch nor is it in transit. Please try again when it is.")
 
-		href_list["secretsadmin"] = "check_antagonist"
-
 	else if(href_list["delay_round_end"])
 		if(!check_rights(R_SERVER|R_EVENT))	return
 
 		SSticker.delay_end = !SSticker.delay_end
 		log_admin("[key_name(usr)] [SSticker.delay_end ? "delayed the round end" : "has made the round end normally"].")
 		message_admins("<font color=#4F49AF>[key_name(usr)] [SSticker.delay_end ? "delayed the round end" : "has made the round end normally"].</font>", 1)
-		href_list["secretsadmin"] = "check_antagonist"
 
 	else if(href_list["simplemake"])
 
@@ -585,10 +580,6 @@
 			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=pAI;jobban4=\ref[M]'><font color=red>pAI</font></a></td>"
 		else
 			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=pAI;jobban4=\ref[M]'>pAI</a></td>"
-		if(jobban_isbanned(M, "AntagHUD"))
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=AntagHUD;jobban4=\ref[M]'><font color=red>AntagHUD</font></a></td>"
-		else
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=AntagHUD;jobban4=\ref[M]'>AntagHUD</a></td>"
 		jobs += "</tr></table>"
 
 	//Other races (Blue) ... And also graffiti.
@@ -1307,9 +1298,6 @@
 		if(istype(O))
 			O.ManualFollow(M)
 
-	else if(href_list["check_antagonist"])
-		check_antagonists()
-
 	else if(href_list["take_question"])
 
 		var/mob/M = locate(href_list["take_question"])
@@ -1363,12 +1351,6 @@
 				location_description = "([M.loc == T ? "at coordinates " : "in [M.loc] at coordinates "] [T.x], [T.y], [T.z] in area <b>[T.loc]</b>)"
 			else
 				location_description = "([M.loc == T ? "at coordinates " : "in [M.loc] at coordinates "] [T.x], [T.y], [T.z])"
-
-		//Job + antagonist
-		if(M.mind)
-			special_role_description = "Role: <b>[M.mind.assigned_role]</b>; Antagonist: <font color='red'><b>[M.mind.special_role]</b></font>; Has been rev: [(M.mind.has_been_rev)?"Yes":"No"]"
-		else
-			special_role_description = "Role: <i>Mind datum missing</i> Antagonist: <i>Mind datum missing</i>; Has been rev: <i>Mind datum missing</i>;"
 
 		//Health
 		if(isliving(M))

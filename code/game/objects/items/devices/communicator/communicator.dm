@@ -146,7 +146,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 
 // Proc: emp_act()
 // Parameters: None
-// Description: Drops all calls when EMPed, so the holder can then get murdered by the antagonist.
+// Description: Drops all calls when EMPed.
 /obj/item/communicator/emp_act()
 	close_connection(reason = "Hardware error de%#_^@%-BZZZZZZZT")
 

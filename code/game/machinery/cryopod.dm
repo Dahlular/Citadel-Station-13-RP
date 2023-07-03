@@ -508,7 +508,7 @@
 
 	icon_state = base_icon_state
 
-	//TODO: Check objectives/mode, update new targets if this mob is the target, spawn new antags?
+	//TODO: Check objectives/mode, update new targets if this mob is the target?
 
 
 	if(!silent)

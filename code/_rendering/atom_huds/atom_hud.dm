@@ -8,7 +8,6 @@ GLOBAL_LIST_INIT(huds, list(
 	DATA_HUD_SECURITY_ADVANCED = new /datum/atom_hud/data/human/security/advanced,
 	DATA_HUD_MEDICAL = new /datum/atom_hud/data/human/medical,
 	DATA_HUD_ID_JOB = new /datum/atom_hud/data/human/job_id,
-	HUD_ANTAG = new /datum/atom_hud/antag,
 	WORLD_BENDER_HUD_ANIMALS = new /datum/atom_hud/world_bender/animals,
 	))
 

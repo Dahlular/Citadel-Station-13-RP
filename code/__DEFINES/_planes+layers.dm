@@ -19,7 +19,7 @@
  *  - You can: Make certain players not see an entire plane,
  *  - Make an entire plane have a certain colour matrices,
  *  - Make an entire plane transform in a certain way,
- *  - Make players see a plane which is hidden to normal players - I intend to implement this with the antag HUDs for example.
+ *  - Make players see a plane which is hidden to normal players.
  *  - Planesmasters can be used as a neater way to deal with client images or potentially to do some neat things
  *
  *? How do planes work?

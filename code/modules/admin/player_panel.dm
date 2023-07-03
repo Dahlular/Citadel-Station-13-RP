@@ -61,7 +61,7 @@
 
 				}
 
-				function expand(id,job,name,real_name,image,key,ip,antagonist,ref){
+				function expand(id,job,name,real_name,image,key,ip,NoLongerUsed,ref){
 
 					clearAll();
 
@@ -82,8 +82,6 @@
 					body += "<a href='?src=\ref[usr];priv_msg=\ref"+ref+"'>PM</a> - "
 					body += "<a href='?src=\ref[src];subtlemessage="+ref+"'>SM</a> - "
 					body += "<a href='?src=\ref[src];adminplayerobservefollow="+ref+"'>FLW</a><br>"
-					if(antagonist > 0)
-						body += "<font size='2'><a href='?src=\ref[src];check_antagonist=1'><font color='red'><b>Antagonist</b></font></a></font>";
 
 					body += "</td></tr></table>";
 
@@ -194,7 +192,7 @@
 			<tr id='title_tr'>
 				<td align='center'>
 					<font size='5'><b>Player panel</b></font><br>
-					Hover over a line to see more information - <a href='?src=\ref[src];check_antagonist=1'>Check antagonists</a>
+					Hover over a line to see more information
 					<p>
 				</td>
 			</tr>
@@ -220,7 +218,6 @@
 			var/color = "#e6e6e6"
 			if(i%2 == 0)
 				color = "#f2f2f2"
-			var/is_antagonist = is_special_character(M)
 
 			var/M_job = ""
 
@@ -288,7 +285,7 @@
 					<td align='center' bgcolor='[color]'>
 						<span id='notice_span[i]'></span>
 						<a id='link[i]'
-						onmouseover='expand("item[i]","[M_job]","[M_name]","[M_rname]","--unused--","[M_key]","[M.lastKnownIP]",[is_antagonist],"\ref[M]")'
+						onmouseover='expand("item[i]","[M_job]","[M_name]","[M_rname]","--unused--","[M_key]","[M.lastKnownIP]",false,"\ref[M]")'
 						>
 						<span id='search[i]'><b>[M_name] - [M_rname] - [M_key] ([M_job])</b></span>
 						</a>
@@ -379,33 +376,3 @@
 	dat += "</table></body></html>"
 
 	usr << browse(dat, "window=players;size=640x480")
-
-
-
-/datum/admins/proc/check_antagonists()
-	if (SSticker && SSticker.current_state >= GAME_STATE_PLAYING)
-		var/dat = "<html><head><title>Round Status</title></head><body><h1><B>Round Status</B></h1>"
-		dat += "Current Game Mode: <B>[SSticker.mode.name]</B><BR>"
-		dat += "Round Duration: <B>[roundduration2text()]</B><BR>"
-		dat += "<B>Emergency shuttle</B><BR>"
-		if (!SSemergencyshuttle.online())
-			dat += "<a href='?src=\ref[src];call_shuttle=1'>Call Shuttle</a><br>"
-		else
-			if (SSemergencyshuttle.wait_for_launch)
-				var/timeleft = SSemergencyshuttle.estimate_launch_time()
-				dat += "ETL: <a href='?src=\ref[src];edit_shuttle_time=1'>[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]</a><BR>"
-
-			else if (SSemergencyshuttle.shuttle.has_arrive_time())
-				var/timeleft = SSemergencyshuttle.estimate_arrival_time()
-				dat += "ETA: <a href='?src=\ref[src];edit_shuttle_time=1'>[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]</a><BR>"
-				dat += "<a href='?src=\ref[src];call_shuttle=2'>Send Back</a><br>"
-
-			if (SSemergencyshuttle.shuttle.moving_status == SHUTTLE_WARMUP)
-				dat += "Launching now..."
-
-		dat += "<a href='?src=\ref[src];delay_round_end=1'>[SSticker.delay_end ? "End Round Normally" : "Delay Round End"]</a><br>"
-		dat += "<hr>"
-		dat += "</body></html>"
-		usr << browse(dat, "window=roundstatus;size=400x500")
-	else
-		alert("The game hasn't started yet!")

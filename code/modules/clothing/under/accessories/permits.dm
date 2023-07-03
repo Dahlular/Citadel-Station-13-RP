@@ -1,4 +1,4 @@
-//This'll be used for gun permits, such as for heads of staff, antags, and bartenders
+//This'll be used for gun permits, such as for heads of staff and bartenders
 
 /obj/item/clothing/accessory/permit
 	name = "permit"

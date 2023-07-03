@@ -31,9 +31,6 @@
 /datum/atom_hud/data/human/security/advanced
 	hud_icons = list(ID_HUD, IMPTRACK_HUD, IMPLOYAL_HUD, IMPCHEM_HUD, WANTED_HUD)
 
-/datum/atom_hud/antag
-	hud_icons = list(ANTAG_HUD)
-
 // one of these days we'll make /datum/hud_supplier
 // and we can standardize everything
 // today is not that day for i have no patience or motivation left
@@ -133,18 +130,6 @@
 				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Released"))
 					holder.icon_state = "huddischarged"
 					break
-
-/mob/proc/update_hud_antag()
-	var/image/holder = hud_list[ANTAG_HUD]
-	if(!holder)
-		return
-	holder.icon_state = ""
-	if(mind?.special_role)
-		// ANTAG DATUM REFACTOR WHEN AUHGAOUSHGODHGHOAD
-		if(hud_icon_reference[mind.special_role])
-			holder.icon_state = hud_icon_reference[mind.special_role]
-		else
-			holder.icon_state = "syndicate"
 
 /proc/RoundHealth(health, icon = GLOB.hud_icon_files[LIFE_HUD])
 	var/list/icon_states = icon_states(icon)

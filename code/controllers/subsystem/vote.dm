@@ -133,8 +133,6 @@ SUBSYSTEM_DEF(vote)
 
 	else
 		text += "<b>Vote Result: Inconclusive - No Votes!</b>"
-		if(mode == VOTE_ADD_ANTAGONIST)
-			antag_add_failed = 1
 	log_vote(text)
 	to_chat(world, "<font color='purple'>[text]</font>")
 
@@ -305,12 +303,6 @@ SUBSYSTEM_DEF(vote)
 			. += "\t(<a href='?src=\ref[src];vote=toggle_gamemode'>[config_legacy.allow_vote_mode ? "Allowed" : "Disallowed"]</a>)"
 		. += "</li><li>"
 
-		if(!antag_add_failed && config_legacy.allow_extra_antags)
-			. += "<a href='?src=\ref[src];vote=add_antagonist'>Add Antagonist Type</a>"
-		else
-			. += "<font color='grey'>Add Antagonist (Disallowed)</font>"
-		. += "</li>"
-
 		if(admin)
 			. += "<li><a href='?src=\ref[src];vote=custom'>Custom</a></li>"
 		. += "</ul><hr>"
@@ -344,9 +336,6 @@ SUBSYSTEM_DEF(vote)
 		if(VOTE_CREW_TRANSFER)
 			if(config_legacy.allow_vote_restart || usr.client.holder)
 				initiate_vote(VOTE_CREW_TRANSFER, usr.key)
-		if(VOTE_ADD_ANTAGONIST)
-			if(config_legacy.allow_extra_antags || usr.client.holder)
-				initiate_vote(VOTE_ADD_ANTAGONIST, usr.key)
 		if(VOTE_CUSTOM)
 			if(usr.client.holder)
 				initiate_vote(VOTE_CUSTOM, usr.key)

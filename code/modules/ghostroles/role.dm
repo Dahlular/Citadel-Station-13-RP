@@ -207,10 +207,3 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
 	store_memory("OBJECTIVE: [objective]", TRUE)
 	to_chat(src, SPAN_DANGER("An objective has been added to you by your ghostrole spawner. Remember that roleplay comes first - these are often freeform. Said objective is in your MEMORIES, due to the codebase lacking datum antagonists."))
 
-	// TODO: DATUM ANTAGS
-	// var/datum/antagonist/custom/A = mind.has_antag_datum(/datum/antagonist/custom) || mind.add_antag_datum(/datum/antagonist/custom)
-	// if(!A)
-	// 	CRASH("Failed to locate/make custom antagonist datum.")
-	// var/datum/objective/O = new(objective)
-	// O.owner = mind
-	// A.objectives += O

@@ -413,8 +413,6 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 		L.fields["faction"]		= H.personal_faction
 		L.fields["religion"]	= H.religion
 		L.fields["image"]		= icon(cached_character_icon(H), dir = SOUTH)
-		L.fields["antagfac"]	= H.antag_faction
-		L.fields["antagvis"]	= H.antag_vis
 		L.fields["offmap"]      = hidden
 		if(H.exploit_record && !jobban_isbanned(H, "Records"))
 			L.fields["exploit_record"] = H.exploit_record

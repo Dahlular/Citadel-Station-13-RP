@@ -15,7 +15,7 @@
 #define INV_OP_DIRECTLY_DROPPING	(1<<6)
 /// hint: we are re-equipping between slots
 #define INV_OP_REEQUIPPING			(1<<7)
-/// hint: we are doing this during outfit equip, antag creation, or otherwise roundstart operatoins
+/// hint: we are doing this during outfit equip, or otherwise roundstart operatoins
 #define INV_OP_CREATION				(1<<8)
 /// hint: we are chained through by an accessory's parent
 #define INV_OP_IS_ACCESSORY			(1<<9)
