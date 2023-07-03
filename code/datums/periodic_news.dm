@@ -15,7 +15,7 @@
 
 /datum/news_announcement/New() // I'm sorry...
 	..()
-	channel_name = "The [GLOB.using_map.starsys_name] Times"
+	channel_name = "The [(LEGACY_MAP_DATUM).starsys_name] Times"
 
 // This is now a blank slate for periodic news Tag - ADDFLAVOR
 

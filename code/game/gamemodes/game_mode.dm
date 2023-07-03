@@ -73,7 +73,6 @@
 
 /datum/game_mode/proc/announce() //to be called when round starts
 	to_chat(world, "<B>The current game mode is [capitalize(name)]!</B>")
-	to_chat(world, "<B>The current engine is [GLOB.used_engine]!</B>")//Actually, why not expand this....
 	if(round_description) to_chat(world, "[round_description]")
 ///can_start()
 ///Checks to see if the game can be setup and ran with the current number of players or whatnot.
@@ -335,7 +334,6 @@
 
 	if(master_mode != "secret")
 		to_chat(usr, "<b>The roundtype is [capitalize(SSticker.mode.name)]</b>")
-		to_chat(usr, "<b>The engine is [GLOB.used_engine]</b>")
 		if(SSticker.mode.round_description)
 			to_chat(usr, "<i>[SSticker.mode.round_description]</i>")
 		if(SSticker.mode.extended_round_description)

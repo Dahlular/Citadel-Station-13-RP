@@ -33,7 +33,6 @@
 	var/allow_vote_mode = 0				// allow votes to change mode
 	var/allow_admin_jump = 1			// allows admin jumping
 	var/allow_admin_spawning = 1		// allows admin item spawning
-	var/allow_admin_rev = 1				// allows admin revives
 	var/vote_delay = 6000				// minimum time between voting sessions (deciseconds, 10 minute default)
 	var/vote_period = 600				// length of voting period (deciseconds, default 1 minute)
 	var/vote_autotransfer_initial = 108000 // Length of time before the first autotransfer vote is called
@@ -104,17 +103,7 @@
 	var/alien_to_human_ratio = 0.5
 	var/guests_allowed = 1
 	var/debugparanoid = 0
-	var/panic_bunker = 0
-	var/panic_bunker_message = "Sorry, this server is not accepting connections from never seen before players."
 	var/paranoia_logging = 0
-
-	var/ip_reputation = FALSE		//Should we query IPs to get scores? Generates HTTP traffic to an API service.
-	var/ipr_email					//Left null because you MUST specify one otherwise you're making the internet worse.
-	var/ipr_block_bad_ips = FALSE	//Should we block anyone who meets the minimum score below? Otherwise we just log it (If paranoia logging is on, visibly in chat).
-	var/ipr_bad_score = 1			//The API returns a value between 0 and 1 (inclusive), with 1 being 'definitely VPN/Tor/Proxy'. Values equal/above this var are considered bad.
-	var/ipr_allow_existing = FALSE 	//Should we allow known players to use VPNs/Proxies? If the player is already banned then obviously they still can't connect.
-	var/ipr_minimum_age = 5
-	var/ipqualityscore_apikey //API key for ipqualityscore.com
 
 	var/serverurl
 	var/server
@@ -387,9 +376,6 @@
 
 				if ("allow_admin_jump")
 					config_legacy.allow_admin_jump = 1
-
-				if("allow_admin_rev")
-					config_legacy.allow_admin_rev = 1
 
 				if ("allow_admin_spawning")
 					config_legacy.allow_admin_spawning = 1
@@ -696,16 +682,16 @@
 					config_legacy.use_overmap = 1
 /*
 				if("station_levels")
-					GLOB.using_map.station_levels = text2numlist(value, ";")
+					(LEGACY_MAP_DATUM).station_levels = text2numlist(value, ";")
 
 				if("admin_levels")
-					GLOB.using_map.admin_levels = text2numlist(value, ";")
+					(LEGACY_MAP_DATUM).admin_levels = text2numlist(value, ";")
 
 				if("contact_levels")
-					GLOB.using_map.contact_levels = text2numlist(value, ";")
+					(LEGACY_MAP_DATUM).contact_levels = text2numlist(value, ";")
 
 				if("player_levels")
-					GLOB.using_map.player_levels = text2numlist(value, ";")
+					(LEGACY_MAP_DATUM).player_levels = text2numlist(value, ";")
 */
 				if("expected_round_length")
 					config_legacy.expected_round_length = MinutesToTicks(text2num(value))
@@ -756,32 +742,8 @@
 				if("radiation_lower_limit")
 					radiation_lower_limit = text2num(value)
 
-				if ("panic_bunker")
-					config_legacy.panic_bunker = 1
-
-				if ("panic_bunker_message")
-					config_legacy.panic_bunker_message = value
-
 				if ("paranoia_logging")
 					config_legacy.paranoia_logging = 1
-
-				if("ip_reputation")
-					config_legacy.ip_reputation = 1
-
-				if("ipr_email")
-					config_legacy.ipr_email = value
-
-				if("ipr_block_bad_ips")
-					config_legacy.ipr_block_bad_ips = 1
-
-				if("ipr_bad_score")
-					config_legacy.ipr_bad_score = text2num(value)
-
-				if("ipr_allow_existing")
-					config_legacy.ipr_allow_existing = 1
-
-				if("ipr_minimum_age")
-					config_legacy.ipr_minimum_age = text2num(value)
 
 				if("minute_click_limit")
 					config_legacy.minute_click_limit = text2num(value)

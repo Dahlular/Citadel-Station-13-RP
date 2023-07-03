@@ -105,7 +105,8 @@ var/list/admin_verbs_admin = list(
 	/client/proc/addbunkerbypass,
 	/client/proc/revokebunkerbypass,
 	/client/proc/toggle_AI_interact,
-	/client/proc/list_event_volunteers
+	/client/proc/list_event_volunteers,
+	/client/proc/set_headshot_for_user
 	)
 
 var/list/admin_verbs_ban = list(
@@ -171,7 +172,6 @@ var/list/admin_verbs_server = list(
 	/client/proc/cmd_admin_delete, // Delete an instance/object/mob/etc,
 	/client/proc/cmd_debug_del_all,
 	/client/proc/cmd_admin_clear_mobs,
-	/datum/admins/proc/adrev,
 	/datum/admins/proc/adspawn,
 	/datum/admins/proc/adjump,
 	/datum/admins/proc/toggle_aliens,
@@ -182,9 +182,9 @@ var/list/admin_verbs_server = list(
 	/client/proc/modify_server_news,
 	/client/proc/recipe_dump,
 	/client/proc/panicbunker,
-	/client/proc/ip_reputation,
 	/client/proc/paranoia_logging,
-	/client/proc/reestablish_db_connection
+	/client/proc/reestablish_db_connection,
+	/client/proc/change_next_map,
 	)
 
 var/list/admin_verbs_debug = list(
@@ -306,7 +306,6 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/everyone_random,
 	/client/proc/reload_configuration,
 	/datum/admins/proc/toggleAI,
-	/datum/admins/proc/adrev,
 	/datum/admins/proc/adspawn,
 	/datum/admins/proc/adjump,
 	/client/proc/restart_controller,

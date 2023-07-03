@@ -78,7 +78,7 @@ var/list/global/tank_gauge_cache = list()
 
 	. = ..()
 
-/obj/item/tank/examine(mob/user)
+/obj/item/tank/examine(mob/user, dist)
 	. = ..()
 	if(.)
 		var/celsius_temperature = air_contents.temperature - T0C
