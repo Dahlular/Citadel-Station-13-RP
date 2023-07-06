@@ -112,8 +112,7 @@
 		/datum/species/unathi,
 		/datum/species/tajaran,
 		/datum/species/skrell,
-		/datum/species/akula,
-		/datum/species/diona
+		/datum/species/akula
 		// /datum/species/lizard,
 		// /datum/species/phoronoid,
 		// /datum/species/jelly,

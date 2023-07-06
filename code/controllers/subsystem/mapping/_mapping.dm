@@ -39,8 +39,8 @@ SUBSYSTEM_DEF(mapping)
 		build_overmap()
 
 	// basemap - REEVALUATE when runtime maploading is in
-	transit = z_list[1]
-	initialize_reserved_level(transit.z_value)
+	//transit = z_list[1] MISSING!!!(???)
+	//initialize_reserved_level(transit.z_value)
 	// initialize_reserved_level(transit.z_value)
 
 	//Set up spawn points.

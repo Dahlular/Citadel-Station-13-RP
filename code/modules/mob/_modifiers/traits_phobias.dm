@@ -395,8 +395,6 @@
 
 	var/fear_amount = 0
 	for(var/atom/thing in view(5, holder)) // See haemophobia for why this is 5.
-		if(istype(thing, /obj/structure/blob)) // blobs are uncomfortable things
-			fear_amount += 3
 
 		if(istype(thing, /obj/effect/alien/resin)) // Resin's a bit slimy according to its own description.
 			fear_amount += 1

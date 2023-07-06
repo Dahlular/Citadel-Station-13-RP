@@ -18,10 +18,6 @@
 
 // Overrides for behavior on specific types
 
-/obj/structure/blob/tesla_act(power)
-	..()
-	adjust_integrity(-power/400)
-
 /obj/machinery/nuclearbomb/tesla_act(power, explosive)
 	..()
 	if(explosive)

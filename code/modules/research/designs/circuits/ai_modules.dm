@@ -81,27 +81,9 @@
 /datum/design/aimodule/core/AssembleDesignDesc()
 	desc = "Allows for the construction of \a '[name]' AI core module."
 
-/datum/design/aimodule/core/freeformcore
-	name = "Freeform"
-	id = "freeformcore"
-	build_path = /obj/item/aiModule/freeformcore
-	sort_string = "XACAA"
-
 /datum/design/aimodule/core/asimov
 	name = "Asimov"
 	id = "asimov"
 	build_path = /obj/item/aiModule/asimov
 	sort_string = "XACAB"
 
-/datum/design/aimodule/core/paladin
-	name = "P.A.L.A.D.I.N."
-	id = "paladin"
-	build_path = /obj/item/aiModule/paladin
-	sort_string = "XACAC"
-
-/datum/design/aimodule/core/tyrant
-	name = "T.Y.R.A.N.T."
-	id = "tyrant"
-	req_tech = list(TECH_DATA = 4, TECH_ILLEGAL = 2, TECH_MATERIAL = 6)
-	build_path = /obj/item/aiModule/tyrant
-	sort_string = "XACAD"

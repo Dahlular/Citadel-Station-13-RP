@@ -252,7 +252,6 @@
 				mode_names[M.config_tag] = M.name
 				probabilities[M.config_tag] = M.probability
 				player_requirements[M.config_tag] = M.required_players
-				player_requirements_secret[M.config_tag] = M.required_players_secret
 				if (M.votable)
 					src.votable_modes += M.config_tag
 	src.votable_modes += "secret"

@@ -180,8 +180,6 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
 /datum/role/ghostrole/proc/PostInstantiate(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
 	Greet(created, spawnpoint, params)
 	ImportantInfo(created, spawnpoint, params)
-	if(automatic_objective)
-		GiveCustomObjective(created, automatic_objective)
 	spawns++
 	spawnpoint?.OnSpawn(created, src)
 	instantiator.AfterSpawn(created, params)
@@ -193,6 +191,3 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
 	if(!jobban_role)
 		return FALSE
 	return jobban_isbanned(C.mob, jobban_role)
-
-/datum/role/ghostrole/proc/GiveCustomObjective(mob/created, objective)
-	created.GhostroleGiveCustomObjective(src, objective)

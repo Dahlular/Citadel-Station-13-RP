@@ -219,7 +219,7 @@
 		if(17)
 			//cultblade
 			apply_prefix = 0
-			new_item = new /obj/item/melee/cultblade(src.loc)
+			new_item = new /obj/item/melee/kanabo(src.loc)
 			apply_material_decorations = 0
 			apply_image_decorations = 0
 		if(18)

@@ -102,12 +102,3 @@
 	color = "#EEEEEE"
 	difficulty = EVENT_LEVEL_MODERATE
 	weaknesses = OVERMAP_WEAKNESS_EMP
-
-/obj/effect/overmap/event/pirate
-	name = "unflagged cruiser"
-	events = list(/datum/event/pirate/overmap)
-	opacity = 0
-	event_icon_states = list("pirate")
-	color = "#DD4444"
-	difficulty = EVENT_LEVEL_MAJOR
-	weaknesses = OVERMAP_WEAKNESS_FIRE

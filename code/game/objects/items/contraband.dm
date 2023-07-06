@@ -105,7 +105,6 @@
 		/obj/fiftyspawner/platinum,
 		/obj/item/toy/nanotrasenballoon,
 		/obj/item/toy/syndicateballoon,
-		/obj/item/aiModule/syndicate,
 		/obj/item/book/manual/engineering_hacking,
 		/obj/item/card/id/syndicate,
 		/obj/item/contraband/poster,

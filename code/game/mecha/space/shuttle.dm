@@ -1,7 +1,6 @@
 /obj/mecha/working/hoverpod/shuttlecraft
 	desc = "A more advanced variant of the hoverpod."
 	name = "Shuttle"
-	catalogue_data = list(/datum/category_item/catalogue/technology/hoverpod)
 	icon = 'icons/mecha/mecha64x64.dmi'
 	icon_state = "shuttle_standard"
 	initial_icon = "shuttle_standard"

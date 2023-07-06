@@ -112,7 +112,6 @@
 
 /obj/item/modular_computer/console/preset/mercenary/install_default_programs()
 	..()
-	hard_drive.store_file(new/datum/computer_file/program/camera_monitor/hacked())
 	hard_drive.store_file(new/datum/computer_file/program/alarm_monitor())
 	//hard_drive.store_file(new/datum/computer_file/program/aidiag())
 

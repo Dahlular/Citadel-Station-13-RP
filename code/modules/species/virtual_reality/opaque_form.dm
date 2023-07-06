@@ -110,27 +110,6 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/teshari),
 	)
 
-/datum/species/shapeshifter/promethean/avatar/diona
-	uid = SPECIES_ID_VIRTUAL_REALITY_DIONA
-	id = SPECIES_ID_VIRTUAL_REALITY_DIONA
-	name = SPECIES_VR_DIONA
-	icobase = 'icons/mob/species/diona/body.dmi'
-	deform  = 'icons/mob/species/diona/deformed_body.dmi'
-	species_appearance_flags = NONE
-	has_limbs = list(
-		BP_TORSO  = list("path" = /obj/item/organ/external/diona/chest),
-		BP_GROIN  = list("path" = /obj/item/organ/external/diona/groin),
-		BP_HEAD   = list("path" = /obj/item/organ/external/head/no_eyes/diona),
-		BP_L_ARM  = list("path" = /obj/item/organ/external/diona/arm),
-		BP_R_ARM  = list("path" = /obj/item/organ/external/diona/arm/right),
-		BP_L_LEG  = list("path" = /obj/item/organ/external/diona/leg),
-		BP_R_LEG  = list("path" = /obj/item/organ/external/diona/leg/right),
-		BP_L_HAND = list("path" = /obj/item/organ/external/diona/hand),
-		BP_R_HAND = list("path" = /obj/item/organ/external/diona/hand/right),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/diona/foot),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/diona/foot/right),
-	)
-
 /datum/species/shapeshifter/promethean/avatar/monkey
 	uid = SPECIES_ID_VIRTUAL_REALITY_MONKEY
 	id = SPECIES_ID_VIRTUAL_REALITY_MONKEY

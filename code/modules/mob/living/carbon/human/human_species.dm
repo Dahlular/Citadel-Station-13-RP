@@ -14,9 +14,6 @@
 	h_style = "Short Vox Quills"
 	species = /datum/species/vox
 
-/mob/living/carbon/human/diona
-	species = /datum/species/diona
-
 /mob/living/carbon/human/teshari
 	h_style = "Teshari Default"
 	species = /datum/species/teshari

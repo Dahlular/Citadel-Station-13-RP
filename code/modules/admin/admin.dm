@@ -1143,12 +1143,6 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	var/out = "<font size=3><b>Current mode: [SSticker.mode.name]</b></font><br/>"
 	out += "<hr>"
 
-	if(SSticker.mode.ert_disabled)
-		out += "<b>Emergency Response Teams:</b> <a href='?src=\ref[SSticker.mode];toggle=ert'>disabled</a>"
-	else
-		out += "<b>Emergency Response Teams:</b> <a href='?src=\ref[SSticker.mode];toggle=ert'>enabled</a>"
-	out += "<br/>"
-
 	if(SSticker.mode.deny_respawn)
 		out += "<b>Respawning:</b> <a href='?src=\ref[SSticker.mode];toggle=respawn'>disallowed</a>"
 	else

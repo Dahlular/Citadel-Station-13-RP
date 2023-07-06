@@ -25,7 +25,7 @@
 		if(!O.MayRespawn())
 			continue
 		if(O.client)
-			if(O.client.prefs.be_special & BE_ALIEN)
+			if(O.client.prefs.be_special)
 				question(O.client)
 
 /obj/item/slime_cube/proc/question(var/client/C)
@@ -39,8 +39,6 @@
 			return //handle logouts that happen whilst the alert is waiting for a response, and responses issued after a brain has been located.
 		if(response == "Yes")
 			transfer_personality(C.mob)
-		else if(response == "Never for this round")
-			C.prefs.be_special ^= BE_ALIEN
 
 /obj/item/slime_cube/proc/reset_search() //We give the players sixty seconds to decide, then reset the timer.
 	icon_state = "slime cube"

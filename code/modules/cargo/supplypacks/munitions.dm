@@ -242,7 +242,6 @@
 	contains = list(
 			/obj/item/gun/ballistic/apinae_stinger = 1,
 			/obj/item/gun/ballistic/apinae_pistol = 2,
-			/obj/item/grenade/spawnergrenade/manhacks/apidean = 3
 			)
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/gear

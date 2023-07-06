@@ -163,8 +163,6 @@
 /obj/random/mob/robotic/item_to_spawn() //Hivebots have a total number of 'lots' equal to the lesser drone, at 60.
 	return pick(prob(60);/mob/living/simple_mob/mechanical/combat_drone/lesser,
 				prob(50);/mob/living/simple_mob/mechanical/combat_drone,
-				prob(15);/mob/living/simple_mob/mechanical/mecha/ripley,
-				prob(15);/mob/living/simple_mob/mechanical/mecha/odysseus,
 				prob(10);/mob/living/simple_mob/mechanical/hivebot,
 				prob(15);/mob/living/simple_mob/mechanical/hivebot/swarm,
 				prob(10);/mob/living/simple_mob/mechanical/hivebot/ranged_damage,

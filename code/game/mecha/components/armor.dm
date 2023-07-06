@@ -185,8 +185,6 @@
 
 	emp_resistance = 3
 
-	required_type = list(/obj/mecha/combat/marauder)
-
 	deflect_chance = 25
 	damage_minimum = 30
 	minimum_penetration = 25

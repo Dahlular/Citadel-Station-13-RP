@@ -314,16 +314,14 @@
 		sleep(50)
 		if(occupant)
 			occupant.afflict_radiation(200)
-			var/obj/item/organ/internal/diona/nutrients/rad_organ = locate() in occupant.internal_organs
-			if(!rad_organ)
-				if(occupant.can_feel_pain())
-					occupant.emote("scream")
-				if(issuperUV)
-					var/burndamage = rand(28,35)
-					occupant.take_organ_damage(0,burndamage)
-				else
-					var/burndamage = rand(6,10)
-					occupant.take_organ_damage(0,burndamage)
+			if(occupant.can_feel_pain())
+				occupant.emote("scream")
+			if(issuperUV)
+				var/burndamage = rand(28,35)
+				occupant.take_organ_damage(0,burndamage)
+			else
+				var/burndamage = rand(6,10)
+				occupant.take_organ_damage(0,burndamage)
 		if(i==3) //End of the cycle
 			if(!issuperUV)
 				if(helmet_stored)

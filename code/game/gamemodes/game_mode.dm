@@ -37,9 +37,6 @@
 		switch(href_list["toggle"])
 			if("respawn")
 				deny_respawn = !deny_respawn
-			if("ert")
-				ert_disabled = !ert_disabled
-				announce_ert_disabled()
 			if("shuttle_recall")
 				auto_recall_shuttle = !auto_recall_shuttle
 		message_admins("Admin [key_name_admin(usr)] toggled game mode option '[href_list["toggle"]]'.")
@@ -110,10 +107,6 @@
 	spawn (ROUNDSTART_LOGOUT_REPORT_TIME)
 		display_roundstart_logout_report()
 
-	spawn (rand(waittime_l, waittime_h))
-		spawn(rand(100,150))
-			announce_ert_disabled()
-
 	if(SSemergencyshuttle && auto_recall_shuttle)
 		SSemergencyshuttle.auto_recall = 1
 
@@ -125,48 +118,10 @@
 
 /datum/game_mode/proc/fail_setup()
 
-/datum/game_mode/proc/announce_ert_disabled()
-	if(!ert_disabled)
-		return
-
-	var/list/reasons = list(
-		"political instability",
-		"quantum fluctuations",
-		"hostile raiders",
-		"derelict station debris",
-		"REDACTED",
-		"ancient alien artillery",
-		"solar magnetic storms",
-		"sentient time-travelling killbots",
-		"gravitational anomalies",
-		"wormholes to another dimension",
-		"a telescience mishap",
-		"radiation flares",
-		"supermatter dust",
-		"leaks into a negative reality",
-		"antiparticle clouds",
-		"residual bluespace energy",
-		"suspected criminal operatives",
-		"malfunctioning von Neumann probe swarms",
-		"shadowy interlopers",
-		"a stranded alien arkship",
-		"haywire IPC constructs",
-		"rogue Unathi exiles",
-		"artifacts of eldritch horror",
-		"a brain slug infestation",
-		"killer bugs that lay eggs in the husks of the living",
-		"a deserted transport carrying alien specimens",
-		"an emissary for the gestalt requesting a security detail",
-		"a Tajaran slave rebellion",
-		"radical Skrellian transevolutionaries",
-		"classified security operations"
-		)
-	command_announcement.Announce("The presence of [pick(reasons)] in the region is tying up all available local emergency resources; emergency response teams cannot be called at this time, and post-evacuation recovery efforts will be substantially delayed.","Emergency Transmission")
-
 /datum/game_mode/proc/check_finished(force_ending) // To be called by SSticker
 	if(!SSticker.setup_done)
 		return FALSE
-	if(SSemergencyshuttle.returned() || station_was_nuked)
+	if(SSemergencyshuttle.returned())
 		return TRUE
 	if(force_ending)
 		return TRUE

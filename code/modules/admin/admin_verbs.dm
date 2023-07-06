@@ -83,13 +83,10 @@ var/list/admin_verbs_admin = list(
 	/client/proc/check_customitem_activity,
 	/client/proc/man_up,
 	/client/proc/global_man_up,
-	/client/proc/response_team, // Response Teams admin verb
-	/client/proc/trader_ship, // Trader ship admin verb
 	/client/proc/allow_character_respawn, // Allows a ghost to respawn ,
 	/client/proc/event_manager_panel,
 	/client/proc/empty_ai_core_toggle_latejoin,
 	/client/proc/empty_ai_core_toggle_latejoin,
-	/client/proc/aooc,
 	/client/proc/change_human_appearance_admin,	// Allows an admin to change the basic appearance of human-based mobs ,
 	/client/proc/change_human_appearance_self,	// Allows the human-based mob itself change its basic appearance ,
 	/client/proc/change_security_level,
@@ -277,7 +274,6 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/cmd_admin_direct_narrate,
 	/client/proc/cmd_admin_local_narrate,
 	/client/proc/cmd_admin_world_narrate,
-	/client/proc/check_words,
 	/client/proc/play_local_sound,
 	/client/proc/play_sound,
 	/client/proc/play_web_sound,
@@ -345,7 +341,6 @@ var/list/admin_verbs_mod = list(
 	/client/proc/dsay,
 //	/datum/admins/proc/show_skills,
 	/datum/admins/proc/show_player_panel,
-	/client/proc/aooc,
 	/client/proc/jobbans,
 	/client/proc/toggle_attack_logs,
 	/client/proc/cmd_admin_subtle_message, 	//send an message to somebody as a 'voice in their head',
@@ -369,7 +364,6 @@ var/list/admin_verbs_event_manager = list(
 	/client/proc/cmd_admin_subtle_message,
 	/client/proc/cmd_admin_icsubtle_message,
 	/client/proc/debug_variables,
-	/client/proc/aooc,
 	/client/proc/cmd_admin_clear_mobs,
 	/datum/admins/proc/paralyze_mob,
 	/client/proc/cmd_admin_direct_narrate,
@@ -1094,16 +1088,6 @@ var/list/admin_verbs_event_manager = list(
 		var/client/C = i
 		if(!isliving(C.mob))
 			eligible -= C
-	for(var/role in GLOB.event_role_list)
-		var/flag = GLOB.event_role_list[role]
-		dat += "<div class='statusDisplay'><h1>[role]</h1><br>"
-		for(var/i in eligible)
-			var/client/C = i
-			if(!(C.prefs?.be_event_role & flag))
-				continue
-			var/mob/M = C.mob
-			dat += "[ADMIN_FULLMONTY(M)]<br>"
-		dat += "</div><br>"
 
 	var/datum/browser/popup = new(src, "event_volunteers", "Event Volunteers (In game)", 800, 1200)
 	popup.set_content(dat.Join(""))

@@ -284,18 +284,6 @@
 			lrange = max(lrange, glow_range)
 			lcolor = glow_color
 		set_light(lrange, lpower, lcolor)
-	// todo: DIONA - probably refactor this shit
-	var/obj/item/organ/internal/diona/nutrients/rad_organ = locate() in internal_organs
-	if(rad_organ && !rad_organ.is_broken())
-		var/rads = radiation / 100
-		nutrition += rads
-		adjustBruteLoss(-rads)
-		adjustFireLoss(-rads)
-		adjustOxyLoss(-rads)
-		adjustToxLoss(-rads)
-		update_health()
-		cure_radiation(RAD_MOB_PASSIVE_LOSS_FOR(radiation, seconds) + rads)
-		return
 	// not enough to care: stop
 	if(radiation < RAD_MOB_NEGLIGIBLE)
 		cure_radiation(RAD_MOB_PASSIVE_LOSS_FOR(radiation, seconds))
@@ -1486,14 +1474,7 @@
 		else
 			self_perspective.legacy_force_set_hard_darkvision(null)
 
-		if(!seedarkness)
-			SetSightSelf(species.get_vision_flags(src))
-			SetSeeInDarkSelf(8)
-			SetSeeInvisibleSelf(SEE_INVISIBLE_NOLIGHTING)
-		else
-			SetSightSelf(species.get_vision_flags(src))
-			SetSeeInDarkSelf(species.darksight)
-			SetSeeInvisibleSelf(GetSeeInDarkSelf() > 2? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default)
+		SetSightSelf(species.get_vision_flags(src))
 
 		var/glasses_processed = 0
 		var/obj/item/hardsuit/hardsuit = back

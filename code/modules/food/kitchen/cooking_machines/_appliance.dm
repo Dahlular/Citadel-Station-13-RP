@@ -611,14 +611,7 @@
 		if (isSynthetic())
 			src.composition_reagent = "iron"
 		else
-			if(istype(src, /mob/living/carbon/human/diona) || istype(src, /mob/living/carbon/alien/diona))
-				src.composition_reagent = "nutriment" // diona are plants, not meat
-			else
-				src.composition_reagent = "protein"
-				if(istype(src, /mob/living/carbon/human))
-					var/mob/living/carbon/human/H = src
-					if(istype(H.species, /datum/species/diona))
-						src.composition_reagent = "nutriment"
+			src.composition_reagent = "protein"
 
 	//if the mob is a simple animal with a defined meat quantity
 	if (istype(src, /mob/living/simple_mob))

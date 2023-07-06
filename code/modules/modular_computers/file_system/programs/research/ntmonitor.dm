@@ -23,7 +23,6 @@
 	data["ntnetstatus"] = ntnet_global.check_function()
 	data["ntnetrelays"] = ntnet_global.relays.len
 	data["idsstatus"] = ntnet_global.intrusion_detection_enabled
-	data["idsalarm"] = ntnet_global.intrusion_detection_alarm
 
 	data["config_softwaredownload"] = ntnet_global.setting_softwaredownload
 	data["config_peertopeer"] = ntnet_global.setting_peertopeer
@@ -47,14 +46,6 @@
 /datum/nano_module/computer_ntnetmonitor/Topic(href, href_list, state)
 	var/mob/user = usr
 	if(..())
-		return 1
-	if(href_list["resetIDS"])
-		if(ntnet_global)
-			ntnet_global.resetIDS()
-		return 1
-	if(href_list["toggleIDS"])
-		if(ntnet_global)
-			ntnet_global.toggleIDS()
 		return 1
 	if(href_list["toggleWireless"])
 		if(!ntnet_global)

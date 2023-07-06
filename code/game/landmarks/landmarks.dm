@@ -270,8 +270,6 @@ INITIALIZE_IMMEDIATE(/obj/landmark)
 
 /obj/landmark/costume/marisawizard/fake/Initialize(mapload)
 	. = ..()
-	new /obj/item/clothing/head/wizard/marisa/fake(src.loc)
-	new/obj/item/clothing/suit/wizrobe/marisa/fake(src.loc)
 	delete_on_roundstart = 1
 
 /obj/landmark/costume/cutewitch/Initialize(mapload)
@@ -283,8 +281,6 @@ INITIALIZE_IMMEDIATE(/obj/landmark)
 
 /obj/landmark/costume/fakewizard/Initialize(mapload)
 	. = ..()
-	new /obj/item/clothing/suit/wizrobe/fake(src.loc)
-	new /obj/item/clothing/head/wizard/fake(src.loc)
 	new /obj/item/staff/(src.loc)
 	delete_on_roundstart = 1
 

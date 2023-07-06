@@ -6,9 +6,6 @@
 	if(apply_color_to_mob)
 		host.color = traits[TRAIT_PRODUCT_COLOUR]
 
-	var/datum/ghosttrap/plant/P = get_ghost_trap("living plant")
-	P.request_player(host, "Someone is harvesting [display_name]. ")
-
 	spawn(75)
 		if(!host.ckey && !host.client)
 			host.death()  // This seems redundant, but a lot of mobs don't

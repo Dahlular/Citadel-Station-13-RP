@@ -126,10 +126,6 @@ var/global/datum/ntnet/ntnet_global = new()
 		if(filename == P.filename)
 			return P
 
-/datum/ntnet/proc/toggleIDS()
-	resetIDS()
-	intrusion_detection_enabled = !intrusion_detection_enabled
-
 // Removes all logs
 /datum/ntnet/proc/purge_logs()
 	logs = list()

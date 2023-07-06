@@ -169,12 +169,6 @@
 	icon_base = 'icons/turf/walls/diona.dmi'
 	icon_reinf = null
 
-/datum/material/diona/place_dismantled_product()
-	return
-
-/datum/material/diona/place_dismantled_girder(var/turf/target)
-	spawn_diona_nymph(target)
-
 /datum/material/steel/holographic
 	id = "steel_holo"
 	name = "holo" + MAT_STEEL

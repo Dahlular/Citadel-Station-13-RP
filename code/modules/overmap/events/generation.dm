@@ -64,17 +64,3 @@
 	count = 12
 	radius = 3
 	hazards = /obj/overmap/tiled/hazard/communications_blackout
-
-/datum/overmap_event/cult
-	name = "Screaming Signal"
-	count = 12
-	radius = 3
-	hazards = /obj/overmap/tiled/hazard/cult
-
-
-/datum/overmap_event/pirate
-	name = "Pirate Cutter"
-	count = 7
-	radius = 3
-	continuous = FALSE
-	hazards = /obj/overmap/tiled/hazard/pirate

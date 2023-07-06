@@ -96,10 +96,6 @@
 	if(machine_stat & BROKEN)
 		. += "waitlight"
 
-/obj/machinery/chem_master/blob_act(obj/structure/blob/B)
-	if (prob(50))
-		qdel(src)
-
 /obj/machinery/chem_master/attackby(obj/item/I, mob/user)
 	if(default_unfasten_wrench(user, I, 20))
 		return

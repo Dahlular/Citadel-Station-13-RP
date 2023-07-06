@@ -42,11 +42,6 @@
 
 	message_admins("[uppertext(name)]: Attempting spawn.")
 
-	var/list/usable_templates
-	if(latejoin_only && latejoin_templates.len)
-		usable_templates = get_usable_templates(latejoin_templates)
-	else
-		message_admins("[uppertext(name)]: Failed to find configured mode spawn templates")
-		return
+
 	message_admins("[uppertext(name)]: Failed to proc a viable spawn template.")
 	next_spawn = world.time + rand(min_autotraitor_delay, max_autotraitor_delay)

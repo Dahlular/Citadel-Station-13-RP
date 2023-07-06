@@ -23,7 +23,7 @@
 /mob/living/simple_mob/mechanical/hivebot/ranged_damage/laser
 	name = "laser hivebot"
 	desc = "A robot with a photonic weapon integrated into itself."
-	projectiletype = /obj/projectile/beam/blue
+	projectiletype = /obj/projectile/beam
 	projectilesound = 'sound/weapons/Laser.ogg'
 	player_msg = "You have a <b>laser attack</b>."
 

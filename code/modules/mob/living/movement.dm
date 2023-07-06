@@ -39,9 +39,6 @@
 		if(buckled && M.buckled == buckled)
 			// riding same thing, don't block each other
 			return TRUE
-	// can't throw blob stuff through blob stuff
-	if(istype(mover, /obj/structure/blob) && faction == "blob" && !mover.throwing) //Blobs should ignore things on their faction.
-		return TRUE
 	return ..()
 
 /mob/living/can_cross_under(atom/movable/mover)

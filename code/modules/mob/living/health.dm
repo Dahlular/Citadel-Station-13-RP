@@ -22,7 +22,7 @@
 	. = ..()
 	if(!.)
 		return
-	GLOB.cultnet.updateVisibility(src, FALSE)
+
 
 /mob/living/revive(force, full_heal)
 	. = ..()

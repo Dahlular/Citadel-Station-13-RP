@@ -29,9 +29,6 @@
 /obj/effect/acid_act()
 	return FALSE
 
-/obj/effect/blob_act(obj/structure/blob/B)
-	return
-
 /obj/effect/legacy_ex_act(severity, target)
 	return FALSE
 

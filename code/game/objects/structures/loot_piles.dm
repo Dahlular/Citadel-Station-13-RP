@@ -449,7 +449,6 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/cell/hyper,
 		/obj/item/aiModule/freeform,
 		/obj/item/aiModule/asimov,
-		/obj/item/aiModule/paladin,
 		/obj/item/aiModule/safeguard,
 		/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay
 	)

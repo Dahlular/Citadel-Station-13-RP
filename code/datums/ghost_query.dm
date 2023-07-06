@@ -61,27 +61,3 @@
 		else if(response == "Never for this round")
 			if(be_special_flag)
 				C.prefs.be_special ^= be_special_flag
-
-// Normal things.
-/datum/ghost_query/promethean
-	role_name = SPECIES_PROMETHEAN
-	question = "Someone is requesting a soul for a promethean.  Would you like to play as one?"
-	query_sound = 'sound/effects/slime_squish.ogg'
-	be_special_flag = BE_ALIEN
-	cutoff_number = 1
-
-/datum/ghost_query/posi_brain
-	role_name = "Positronic Intelligence"
-	question = "Someone has activated a Positronic Brain.  Would you like to play as one?"
-	query_sound = 'sound/machines/boobeebeep.ogg'
-	be_special_flag = BE_AI
-	check_bans = list("AI", "Cyborg")
-	cutoff_number = 1
-
-/datum/ghost_query/drone_brain
-	role_name = "Drone Intelligence"
-	question = "Someone has activated a Drone AI Chipset.  Would you like to play as one?"
-	query_sound = 'sound/machines/boobeebeep.ogg'
-	be_special_flag = BE_AI
-	check_bans = list("AI", "Cyborg")
-	cutoff_number = 1

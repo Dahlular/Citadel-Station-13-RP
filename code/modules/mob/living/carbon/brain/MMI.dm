@@ -296,16 +296,6 @@
 	for (var/mob/M in viewers(T))
 		M.show_message("<font color=#4F49AF>\The [src] chimes quietly.</font>")
 
-/obj/item/mmi/digital/robot
-	name = "robotic intelligence circuit"
-	desc = "The pinnacle of artifical intelligence which can be achieved using classical computer science."
-	catalogue_data = list(/datum/category_item/catalogue/technology/drone/drones)
-	icon = 'icons/obj/module.dmi'
-	icon_state = "mainboard"
-	w_class = ITEMSIZE_NORMAL
-	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 3, TECH_DATA = 4)
-	ghost_query_type = /datum/ghost_query/drone_brain
-
 /obj/item/mmi/digital/robot/Initialize(mapload)
 	. = ..()
 	brainmob.name = "[pick(list("ADA","DOS","GNU","MAC","WIN","NJS","SKS","DRD","IOS","CRM","IBM","TEX","LVM","BSD",))]-[rand(1000, 9999)]"
@@ -327,16 +317,6 @@
 	organic counterparts."
 	value = CATALOGUER_REWARD_TRIVIAL
 
-/obj/item/mmi/digital/posibrain
-	name = "positronic brain"
-	desc = "A cube of shining metal, four inches to a side and covered in shallow grooves."
-	catalogue_data = list(/datum/category_item/catalogue/technology/positronics)
-	icon = 'icons/obj/assemblies.dmi'
-	icon_state = "posibrain"
-	w_class = ITEMSIZE_NORMAL
-	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 4, TECH_BLUESPACE = 2, TECH_DATA = 4)
-	ghost_query_type = /datum/ghost_query/posi_brain
-	catalogue_data = list(/datum/category_item/catalogue/fauna/brain/posibrain)
 
 /obj/item/mmi/digital/posibrain/request_player()
 	icon_state = "posibrain-searching"

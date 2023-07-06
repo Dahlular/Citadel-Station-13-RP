@@ -178,7 +178,6 @@
 	var/mob/living/closest_mob
 	var/obj/machinery/closest_machine
 	var/obj/structure/closest_structure
-	var/obj/structure/blob/closest_blob
 	var/static/things_to_shock = typecacheof(list(/obj/machinery, /mob/living, /obj/structure))
 	var/static/blacklisted_tesla_types = typecacheof(list(
 										/obj/machinery/atmospherics,
@@ -249,17 +248,6 @@
 		else if(closest_machine)
 			continue
 
-		else if(istype(A, /obj/structure/blob))
-			var/obj/structure/blob/B = A
-			var/dist = get_dist(source, A)
-			if(dist <= zap_range && (dist < closest_dist || !closest_tesla_coil) && !B.being_shocked)
-				closest_blob = B
-				closest_atom = A
-				closest_dist = dist
-
-		else if(closest_blob)
-			continue
-
 		else if(istype(A, /obj/structure))
 			var/obj/structure/S = A
 			var/dist = get_dist(source, A)
@@ -302,10 +290,6 @@
 	else if(closest_machine)
 		drain_energy = TRUE // Safety First! Drain Tesla fast when its loose
 		closest_machine.tesla_act(power, explosive, stun_mobs)
-
-	else if(closest_blob)
-		drain_energy = TRUE // Safety First! Drain Tesla fast when its loose
-		closest_blob.tesla_act(power, explosive, stun_mobs)
 
 	else if(closest_structure)
 		drain_energy = TRUE // Safety First! Drain Tesla fast when its loose

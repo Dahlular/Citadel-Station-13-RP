@@ -97,7 +97,7 @@ SUBSYSTEM_DEF(ticker)
 		if(GAME_STATE_PLAYING)
 			round_process()
 
-			if(!mode.explosion_in_progress && mode.check_finished(force_ending) || force_ending)
+			if(force_ending)
 				current_state = GAME_STATE_FINISHED
 				round_end_time = world.time
 				declare_completion()
@@ -105,10 +105,7 @@ SUBSYSTEM_DEF(ticker)
 
 				callHook("roundend")
 
-				if (mode.station_was_nuked)
-					feedback_set_details("end_proper","nuke")
-				else
-					feedback_set_details("end_proper","proper completion")
+				feedback_set_details("end_proper","proper completion")
 
 
 				if(blackbox)
@@ -507,7 +504,7 @@ SUBSYSTEM_DEF(ticker)
 	var/game_finished = 0
 	var/mode_finished = 0
 	if (config_legacy.continous_rounds)
-		game_finished = (SSemergencyshuttle.returned() || mode.station_was_nuked)
+		game_finished = (SSemergencyshuttle.returned())
 		mode_finished = (!post_game && mode.check_finished())
 	else
 		game_finished = (mode.check_finished() || (SSemergencyshuttle.returned() && SSemergencyshuttle.evac == 1))
@@ -617,9 +614,6 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/standard_reboot()
 	if(ready_for_reboot)
-		if(mode.station_was_nuked)
-			Reboot("Station destroyed by Nuclear Device.", "nuke", 60 SECONDS)
-		else
-			Reboot("Round ended.", "proper completion")
+		Reboot("Round ended.", "proper completion")
 	else
 		CRASH("Attempted standard reboot without ticker roundend completion")

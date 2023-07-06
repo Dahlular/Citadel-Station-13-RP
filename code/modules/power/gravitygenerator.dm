@@ -33,10 +33,6 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 	if(severity == 1) // Very sturdy.
 		set_broken()
 
-/obj/machinery/gravity_generator/blob_act(obj/structure/blob/B)
-	if(prob(20))
-		set_broken()
-
 /obj/machinery/gravity_generator/tesla_act(power, tesla_flags)
 	..()
 	qdel(src)//like the singulo, tesla deletes it. stops it from exploding over and over
