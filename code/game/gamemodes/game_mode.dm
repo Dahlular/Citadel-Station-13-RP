@@ -85,7 +85,7 @@
 	else
 		if(playerC < config_legacy.player_requirements[config_tag])
 			return 0
-	return 0
+	return 1
 
 /datum/game_mode/proc/refresh_event_modifiers()
 	if(event_delay_mod_moderate || event_delay_mod_major)

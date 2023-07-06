@@ -19,6 +19,8 @@ map tether
 	disabled
 endmap
 
-#map triumph
-#	default
-#endmap
+map triumph
+	minplayers 0
+	maxplayers 0
+	default
+endmap

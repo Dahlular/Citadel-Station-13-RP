@@ -6,9 +6,6 @@
 	levels = list(
 		/datum/map_level/sector/tradeport_140,
 	)
-	legacy_assert_shuttle_datums = list(
-		/datum/shuttle/autodock/overmap/trade,
-	)
 
 /datum/map_level/sector/tradeport_140
 	id = "Tradeport140"
