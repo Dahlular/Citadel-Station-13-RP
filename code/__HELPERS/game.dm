@@ -432,7 +432,7 @@
 	var/i = 0
 	while(candidates.len <= 0 && i < 5)
 		for(var/mob/observer/dead/G in GLOB.player_list)
-			if(G.client.prefs.be_special & BE_ALIEN)
+			if(G.client.prefs.be_special)
 				// The most active players are more likely to become an alien.
 				if(((G.client.inactivity/10)/60) <= ALIEN_SELECT_AFK_BUFFER + i)
 					if(!(G.mind && G.mind.current && G.mind.current.stat != DEAD))
